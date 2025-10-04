@@ -12,7 +12,7 @@ func _on_battle_phase_start():
     visible = true
     on = true
     player_turn = true
-    start_player_turn()
+    start_player_turn.call_deferred()
 
 func _on_battle_phase_end():
     visible = false

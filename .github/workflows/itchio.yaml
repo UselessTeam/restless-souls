@@ -20,7 +20,7 @@ jobs:
     runs-on: self-hosted
     outputs:
       version: ${{ steps.set.outputs.version }}
-      should_upload: ${{ steps.set.outputs.tag_pushed || github.event_name == 'workflow_dispatch' }}
+      should_upload: ${{ steps.set.outputs.tag_pushed || github.event_name == 'workflow_dispatch' || 'false' }}
     if: >
       (
         github.event_name == 'workflow_run' &&
@@ -65,7 +65,7 @@ jobs:
     name: Upload ${{ matrix.platform.name }}
     runs-on: ubuntu-24.04
     needs: setup
-    if: needs.setup.outputs.should_upload
+    if: needs.setup.outputs.should_upload == 'true'
     strategy:
       matrix:
         platform:
