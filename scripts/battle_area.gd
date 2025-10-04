@@ -4,11 +4,15 @@ extends Node2D
 var boundaries: StaticBody2D
 var enter_zone: Area2D
 
+var monsters: Array[Monster]
+
 func _ready():
     boundaries = $Boundaries
     enter_zone = $EnterZone
 
     enter_zone.body_entered.connect(on_area_body_entered)
+
+    monsters = get_children().filter(func(child): return child is Monster) as Array[Monster]
 
 func on_area_body_entered(body):
     if body is Player:
@@ -19,3 +23,8 @@ func trigger_battle():
     enter_zone.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
     Global.start_battle()
     Global.camera.reparent_smoothly(self)
+
+func monsters_act():
+    for monster in monsters:
+        monster.act_turn()
+    await get_tree().create_timer(Monster.turn_time).timeout
