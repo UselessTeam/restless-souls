@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://2yrdhe62kcmb"]
+
+[ext_resource type="Script" uid="uid://bcrbfe0inmmhi" path="res://nodes/gui/battle.gd" id="1_wucys"]
+[ext_resource type="Script" uid="uid://dluxigsiww7el" path="res://scripts/gui/energy.gd" id="2_dplst"]
+[ext_resource type="Texture2D" uid="uid://cxxtk76cvf4w0" path="res://assets/sprites/gui/soul-essence-bar.png" id="3_waktq"]
+
+[node name="BattleOverlay" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = ExtResource("1_wucys")
+
+[node name="Energy" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("2_dplst")
+
+[node name="Bar" type="TextureProgressBar" parent="Energy"]
+layout_mode = 2
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 16
+stretch_margin_top = 16
+stretch_margin_right = 16
+stretch_margin_bottom = 16
+texture_progress = ExtResource("3_waktq")

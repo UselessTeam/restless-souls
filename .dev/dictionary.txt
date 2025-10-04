@@ -1,3 +1,5 @@
+deadzone
+gamepad
 github
 godot
 itchio
