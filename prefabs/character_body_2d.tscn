@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjbp00dkpgfe3"]
+
+[ext_resource type="Script" uid="uid://b7tthq3qgwooi" path="res://scripts/player.gd" id="1_0ump0"]
+[ext_resource type="Texture2D" uid="uid://clt4kgkw47m5p" path="res://assets/sprites/death-castlevania.png" id="2_wa2ag"]
+[ext_resource type="Script" uid="uid://27f8clxvvufh" path="res://scripts/camera_2d.gd" id="3_qpkhb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8pqn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7s53"]
+atlas = ExtResource("2_wa2ag")
+region = Rect2(0, 0, 100, 100)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_0ump0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h8pqn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, 1)
+texture = SubResource("AtlasTexture_q7s53")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("3_qpkhb")

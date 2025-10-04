@@ -1,17 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://duxn7jcopkw4g"]
+[gd_scene load_steps=10 format=3 uid="uid://duxn7jcopkw4g"]
 
-[ext_resource type="Texture2D" uid="uid://clt4kgkw47m5p" path="res://assets/sprites/death-castlevania.png" id="1_g2w4a"]
-[ext_resource type="Script" uid="uid://b7tthq3qgwooi" path="res://scripts/player.gd" id="1_q7s53"]
+[ext_resource type="PackedScene" uid="uid://cjbp00dkpgfe3" path="res://prefabs/character_body_2d.tscn" id="1_h8pqn"]
 [ext_resource type="Shader" uid="uid://hp6s1jjvruwn" path="res://assets/shaders/transparent-color.gdshader" id="3_oktae"]
 [ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="3_qeko6"]
-[ext_resource type="Script" uid="uid://27f8clxvvufh" path="res://scripts/camera_2d.gd" id="3_qgjcv"]
 [ext_resource type="Texture2D" uid="uid://vj5dqqwsdb2" path="res://assets/sprites/ghost-kirby.png" id="4_81352"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_h8pqn"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q7s53"]
-atlas = ExtResource("1_g2w4a")
-region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1gmwy"]
 shader = ExtResource("3_oktae")
@@ -40,20 +32,8 @@ size = Vector2(356, 226)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_h8pqn")]
 position = Vector2(83, 179)
-script = ExtResource("1_q7s53")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_h8pqn")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-5, 1)
-texture = SubResource("AtlasTexture_q7s53")
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(0, 1)
-script = ExtResource("3_qgjcv")
 
 [node name="Battle" type="Node2D" parent="."]
 position = Vector2(365, 117)
