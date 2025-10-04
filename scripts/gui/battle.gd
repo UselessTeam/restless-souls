@@ -1,10 +1,13 @@
 extends CanvasLayer
 
+class_name Battle
+
 var on: bool = false
 @onready var spell_bar: SpellsBar = $Spells
 
 func _ready():
     visible = false
+    Global.battle = self
     Global.battle_phase_start.connect(_on_battle_phase_start)
     Global.battle_phase_end.connect(_on_battle_phase_end)
 

@@ -49,4 +49,5 @@ func cast_spell():
     animation_player.play("cast")
 
 func _on_animation_finished(_anim_name):
+    Global.player.spell_finished()
     queue_free()

@@ -7,6 +7,7 @@ var player: Player = null
 var camera: Camera2DPlus = null
 var phase: GamePhase = GamePhase.LOADING
 var current_battle_area: BattleArea = null
+var battle: Battle = null
 
 signal battle_phase_start()
 signal battle_phase_end()

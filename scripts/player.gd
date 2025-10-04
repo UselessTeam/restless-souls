@@ -33,7 +33,10 @@ func _unhandled_input(event):
         animated_sprite.play("attack")
         can_move = false
 
+func spell_finished():
+    can_move = true
+    Global.battle.spell_bar.reset_spell()
+
 func _on_attack_animation_finished():
     if (animated_sprite.animation == "attack"):
         animated_sprite.play("idle")
-        can_move = true
