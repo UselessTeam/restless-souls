@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbpkxtgfkehtb"]
+
+[ext_resource type="Texture2D" uid="uid://c6mp8coii7tqj" path="res://assets/sprites/gui/skills/basic.png" id="1_53bem"]
+[ext_resource type="Script" uid="uid://pav4p21a6ohs" path="res://scripts/gui/spell-button.gd" id="2_qxusl"]
+
+[node name="Spell" type="Button"]
+focus_mode = 1
+icon = ExtResource("1_53bem")
+script = ExtResource("2_qxusl")

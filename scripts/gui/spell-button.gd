@@ -1,0 +1,10 @@
+extends Button
+
+class_name SpellButton
+
+@export var number: int
+@export var key: String
+@onready var spells_node = get_node("../../..") as SpellsBar
+
+func _pressed():
+    spells_node.select_spell(self)
