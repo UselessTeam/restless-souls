@@ -6,3 +6,4 @@
 # dev
 .vscode/*
 !.vscode/*.template.json
+build/
