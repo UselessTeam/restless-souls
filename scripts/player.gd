@@ -20,7 +20,12 @@ func _process(_delta):
         return
     var direction = Input.get_vector("left", "right", "up", "down")
     velocity = direction * speed
+    var previous_position = position
     move_and_slide()
+    if Global.is_battling() and not Global.battle.energy.has_enough_energy(position):
+        # TODO: Make a smarter rollback (e.g. slides on the circle)
+        position = previous_position
+        velocity = Vector2.ZERO
 
 
 func _unhandled_input(event):

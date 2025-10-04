@@ -4,6 +4,8 @@ class_name Battle
 
 var on: bool = false
 @onready var spell_bar: SpellsBar = $Spells
+@onready var energy: Energy = $Energy
+var battle_area: BattleArea = null
 
 func _ready():
     visible = false
@@ -11,10 +13,11 @@ func _ready():
     Global.battle_phase_start.connect(_on_battle_phase_start)
     Global.battle_phase_end.connect(_on_battle_phase_end)
 
-func _on_battle_phase_start():
+func _on_battle_phase_start(_battle_area: BattleArea):
+    battle_area = _battle_area
     visible = true
     on = true
-    player_turn = true
+    energy.start_battle()
     start_player_turn.call_deferred()
 
 func _on_battle_phase_end():
@@ -22,6 +25,8 @@ func _on_battle_phase_end():
     on = false
 
 func start_player_turn():
+    player_turn = true
+    energy.start_step()
     spell_bar.player_turn_started()
 
 var player_turn: bool = true
