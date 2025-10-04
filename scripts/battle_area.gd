@@ -25,17 +25,12 @@ func trigger_battle():
     Global.start_battle(self)
     Global.camera.reparent_smoothly(self)
 
-func monsters_act(callback = null):
+func monsters_act():
     for monster in monsters:
         monster.on_turn_start()
-        monster.act_turn()
-    get_tree().create_timer(Monster.turn_time).timeout.connect(_on_monsters_act_timeout.bind(callback))
-
-func _on_monsters_act_timeout(callback: Callable):
-    for monster in monsters:
+        await monster.act_turn()
         monster.on_turn_end()
-    if callback:
-        callback.call_deferred()
+    return
 
 var player_position_sprite: Node2D = null
 

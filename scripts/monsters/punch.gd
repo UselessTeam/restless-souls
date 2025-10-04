@@ -7,8 +7,9 @@ func act_turn():
     var dir = toPlayer.normalized()
     if (abs(toPlayer.length() - travel_distance) < 50):
         dir *= 1.3
-    create_tween() \
-        .tween_property(self, "position", position + dir * travel_distance, turn_time)
+    await create_tween() \
+        .tween_property(self, "position", position + dir * travel_distance, turn_time) \
+        .finished
 
 func _ready():
     attack_area.body_entered.connect(_on_area_body_entered)

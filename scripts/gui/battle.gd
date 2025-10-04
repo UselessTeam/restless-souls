@@ -42,7 +42,8 @@ func stop_player_step():
 func start_monster_turn():
     is_player_turn = false
     Global.current_battle_area.hide_player_base_position()
-    battle_area.monsters_act(start_player_turn)
+    await battle_area.monsters_act()
+    start_player_turn()
 
 func _process(_delta: float):
     if !Global.can_player_act():

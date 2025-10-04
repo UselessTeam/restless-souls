@@ -8,7 +8,8 @@ func _init():
     if self.get_script() == Monster:
         push_error("Monster is an abstract class and should not be instantiated directly.")
 
-func act_turn() -> void:
+func act_turn():
+    await null
     push_error("act_turn() must be implemented by subclasses of Monster.")
 
 @onready var block_body = $CharacterBody2D

@@ -16,13 +16,15 @@ func act_turn():
         target_dist = min(dist + travel_distance, ideal_distance_min)
     elif dist > ideal_distance_max:
         target_dist = max(dist - travel_distance, ideal_distance_max)
-    var time = turn_time if target_dist != dist else 0
+    var time = turn_time if target_dist != dist else 0.0
+
     var tween = create_tween() \
         .tween_property(self, "position", position + dir * (dist - target_dist), time)
     if (target_dist >= ideal_distance_min && target_dist <= ideal_distance_max):
         await tween.finished
         await shoot()
-    await tween.finished
+    else:
+        await tween.finished
 
 func shoot():
     var bullet_node = bullet.instantiate()
