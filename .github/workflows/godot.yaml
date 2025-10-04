@@ -38,10 +38,10 @@ jobs:
           cache: true
 
       - name: Fix `use_preset_export_path` issue
-        if: ${{ matrix.platform.target != "web" }}
+        if: matrix.platform.target != 'web'
         run: |
-          mv build/${{ matrix.platform.target }}/${{ matrix.platform.name }/* build/${{ matrix.platform.target }}/
-          rm -r build/${{ matrix.platform.target }}/${{ matrix.platform.name }/
+          mv build/${{ matrix.platform.target }}/${{ matrix.platform.name }}/* build/${{ matrix.platform.target }}/
+          rm -r build/${{ matrix.platform.target }}/${{ matrix.platform.name }}/
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
