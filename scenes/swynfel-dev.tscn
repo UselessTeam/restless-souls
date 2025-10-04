@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://cvlara4nkcae1"]
+
+[ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/combat-overlay.tscn" id="1_jawmd"]
+[ext_resource type="Script" uid="uid://b7tthq3qgwooi" path="res://scripts/player.gd" id="2_r2s87"]
+[ext_resource type="Texture2D" uid="uid://clt4kgkw47m5p" path="res://assets/sprites/death-castlevania.png" id="3_ode32"]
+[ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="4_4s5ii"]
+[ext_resource type="Shader" uid="uid://hp6s1jjvruwn" path="res://assets/shaders/transparent-color.gdshader" id="5_if3ko"]
+[ext_resource type="Texture2D" uid="uid://vj5dqqwsdb2" path="res://assets/sprites/ghost-kirby.png" id="6_gg6i5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8pqn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7s53"]
+atlas = ExtResource("3_ode32")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1gmwy"]
+shader = ExtResource("5_if3ko")
+shader_parameter/key_color = Color(0.60913056, 0.5003047, 0.79390264, 1)
+shader_parameter/threshold = 0.1830000086925
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh0gb"]
+atlas = ExtResource("6_gg6i5")
+region = Rect2(0, 0, 32, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pyd17"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh0gb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qeko6"]
+size = Vector2(356, 226)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qeko6"]
+
+[node name="World" type="Node2D"]
+
+[node name="CombatOverlay" parent="." instance=ExtResource("1_jawmd")]
+follow_viewport_enabled = false
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(83, 179)
+script = ExtResource("2_r2s87")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_h8pqn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-5, 1)
+texture = SubResource("AtlasTexture_q7s53")
+
+[node name="Camera" type="Camera2D" parent="Player"]
+position = Vector2(-83, -179)
+
+[node name="Battle" type="Node2D" parent="."]
+position = Vector2(365, 117)
+script = ExtResource("4_4s5ii")
+
+[node name="Ghost" type="Node2D" parent="Battle"]
+position = Vector2(-80, -5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Battle/Ghost"]
+material = SubResource("ShaderMaterial_1gmwy")
+sprite_frames = SubResource("SpriteFrames_pyd17")
+
+[node name="EnterZone" type="Area2D" parent="Battle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/EnterZone"]
+position = Vector2(22, 63)
+shape = SubResource("RectangleShape2D_qeko6")
+
+[node name="Boundaries" type="StaticBody2D" parent="Battle"]
+process_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/Boundaries"]
+position = Vector2(-13, 203)
+shape = SubResource("WorldBoundaryShape2D_qeko6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Battle/Boundaries"]
+position = Vector2(-182, 100)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_qeko6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Battle/Boundaries"]
+position = Vector2(220, 63)
+rotation = 4.712389
+shape = SubResource("WorldBoundaryShape2D_qeko6")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Battle/Boundaries"]
+position = Vector2(-8, -113)
+rotation = -3.1415925
+shape = SubResource("WorldBoundaryShape2D_qeko6")
