@@ -66,4 +66,4 @@ shape = SubResource("ConvexPolygonShape2D_u51tk")
 
 [node name="Polygon2D" type="Polygon2D" parent="Scythe"]
 color = Color(1, 0.4509804, 1, 0.38039216)
-polygon = PackedVector2Array(86, 22, 82, 55, 76, 71, 58, 96, 25, -2, 61, -87, 71, -69, 79, -48, 83, -17)
+polygon = PackedVector2Array(89, 22, 82, 55, 76, 71, 58, 96, 25, -2, 65, -98, 78, -75, 85, -53, 89, -21)
