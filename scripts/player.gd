@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 class_name Player
 
@@ -8,11 +8,11 @@ class_name Player
 func _ready():
 	print("Connected controllers: ", Input.get_connected_joypads())
 
-func _process(delta):
+func _process(_delta):
 	var direction := get_input_direction()
 
-	if direction != Vector2.ZERO:
-		position += direction * speed * delta
+	velocity = direction * speed
+	move_and_slide()
 
 func get_input_direction() -> Vector2:
 	# Gamepad stick input (left stick, usually index 0)
