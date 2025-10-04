@@ -6,6 +6,7 @@ class_name Player
 @export var speed := 200
 
 func _ready():
+	Global.player = self
 	print("Connected controllers: ", Input.get_connected_joypads())
 
 func _process(_delta):
