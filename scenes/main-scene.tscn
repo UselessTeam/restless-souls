@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://duxn7jcopkw4g"]
+[gd_scene load_steps=9 format=3 uid="uid://duxn7jcopkw4g"]
 
 [ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="1_h8pqn"]
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_qeko6"]
-[ext_resource type="PackedScene" path="res://nodes/punch-ghost.tscn" id="3_h8pqn"]
+[ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_qeko6"]
+[ext_resource type="PackedScene" uid="uid://dxopk57i7b7ai" path="res://nodes/monsters/punch-ghost.tscn" id="3_h8pqn"]
 [ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="3_qeko6"]
 [ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="5_qeko6"]
+[ext_resource type="PackedScene" uid="uid://dajso34dssklv" path="res://nodes/monsters/shoot-ghost.tscn" id="5_qgjcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qeko6"]
 size = Vector2(356, 226)
@@ -26,6 +27,8 @@ script = ExtResource("3_qeko6")
 [node name="Ghost" parent="Battle" instance=ExtResource("3_h8pqn")]
 position = Vector2(-78, -5)
 
+[node name="Ghost2" parent="Battle" instance=ExtResource("5_qgjcv")]
+
 [node name="EnterZone" type="Area2D" parent="Battle"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/EnterZone"]
@@ -36,21 +39,21 @@ shape = SubResource("RectangleShape2D_qeko6")
 process_mode = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(-38, 152)
+position = Vector2(2, 273)
 shape = SubResource("WorldBoundaryShape2D_qeko6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(-207, 49)
+position = Vector2(-407, 14)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_qeko6")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(195, 12)
+position = Vector2(377, 6)
 rotation = 4.712389
 shape = SubResource("WorldBoundaryShape2D_qeko6")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(-33, -164)
+position = Vector2(-5, -296)
 rotation = -3.1415925
 shape = SubResource("WorldBoundaryShape2D_qeko6")
 

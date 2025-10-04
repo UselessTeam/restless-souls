@@ -15,4 +15,4 @@ func _ready():
 
 func _on_area_body_entered(body):
     if body is Player:
-        print("Player entered monster attack_area")
+        body.take_damage()

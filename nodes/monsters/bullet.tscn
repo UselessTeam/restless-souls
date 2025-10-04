@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvc0qkq4c0aw8"]
+
+[ext_resource type="Script" uid="uid://k4a2u1svbrd0" path="res://scripts/monsters/bullet.gd" id="1_dfkhu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dfkhu"]
+radius = 77.65063
+
+[node name="Bullet" type="ColorRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.16152734, 0.15265876)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_dfkhu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.63782126, 0.6714496)
+shape = SubResource("CircleShape2D_dfkhu")

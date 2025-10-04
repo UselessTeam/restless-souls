@@ -41,3 +41,6 @@ func _unhandled_input(event):
 func _on_attack_animation_finished():
     if (animated_sprite.animation == "attack"):
         animated_sprite.play("idle")
+
+func take_damage():
+    print("Player took damage")
