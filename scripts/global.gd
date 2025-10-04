@@ -14,10 +14,11 @@ signal battle_phase_end()
 signal game_phase_change(previous: GamePhase, next: GamePhase)
 
 func start_battle(battle_area):
-    battle_phase_start.emit(battle_area)
     game_phase_change.emit(phase, GamePhase.BATTLE)
     phase = GamePhase.BATTLE
     current_battle_area = battle_area
+    battle_phase_start.emit(battle_area)
+
 
 func end_battle():
     battle_phase_end.emit()

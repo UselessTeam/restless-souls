@@ -36,6 +36,8 @@ func energy_cost_for_position(_position: Vector2) -> float:
     return distance * STEP_ENERGY_COST
 
 func has_enough_energy(_position: Vector2) -> bool:
+    if energy_last_value <= 0:
+        return false
     return energy_last_value - energy_cost_for_position(_position) >= MIN_ENERGY
 
 func project_to_reachable_position(_position: Vector2) -> Vector2:

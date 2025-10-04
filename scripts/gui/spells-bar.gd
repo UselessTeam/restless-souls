@@ -10,10 +10,8 @@ func _ready():
     spells.assign($Center/List.get_children().filter(func(child): return child is SpellButton))
 
 func player_step_started():
-    select_spell(spells[0])
-
-func player_step_ended():
     select_spell(null)
+    select_spell(spells[0])
 
 func select_spell(spell: SpellButton):
     if selected_spell == spell:

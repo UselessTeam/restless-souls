@@ -5,10 +5,10 @@ class_name Player
 # Movement speed in pixels per second
 @export var speed := 200
 @export var player_sprite_prefab: PackedScene
+@export var max_health := 10
+var health := max_health
 
 @onready var animated_sprite = $AnimatedSprite2D
-
-signal spell_cast()
 
 var can_move := true
 
@@ -32,7 +32,7 @@ func _unhandled_input(event):
     if event.is_action_pressed("action_use") \
                 && Global.is_battling() \
                 && Global.battle.is_player_turn:
-        spell_cast.emit()
+        Global.battle.do_player_action()
         animated_sprite.play("attack")
 
 func _on_attack_animation_finished():

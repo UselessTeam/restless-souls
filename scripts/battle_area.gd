@@ -17,7 +17,7 @@ func _ready():
 
 func on_area_body_entered(body):
     if body is Player:
-        trigger_battle()
+        trigger_battle.call_deferred()
 
 func trigger_battle():
     boundaries.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -32,6 +32,7 @@ func close_battle():
     Global.camera.reparent_smoothly(Global.player)
 
 func monsters_act():
+    monsters.assign(monsters.filter(is_instance_valid))
     for monster in monsters:
         monster.on_turn_start()
         await monster.act_turn()
@@ -51,3 +52,6 @@ func hide_player_base_position():
     if player_position_sprite:
         player_position_sprite.queue_free()
         player_position_sprite = null
+
+func has_monsters() -> bool:
+    return monsters.any(is_instance_valid)
