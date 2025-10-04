@@ -11,6 +11,7 @@ jobs:
     name: Export (${{ matrix.platform.name }})
     runs-on: self-hosted
     strategy:
+      fail-fast: false
       matrix:
         platform:
           - name: Windows
