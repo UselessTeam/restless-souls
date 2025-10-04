@@ -2,4 +2,6 @@ github
 godot
 itchio
 linux
+onready
+reparent
 swynfel
