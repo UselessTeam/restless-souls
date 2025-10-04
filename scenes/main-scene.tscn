@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://duxn7jcopkw4g"]
+[gd_scene load_steps=11 format=3 uid="uid://duxn7jcopkw4g"]
 
 [ext_resource type="PackedScene" uid="uid://cjbp00dkpgfe3" path="res://prefabs/player.tscn" id="1_h8pqn"]
 [ext_resource type="Shader" uid="uid://hp6s1jjvruwn" path="res://assets/shaders/transparent-color.gdshader" id="3_oktae"]
 [ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="3_qeko6"]
 [ext_resource type="Texture2D" uid="uid://vj5dqqwsdb2" path="res://assets/sprites/ghost-kirby.png" id="4_81352"]
+[ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="5_qeko6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1gmwy"]
 shader = ExtResource("3_oktae")
@@ -74,3 +75,5 @@ shape = SubResource("WorldBoundaryShape2D_qeko6")
 position = Vector2(-33, -164)
 rotation = -3.1415925
 shape = SubResource("WorldBoundaryShape2D_qeko6")
+
+[node name="BattleOverlay" parent="." instance=ExtResource("5_qeko6")]
