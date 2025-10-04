@@ -20,11 +20,11 @@ jobs:
     runs-on: self-hosted
     outputs:
       version: ${{ steps.set.outputs.version }}
+      should_upload: ${{ steps.set.outputs.tag_pushed || github.event_name == 'workflow_dispatch' }}
     if: >
       (
         github.event_name == 'workflow_run' &&
-        github.event.workflow_run.conclusion == 'success' &&
-        startsWith(github.event.workflow_run.head_ref, 'refs/tags/v')
+        github.event.workflow_run.conclusion == 'success'
       ) || (
         github.event_name == 'workflow_dispatch'
       )
@@ -52,6 +52,7 @@ jobs:
 
             if [ "$commits" -eq 0 ]; then
               version=$tag
+              echo "tag_pushed=true" >> $GITHUB_OUTPUT
             else
               version="${tag}-${commits}-${hash}"
             fi
@@ -64,6 +65,7 @@ jobs:
     name: Upload ${{ matrix.platform.name }}
     runs-on: ubuntu-24.04
     needs: setup
+    if: needs.setup.outputs.should_upload
     strategy:
       matrix:
         platform:
