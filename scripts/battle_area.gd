@@ -25,6 +25,12 @@ func trigger_battle():
     Global.start_battle(self)
     Global.camera.reparent_smoothly(self)
 
+func close_battle():
+    boundaries.process_mode = Node.PROCESS_MODE_DISABLED
+    enter_zone.set_deferred("process_mode", Node.PROCESS_MODE_ALWAYS)
+    Global.end_battle(self)
+    Global.camera.reparent_smoothly(Global.player)
+
 func monsters_act():
     for monster in monsters:
         monster.on_turn_start()

@@ -31,3 +31,6 @@ func unhighlight() -> void:
 
 func damage() -> void:
     print("Monster took damage")
+
+func face_direction(is_left) -> void:
+    $Sprite2D.flip_h = is_left

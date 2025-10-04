@@ -10,6 +10,7 @@ func act_turn():
     var toPlayer = (Global.player.global_position - global_position)
     var dir = toPlayer.normalized()
     var dist = toPlayer.length()
+    face_direction(dir.x < 0)
 
     var target_dist = dist
     if dist < ideal_distance_min:
