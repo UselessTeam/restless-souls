@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://duxn7jcopkw4g"]
 
-[ext_resource type="PackedScene" uid="uid://cjbp00dkpgfe3" path="res://prefabs/character_body_2d.tscn" id="1_h8pqn"]
+[ext_resource type="PackedScene" uid="uid://cjbp00dkpgfe3" path="res://prefabs/player.tscn" id="1_h8pqn"]
 [ext_resource type="Shader" uid="uid://hp6s1jjvruwn" path="res://assets/shaders/transparent-color.gdshader" id="3_oktae"]
 [ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="3_qeko6"]
 [ext_resource type="Texture2D" uid="uid://vj5dqqwsdb2" path="res://assets/sprites/ghost-kirby.png" id="4_81352"]
@@ -34,6 +34,7 @@ size = Vector2(356, 226)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_h8pqn")]
 position = Vector2(83, 179)
+speed = 350
 
 [node name="Battle" type="Node2D" parent="."]
 position = Vector2(365, 117)

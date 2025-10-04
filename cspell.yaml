@@ -3,5 +3,5 @@ dictionaries:
   - repo
 dictionaryDefinitions:
   - name: repo
-    path: ./.dev/dictionary.txt
-    addWords: true
+	path: ./.dev/dictionary.txt
+	addWords: true

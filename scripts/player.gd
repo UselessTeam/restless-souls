@@ -5,9 +5,11 @@ class_name Player
 # Movement speed in pixels per second
 @export var speed := 200
 
+@onready var animated_sprite = $AnimatedSprite2D
+
 func _ready():
 	Global.player = self
-	print("Connected controllers: ", Input.get_connected_joypads())
+	animated_sprite.animation_finished.connect(_on_attack_animation_finished)
 
 func _process(_delta):
 	var direction := get_input_direction()
@@ -38,3 +40,11 @@ func get_input_direction() -> Vector2:
 	if Input.is_action_pressed("ui_right"):
 		direction.x += 1
 	return direction.normalized()
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept"):
+		animated_sprite.play("attack")
+
+func _on_attack_animation_finished():
+	if (animated_sprite.animation == "attack"):
+		animated_sprite.play("idle")
