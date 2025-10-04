@@ -4,6 +4,7 @@ class_name Spell
 
 @onready var collision_shape = $CollisionShape2D
 @onready var visual_polygon = $Polygon2D
+@onready var animation_player = $AnimationPlayer
 
 var hinted_monsters: Array[Monster] = []
 
@@ -13,6 +14,9 @@ func _ready():
 
     body_entered.connect(_on_area_body_entered)
     body_exited.connect(_on_area_body_exited)
+    animation_player.animation_finished.connect(_on_animation_finished)
+
+    Global.player.spell_cast.connect(cast_spell)
 
 func _exit_tree():
     for monster in hinted_monsters:
@@ -38,6 +42,11 @@ func unhint(monster: Monster):
     monster.unhighlight()
     hinted_monsters.erase(monster)
 
+func cast_spell():
+    for monster in hinted_monsters:
+        monster.damage()
+    visual_polygon.queue_free()
+    animation_player.play("cast")
 
-func _start_hinting():
-    pass
+func _on_animation_finished(_anim_name):
+    queue_free()

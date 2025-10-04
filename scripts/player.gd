@@ -7,6 +7,8 @@ class_name Player
 
 @onready var animated_sprite = $AnimatedSprite2D
 
+signal spell_cast()
+
 var can_move := true
 
 func _ready():
@@ -24,7 +26,10 @@ func _process(_delta):
 func _unhandled_input(event):
     if !can_move:
         return
-    if event.is_action_pressed("ui_accept"):
+    if event.is_action_pressed("action_use") \
+                && Global.is_battling() \
+                && !Global.current_battle_area.is_monster_turn:
+        spell_cast.emit()
         animated_sprite.play("attack")
         can_move = false
 

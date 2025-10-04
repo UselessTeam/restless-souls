@@ -7,6 +7,8 @@ var enter_zone: Area2D
 
 var monsters: Array[Monster]
 
+var is_monster_turn := false
+
 func _ready():
     boundaries = $Boundaries
     enter_zone = $EnterZone
@@ -26,13 +28,14 @@ func trigger_battle():
     Global.camera.reparent_smoothly(self)
 
 func monsters_act():
+    is_monster_turn = true
     for monster in monsters:
         monster.on_turn_start()
         monster.act_turn()
     await get_tree().create_timer(Monster.turn_time).timeout
     for monster in monsters:
         monster.on_turn_end()
-
+    is_monster_turn = false
 
 func _unhandled_input(event):
     if event.is_action_pressed("monster_turn"):

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://duxn7jcopkw4g"]
 
-[ext_resource type="PackedScene" uid="uid://cjbp00dkpgfe3" path="res://nodes/player.tscn" id="1_h8pqn"]
-[ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_qeko6"]
-[ext_resource type="PackedScene" uid="uid://dxopk57i7b7ai" path="res://nodes/punch-ghost.tscn" id="3_h8pqn"]
+[ext_resource type="PackedScene" path="res://nodes/player.tscn" id="1_h8pqn"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_qeko6"]
+[ext_resource type="PackedScene" path="res://nodes/punch-ghost.tscn" id="3_h8pqn"]
 [ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="3_qeko6"]
 [ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="5_qeko6"]
 
@@ -55,4 +55,3 @@ rotation = -3.1415925
 shape = SubResource("WorldBoundaryShape2D_qeko6")
 
 [node name="BattleOverlay" parent="." instance=ExtResource("5_qeko6")]
-visible = false

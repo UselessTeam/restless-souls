@@ -1,8 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhmk8dju75pjr"]
+[gd_scene load_steps=6 format=3 uid="uid://bhmk8dju75pjr"]
 
 [ext_resource type="Script" uid="uid://cd0aq14mddy1m" path="res://scripts/spells/orientation_spell.gd" id="1_1jhl7"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_u51tk"]
+
+[sub_resource type="Animation" id="Animation_kgmnk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticleCenter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.0239866]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ParticleCenter:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pb2an"]
+resource_name = "cast"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticleCenter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.081181765, -2.0239866]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ParticleCenter:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_la6tv"]
+_data = {
+&"RESET": SubResource("Animation_kgmnk"),
+&"cast": SubResource("Animation_pb2an")
+}
 
 [node name="Scythe" type="Area2D"]
 z_index = 2
@@ -14,4 +75,31 @@ shape = SubResource("ConvexPolygonShape2D_u51tk")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(1, 0.4509804, 1, 0.38039216)
-polygon = PackedVector2Array(86, 22, 82, 55, 76, 71, 58, 96, 25, -2, 61, -87, 71, -69, 79, -48, 83, -17)
+polygon = PackedVector2Array(129, 22, 112, 59, 98, 80, 63, 112, 25, -2, 63, -115, 94, -99, 117, -61, 128, -22)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_la6tv")
+}
+
+[node name="ParticleCenter" type="Node2D" parent="."]
+visible = false
+rotation = -2.0239866
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ParticleCenter"]
+position = Vector2(40.306664, 90.81505)
+amount = 100
+lifetime = 0.14
+emission_shape = 1
+emission_sphere_radius = 39.69
+direction = Vector2(0, 0)
+spread = 154.62
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angle_min = -351.9
+angle_max = 396.0
+scale_amount_max = 4.0
+color = Color(1, 0, 0, 1)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

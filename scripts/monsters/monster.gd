@@ -27,3 +27,6 @@ func highlight() -> void:
 
 func unhighlight() -> void:
     modulate = Color.WHITE
+
+func damage() -> void:
+    print("Monster took damage")
