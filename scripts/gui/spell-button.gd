@@ -4,6 +4,7 @@ class_name SpellButton
 
 @export var number: int
 @export var key: String
+@export var packed_spell: PackedScene
 @onready var spells_node = get_node("../../..") as SpellsBar
 
 func _pressed():

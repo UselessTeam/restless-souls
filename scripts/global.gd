@@ -2,6 +2,7 @@ extends Node
 
 enum GamePhase {LOADING, ROAM, BATTLE}
 
+var world: World = null
 var player: Player = null
 var camera: Camera2DPlus = null
 var phase: GamePhase = GamePhase.LOADING
