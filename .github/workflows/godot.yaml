@@ -3,7 +3,6 @@ on: push
 
 env:
   GODOT_VERSION: 4.5
-  EXPORT_NAME: "Restless Souls"
   PROJECT_PATH: .
 
 jobs:
@@ -14,13 +13,13 @@ jobs:
       fail-fast: false
       matrix:
         platform:
+          - name: Web
+            target: "web"
           - name: Windows
             target: "windows"
           - name: Linux
             target: "linux"
-          - name: Web
-            target: "web"
-          - name: macOS
+          - name: MacOS
             target: "mac"
     steps:
       - name: Checkout

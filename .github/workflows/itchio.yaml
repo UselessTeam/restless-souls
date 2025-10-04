@@ -8,6 +8,7 @@ on:
 
 env:
   ARTEFACT_WORKFLOW: godot.yaml
+  EXPORT_NAME: "RestlessSouls"
   ITCH_USER: swynfel
   ITCH_GAME: restless-souls
 
@@ -66,14 +67,17 @@ jobs:
     strategy:
       matrix:
         platform:
-          - name: Windows
-            target: "windows"
-          - name: Linux
-            target: "linux"
           - name: Web
             target: "web"
-          - name: macOS
+          - name: Windows
+            target: "windows"
+            extension: .exe
+          - name: Linux
+            target: "linux"
+            extension: .x86_64
+          - name: MacOS
             target: "mac"
+            extension: .zip
     steps:
       - name: "Download artifact from latest build"
         uses: dawidd6/action-download-artifact@v6 # cspell:words dawidd6
@@ -92,4 +96,4 @@ jobs:
           ITCH_GAME: ${{ env.ITCH_GAME }}
           ITCH_USER: ${{ env.ITCH_USER }}
           VERSION: ${{ needs.setup.outputs.version }}
-          PACKAGE: build/${{ matrix.platform.target }}
+          PACKAGE: build/${{ matrix.platform.target }}/${{ env.EXPORT_NAME }}${{ matrix.platform.extension }}
