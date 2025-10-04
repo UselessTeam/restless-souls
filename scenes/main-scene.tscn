@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://duxn7jcopkw4g"]
+[gd_scene load_steps=14 format=3 uid="uid://duxn7jcopkw4g"]
 
 [ext_resource type="Texture2D" uid="uid://clt4kgkw47m5p" path="res://assets/sprites/death-castlevania.png" id="1_g2w4a"]
 [ext_resource type="Script" uid="uid://b7tthq3qgwooi" path="res://scripts/player.gd" id="1_q7s53"]
 [ext_resource type="Shader" uid="uid://hp6s1jjvruwn" path="res://assets/shaders/transparent-color.gdshader" id="3_oktae"]
 [ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="3_qeko6"]
+[ext_resource type="Script" uid="uid://27f8clxvvufh" path="res://scripts/camera_2d.gd" id="3_qgjcv"]
 [ext_resource type="Texture2D" uid="uid://vj5dqqwsdb2" path="res://assets/sprites/ghost-kirby.png" id="4_81352"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h8pqn"]
@@ -50,6 +51,10 @@ shape = SubResource("CircleShape2D_h8pqn")
 position = Vector2(-5, 1)
 texture = SubResource("AtlasTexture_q7s53")
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(0, 1)
+script = ExtResource("3_qgjcv")
+
 [node name="Battle" type="Node2D" parent="."]
 position = Vector2(365, 117)
 script = ExtResource("3_qeko6")
@@ -64,29 +69,27 @@ sprite_frames = SubResource("SpriteFrames_pyd17")
 [node name="EnterZone" type="Area2D" parent="Battle"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/EnterZone"]
-position = Vector2(22, 63)
+position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_qeko6")
 
 [node name="Boundaries" type="StaticBody2D" parent="Battle"]
 process_mode = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(-13, 203)
+position = Vector2(-38, 152)
 shape = SubResource("WorldBoundaryShape2D_qeko6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(-182, 100)
+position = Vector2(-207, 49)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_qeko6")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(220, 63)
+position = Vector2(195, 12)
 rotation = 4.712389
 shape = SubResource("WorldBoundaryShape2D_qeko6")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(-8, -113)
+position = Vector2(-33, -164)
 rotation = -3.1415925
 shape = SubResource("WorldBoundaryShape2D_qeko6")
-
-[node name="Camera2D" type="Camera2D" parent="."]

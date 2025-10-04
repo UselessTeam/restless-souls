@@ -12,4 +12,9 @@ func _ready():
 
 func on_area_body_entered(body):
 	if body is Player:
-		boundaries.process_mode = Node.PROCESS_MODE_INHERIT
+		trigger_battle()
+
+func trigger_battle():
+	boundaries.process_mode = Node.PROCESS_MODE_ALWAYS
+	enter_zone.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
+	Global.camera.reparent_smoothly(self)
