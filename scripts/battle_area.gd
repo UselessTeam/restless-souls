@@ -27,8 +27,11 @@ func trigger_battle():
 
 func monsters_act():
     for monster in monsters:
+        monster.on_turn_start()
         monster.act_turn()
     await get_tree().create_timer(Monster.turn_time).timeout
+    for monster in monsters:
+        monster.on_turn_end()
 
 
 func _unhandled_input(event):

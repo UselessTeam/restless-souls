@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjbp00dkpgfe3"]
+[gd_scene load_steps=10 format=3 uid="uid://cjbp00dkpgfe3"]
 
 [ext_resource type="Script" uid="uid://b7tthq3qgwooi" path="res://scripts/player.gd" id="1_0ump0"]
 [ext_resource type="Texture2D" uid="uid://qs7i6sphbg02" path="res://assets/sprites/player/IMG_1623-2.png" id="2_ht1c8"]
 [ext_resource type="Texture2D" uid="uid://bjx3if3hxb513" path="res://assets/sprites/player/IMG_1623-1.png" id="2_r66lb"]
 [ext_resource type="Texture2D" uid="uid://cwnknfxid7swl" path="res://assets/sprites/player/IMG_1623-3.png" id="3_g2jcq"]
 [ext_resource type="Script" uid="uid://27f8clxvvufh" path="res://scripts/camera_2d.gd" id="3_qpkhb"]
+[ext_resource type="Script" uid="uid://fceurv6b8hw6" path="res://prefabs/spell.gd" id="6_g2jcq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r66lb"]
 animations = [{
@@ -35,6 +36,8 @@ animations = [{
 radius = 15.0
 height = 62.0
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_u51tk"]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_0ump0")
 
@@ -50,3 +53,16 @@ shape = SubResource("CapsuleShape2D_r66lb")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 1)
 script = ExtResource("3_qpkhb")
+
+[node name="Scythe" type="Area2D" parent="."]
+script = ExtResource("6_g2jcq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scythe"]
+z_index = 2
+position = Vector2(30, -3)
+shape = SubResource("ConvexPolygonShape2D_u51tk")
+
+[node name="Polygon2D" type="Polygon2D" parent="Scythe"]
+position = Vector2(-2, -16)
+color = Color(1, 0.4509804, 1, 0.38039216)
+polygon = PackedVector2Array(86, 22, 82, 55, 76, 71, 58, 96, 26, 20, 59, -66, 69, -58, 77, -45, 83, -17)

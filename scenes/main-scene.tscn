@@ -1,34 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://duxn7jcopkw4g"]
+[gd_scene load_steps=7 format=3 uid="uid://duxn7jcopkw4g"]
 
 [ext_resource type="PackedScene" uid="uid://cjbp00dkpgfe3" path="res://prefabs/player.tscn" id="1_h8pqn"]
-[ext_resource type="Shader" uid="uid://hp6s1jjvruwn" path="res://assets/shaders/transparent-color.gdshader" id="3_oktae"]
+[ext_resource type="PackedScene" uid="uid://dxopk57i7b7ai" path="res://prefabs/punch-ghost.tscn" id="3_h8pqn"]
 [ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="3_qeko6"]
-[ext_resource type="Script" uid="uid://ddfjgxxqdxywu" path="res://scripts/monsters/punch.gd" id="3_qgjcv"]
-[ext_resource type="Texture2D" uid="uid://vj5dqqwsdb2" path="res://assets/sprites/ghost-kirby.png" id="4_81352"]
 [ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="5_qeko6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1gmwy"]
-shader = ExtResource("3_oktae")
-shader_parameter/key_color = Color(0.60913056, 0.5003047, 0.79390264, 1)
-shader_parameter/threshold = 0.1830000086925
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wh0gb"]
-atlas = ExtResource("4_81352")
-region = Rect2(0, 0, 32, 31)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_pyd17"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wh0gb")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qgjcv"]
-radius = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qeko6"]
 size = Vector2(356, 226)
@@ -45,19 +20,8 @@ speed = 350
 position = Vector2(365, 117)
 script = ExtResource("3_qeko6")
 
-[node name="Ghost" type="Node2D" parent="Battle"]
+[node name="Ghost" parent="Battle" instance=ExtResource("3_h8pqn")]
 position = Vector2(-78, -5)
-script = ExtResource("3_qgjcv")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Battle/Ghost"]
-material = SubResource("ShaderMaterial_1gmwy")
-sprite_frames = SubResource("SpriteFrames_pyd17")
-
-[node name="Area2D" type="Area2D" parent="Battle/Ghost"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/Ghost/Area2D"]
-position = Vector2(3, 2)
-shape = SubResource("CircleShape2D_qgjcv")
 
 [node name="EnterZone" type="Area2D" parent="Battle"]
 
