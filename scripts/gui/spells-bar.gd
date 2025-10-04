@@ -9,14 +9,10 @@ var current_spell_action: Spell = null
 func _ready():
     spells.assign($Center/List.get_children().filter(func(child): return child is SpellButton))
 
-func player_turn_started():
+func player_step_started():
     select_spell(spells[0])
 
-func reset_spell():
-    select_spell(null)
-    select_spell(spells[0])
-
-func player_turn_ended():
+func player_step_ended():
     select_spell(null)
 
 func select_spell(spell: SpellButton):

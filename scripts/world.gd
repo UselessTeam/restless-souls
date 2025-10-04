@@ -4,3 +4,4 @@ class_name World
 
 func _enter_tree():
     Global.world = self
+    Global.phase = Global.GamePhase.ROAM

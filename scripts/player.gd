@@ -17,7 +17,7 @@ func _ready():
     animated_sprite.animation_finished.connect(_on_attack_animation_finished)
 
 func _process(_delta):
-    if !can_move:
+    if not Global.can_player_act():
         return
     var direction = Input.get_vector("left", "right", "up", "down")
     velocity = direction * speed
@@ -30,20 +30,13 @@ func _process(_delta):
 
 
 func _unhandled_input(event):
-    if !can_move:
+    if not Global.can_player_act():
         return
     if event.is_action_pressed("action_use") \
                 && Global.is_battling() \
-                && !Global.current_battle_area.is_monster_turn:
+                && Global.battle.is_player_turn:
         spell_cast.emit()
         animated_sprite.play("attack")
-        can_move = false
-        Global.current_battle_area.hide_player_base_position()
-
-func spell_finished():
-    can_move = true
-    Global.current_battle_area.show_player_base_position()
-    Global.battle.spell_bar.reset_spell()
 
 func _on_attack_animation_finished():
     if (animated_sprite.animation == "attack"):

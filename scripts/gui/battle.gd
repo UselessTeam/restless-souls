@@ -6,6 +6,8 @@ var on: bool = false
 @onready var spell_bar: SpellsBar = $Spells
 @onready var energy: Energy = $Energy
 var battle_area: BattleArea = null
+var is_player_turn: bool = true
+var is_launching_spell: bool = false
 
 func _ready():
     visible = false
@@ -15,7 +17,6 @@ func _ready():
 
 func _on_battle_phase_start(_battle_area: BattleArea):
     battle_area = _battle_area
-    battle_area.show_player_base_position()
     visible = true
     on = true
     energy.start_battle()
@@ -26,15 +27,30 @@ func _on_battle_phase_end():
     on = false
 
 func start_player_turn():
-    player_turn = true
-    energy.start_step()
-    spell_bar.player_turn_started()
+    is_player_turn = true
+    start_player_step.call_deferred()
 
-var player_turn: bool = true
+func start_player_step():
+    battle_area.show_player_base_position()
+    energy.start_step()
+    spell_bar.player_step_started()
+
+func stop_player_step():
+    battle_area.hide_player_base_position()
+    spell_bar.player_step_ended()
+
+func start_monster_turn():
+    is_player_turn = false
+    Global.current_battle_area.hide_player_base_position()
+    battle_area.monsters_act(start_player_turn)
 
 func _process(_delta: float):
-    if not on or player_turn:
+    if !Global.can_player_act():
         return
 
     if Input.is_action_just_pressed("action_escape"):
         print("TODO")
+
+func _unhandled_input(event):
+    if is_player_turn and event.is_action_pressed("monster_turn"):
+        start_monster_turn()

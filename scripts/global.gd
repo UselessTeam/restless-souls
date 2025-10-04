@@ -29,3 +29,6 @@ func is_battling() -> bool:
 
 func is_roaming() -> bool:
     return phase == GamePhase.ROAM
+
+func can_player_act() -> bool:
+    return is_roaming() or (is_battling() and battle.is_player_turn and not battle.is_launching_spell)

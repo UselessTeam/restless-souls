@@ -43,11 +43,14 @@ func unhint(monster: Monster):
     hinted_monsters.erase(monster)
 
 func cast_spell():
+    Global.battle.is_launching_spell = true
     for monster in hinted_monsters:
         monster.damage()
     visual_polygon.queue_free()
     animation_player.play("cast")
 
 func _on_animation_finished(_anim_name):
-    Global.player.spell_finished()
+    Global.battle.stop_player_step()
     queue_free()
+    Global.battle.is_launching_spell = false
+    Global.battle.start_player_step()

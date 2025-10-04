@@ -7,8 +7,6 @@ var enter_zone: Area2D
 
 var monsters: Array[Monster]
 
-var is_monster_turn := false
-
 func _ready():
     boundaries = $Boundaries
     enter_zone = $EnterZone
@@ -27,28 +25,28 @@ func trigger_battle():
     Global.start_battle(self)
     Global.camera.reparent_smoothly(self)
 
-func monsters_act():
-    is_monster_turn = true
+func monsters_act(callback = null):
     for monster in monsters:
         monster.on_turn_start()
         monster.act_turn()
-    await get_tree().create_timer(Monster.turn_time).timeout
+    get_tree().create_timer(Monster.turn_time).timeout.connect(_on_monsters_act_timeout.bind(callback))
+
+func _on_monsters_act_timeout(callback: Callable):
     for monster in monsters:
         monster.on_turn_end()
-    is_monster_turn = false
+    if callback:
+        callback.call_deferred()
 
-func _unhandled_input(event):
-    if event.is_action_pressed("monster_turn"):
-        monsters_act()
+var player_position_sprite: Node2D = null
 
 func show_player_base_position():
     var player_sprite_position = Global.player.animated_sprite.global_position
-    var node = Global.player.player_sprite_prefab.instantiate()
-    node.modulate = Color(1, 1, 1, 0.3)
-    self.add_child(node)
-    node.global_position = player_sprite_position
+    player_position_sprite = Global.player.player_sprite_prefab.instantiate()
+    player_position_sprite.modulate = Color(1, 1, 1, 0.3)
+    self.add_child(player_position_sprite)
+    player_position_sprite.global_position = player_sprite_position
 
 func hide_player_base_position():
-    var player_sprite = get_node_or_null("PlayerSprite")
-    if player_sprite:
-        player_sprite.queue_free()
+    if player_position_sprite:
+        player_position_sprite.queue_free()
+        player_position_sprite = null
