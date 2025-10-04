@@ -15,6 +15,7 @@ func _ready():
 
 func _on_battle_phase_start(_battle_area: BattleArea):
     battle_area = _battle_area
+    battle_area.show_player_base_position()
     visible = true
     on = true
     energy.start_battle()

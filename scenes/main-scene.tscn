@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://duxn7jcopkw4g"]
 
-[ext_resource type="PackedScene" path="res://nodes/player.tscn" id="1_h8pqn"]
+[ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="1_h8pqn"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_qeko6"]
 [ext_resource type="PackedScene" path="res://nodes/punch-ghost.tscn" id="3_h8pqn"]
 [ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="3_qeko6"]

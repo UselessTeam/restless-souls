@@ -40,3 +40,15 @@ func monsters_act():
 func _unhandled_input(event):
     if event.is_action_pressed("monster_turn"):
         monsters_act()
+
+func show_player_base_position():
+    var player_sprite_position = Global.player.animated_sprite.global_position
+    var node = Global.player.player_sprite_prefab.instantiate()
+    node.modulate = Color(1, 1, 1, 0.3)
+    self.add_child(node)
+    node.global_position = player_sprite_position
+
+func hide_player_base_position():
+    var player_sprite = get_node_or_null("PlayerSprite")
+    if player_sprite:
+        player_sprite.queue_free()

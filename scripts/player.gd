@@ -4,6 +4,7 @@ class_name Player
 
 # Movement speed in pixels per second
 @export var speed := 200
+@export var player_sprite_prefab: PackedScene
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -37,9 +38,11 @@ func _unhandled_input(event):
         spell_cast.emit()
         animated_sprite.play("attack")
         can_move = false
+        Global.current_battle_area.hide_player_base_position()
 
 func spell_finished():
     can_move = true
+    Global.current_battle_area.show_player_base_position()
     Global.battle.spell_bar.reset_spell()
 
 func _on_attack_animation_finished():

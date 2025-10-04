@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmrngmlwx5mwr"]
+
+[ext_resource type="Texture2D" uid="uid://qs7i6sphbg02" path="res://assets/sprites/player/IMG_1623-2.png" id="1_bc13i"]
+[ext_resource type="Texture2D" uid="uid://cwnknfxid7swl" path="res://assets/sprites/player/IMG_1623-3.png" id="2_mxfrn"]
+[ext_resource type="Texture2D" uid="uid://bjx3if3hxb513" path="res://assets/sprites/player/IMG_1623-1.png" id="3_6647u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r66lb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bc13i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mxfrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mxfrn")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6647u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="PlayerSprite" type="AnimatedSprite2D"]
+z_index = -1
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_r66lb")
+animation = &"idle"
