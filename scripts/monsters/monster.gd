@@ -21,3 +21,9 @@ func on_turn_end() -> void:
 func on_turn_start() -> void:
     block_body.process_mode = Node.PROCESS_MODE_DISABLED
     attack_area.process_mode = Node.PROCESS_MODE_INHERIT
+
+func highlight() -> void:
+    modulate = Color(1.0, 0.913, 0.623, 0.549) # ffe99f8c
+
+func unhighlight() -> void:
+    modulate = Color.WHITE

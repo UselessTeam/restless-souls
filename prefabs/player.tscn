@@ -39,15 +39,17 @@ height = 62.0
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_u51tk"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_0ump0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -26)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_r66lb")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 6)
+position = Vector2(2, -13)
 shape = SubResource("CapsuleShape2D_r66lb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -55,14 +57,13 @@ position = Vector2(0, 1)
 script = ExtResource("3_qpkhb")
 
 [node name="Scythe" type="Area2D" parent="."]
+z_index = 2
 script = ExtResource("6_g2jcq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scythe"]
 z_index = 2
-position = Vector2(30, -3)
 shape = SubResource("ConvexPolygonShape2D_u51tk")
 
 [node name="Polygon2D" type="Polygon2D" parent="Scythe"]
-position = Vector2(-2, -16)
 color = Color(1, 0.4509804, 1, 0.38039216)
-polygon = PackedVector2Array(86, 22, 82, 55, 76, 71, 58, 96, 26, 20, 59, -66, 69, -58, 77, -45, 83, -17)
+polygon = PackedVector2Array(86, 22, 82, 55, 76, 71, 58, 96, 25, -2, 61, -87, 71, -69, 79, -48, 83, -17)

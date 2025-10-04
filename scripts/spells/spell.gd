@@ -10,8 +10,13 @@ func _ready():
     collision_polygon.points = visual_polygon.polygon
 
     body_entered.connect(_on_area_body_entered)
+    body_exited.connect(_on_area_body_exited)
 
 
 func _on_area_body_entered(body):
     if body.get_parent() is Monster:
-        print("Monster entered spell area")
+        body.get_parent().highlight()
+
+func _on_area_body_exited(body):
+    if body.get_parent() is Monster:
+        body.get_parent().unhighlight()
