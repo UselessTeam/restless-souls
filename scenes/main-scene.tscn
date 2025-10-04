@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cjbp00dkpgfe3" path="res://prefabs/player.tscn" id="1_h8pqn"]
 [ext_resource type="Shader" uid="uid://hp6s1jjvruwn" path="res://assets/shaders/transparent-color.gdshader" id="3_oktae"]
 [ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="3_qeko6"]
+[ext_resource type="Script" uid="uid://ddfjgxxqdxywu" path="res://scripts/monsters/punch.gd" id="3_qgjcv"]
 [ext_resource type="Texture2D" uid="uid://vj5dqqwsdb2" path="res://assets/sprites/ghost-kirby.png" id="4_81352"]
 [ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="5_qeko6"]
 
@@ -42,7 +43,8 @@ position = Vector2(365, 117)
 script = ExtResource("3_qeko6")
 
 [node name="Ghost" type="Node2D" parent="Battle"]
-position = Vector2(-80, -5)
+position = Vector2(-78, -5)
+script = ExtResource("3_qgjcv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Battle/Ghost"]
 material = SubResource("ShaderMaterial_1gmwy")

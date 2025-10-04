@@ -12,7 +12,7 @@ func _ready():
 
     enter_zone.body_entered.connect(on_area_body_entered)
 
-    monsters = get_children().filter(func(child): return child is Monster) as Array[Monster]
+    monsters.assign(get_children().filter(func(child): return child is Monster))
 
 func on_area_body_entered(body):
     if body is Player:
