@@ -1,0 +1,9 @@
+{
+  "[json][jsonc]": {
+    "editor.tabSize": 2
+  },
+  "files.associations": {
+    "*.template.json": "jsonc"
+  },
+  "editor.formatOnSave": true
+}

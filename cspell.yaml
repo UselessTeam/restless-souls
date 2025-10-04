@@ -1,0 +1,7 @@
+version: "0.2"
+dictionaries:
+  - repo
+dictionaryDefinitions:
+  - name: repo
+    path: ./.dev/dictionary.txt
+    addWords: true
