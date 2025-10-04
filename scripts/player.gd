@@ -24,7 +24,6 @@ func _process(_delta):
     move_and_slide()
     if Global.is_battling() and not Global.battle.energy.has_enough_energy(position):
         position = Global.battle.energy.project_to_reachable_position(position)
-        velocity = Vector2.ZERO
 
 
 func _unhandled_input(event):

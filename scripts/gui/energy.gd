@@ -39,4 +39,4 @@ func has_enough_energy(_position: Vector2) -> bool:
     return energy_last_value - energy_cost_for_position(_position) >= MIN_ENERGY
 
 func project_to_reachable_position(_position: Vector2) -> Vector2:
-    return _position.move_toward(player_last_position, (energy_cost_for_position(_position) - energy_last_value) / STEP_ENERGY_COST)
+    return _position.move_toward(player_last_position, (energy_cost_for_position(_position) - energy_last_value + MIN_ENERGY) / STEP_ENERGY_COST)
