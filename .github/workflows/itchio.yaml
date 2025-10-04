@@ -1,0 +1,86 @@
+name: "itch.io"
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+env:
+  ARTEFACT_WORKFLOW: godot.yaml
+  ITCH_USER: swynfel
+  ITCH_GAME: restless-souls
+
+permissions: read-all
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: self-hosted
+    outputs:
+      version: ${{ steps.set.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          sparse-checkout: ""
+
+      - id: set
+        name: Get Version
+        run: |
+          description=$(git describe --tags --match "v*" --long --abbrev=7 2>/dev/null || echo "")
+
+          if [ -z "$description" ]; then
+            commits=$(git rev-list --count HEAD)
+            hash=$(git rev-parse --short=7 HEAD)
+            version="v0.0.0-$commits-$hash"
+          else
+            # git describe: tag-N-gHASH
+            tag=$(echo "$description" | cut -d'-' -f1)
+            commits=$(echo "$description" | cut -d'-' -f2)
+            hash=$(echo "$description" | cut -d'-' -f3 | sed 's/^g//')
+
+            if [ "$commits" -eq 0 ]; then
+              version=$tag
+            else
+              version="${tag}-${commits}-${hash}"
+            fi
+          fi
+
+          echo "Version: $version"
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+  upload:
+    name: Upload ${{ matrix.platform.name }}
+    runs-on: ubuntu-24.04
+    needs: setup
+    strategy:
+      matrix:
+        platform:
+          - name: Windows
+            target: "windows"
+          - name: Linux
+            target: "linux"
+          - name: Web
+            target: "web"
+          - name: macOS
+            target: "mac"
+    steps:
+      - name: "Download artifact from latest build"
+        uses: dawidd6/action-download-artifact@v6 # cspell:words dawidd6
+        with:
+          workflow: ${{ env.ARTEFACT_WORKFLOW }}
+          name: ${{ matrix.platform.target }}
+          path: build/${{ matrix.platform.target }}
+          workflow_conclusion: success
+          branch: main
+
+      - name: Upload to itch.io
+        uses: yeslayla/butler-publish-itchio-action@master # cspell:words yeslayla
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: ${{ matrix.platform.target }}
+          ITCH_GAME: ${{ env.ITCH_GAME }}
+          ITCH_USER: ${{ env.ITCH_USER }}
+          VERSION: ${{ needs.setup.outputs.version }}
+          PACKAGE: build/${{ matrix.platform.target }}

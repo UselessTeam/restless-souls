@@ -1,0 +1,45 @@
+name: "Godot"
+on: push
+
+env:
+  GODOT_VERSION: 4.5
+  EXPORT_NAME: "Restless Souls"
+  PROJECT_PATH: .
+
+jobs:
+  build:
+    name: Export (${{ matrix.platform.name }})
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        platform:
+          - name: Windows
+            target: "windows"
+          - name: Linux
+            target: "linux"
+          - name: Web
+            target: "web"
+          - name: macOS
+            target: "mac"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Build ${{ matrix.platform.name }}
+        id: build
+        uses: firebelley/godot-export@v7.0.0 # cspell:words firebelley
+        with:
+          godot_executable_download_url: https://downloads.godotengine.org/?version=4.5&flavor=stable&slug=linux.x86_64.zip&platform=linux.64
+          godot_export_templates_download_url: https://downloads.godotengine.org/?version=4.5&flavor=stable&slug=export_templates.tpz&platform=templates
+          use_preset_export_path: true
+          presets_to_export: ${{ matrix.platform.name }}
+          cache: true
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.platform.target }}
+          path: build/${{ matrix.platform.target }}
+          retention-days: 1
