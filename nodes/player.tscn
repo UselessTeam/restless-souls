@@ -14,7 +14,7 @@ script = ExtResource("1_0ump0")
 player_sprite_prefab = ExtResource("2_me0cc")
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_me0cc")]
-position = Vector2(0, -26)
+position = Vector2(0, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -13)

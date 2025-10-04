@@ -27,7 +27,6 @@ func trigger_battle():
 
 func close_battle():
     boundaries.process_mode = Node.PROCESS_MODE_DISABLED
-    enter_zone.set_deferred("process_mode", Node.PROCESS_MODE_ALWAYS)
     Global.end_battle()
     Global.camera.reparent_smoothly(Global.player)
 
