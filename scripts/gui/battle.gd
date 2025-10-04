@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var on: bool = false
-# @onready var spell_bar: SpellBar = $SpellBar
+@onready var spell_bar: SpellsBar = $Spells
 
 func _ready():
     visible = false
@@ -12,10 +12,14 @@ func _on_battle_phase_start():
     visible = true
     on = true
     player_turn = true
+    start_player_turn()
 
 func _on_battle_phase_end():
     visible = false
     on = false
+
+func start_player_turn():
+    spell_bar.player_turn_started()
 
 var player_turn: bool = true
 

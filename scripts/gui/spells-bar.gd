@@ -8,7 +8,12 @@ var current_spell_action: Spell = null
 
 func _ready():
     spells.assign($Center/List.get_children().filter(func(child): return child is SpellButton))
-    select_spell.call_deferred(spells[0])
+
+func player_turn_started():
+    select_spell(spells[0])
+
+func player_turn_ended():
+    select_spell(null)
 
 func select_spell(spell: SpellButton):
     if selected_spell == spell:
