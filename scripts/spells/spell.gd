@@ -50,7 +50,6 @@ func do():
     await done
 
 func cast_spell():
-    Global.battle.is_launching_spell = true
     for monster in hinted_monsters:
         monster.take_damage(damage)
     visual_polygon.queue_free()
@@ -58,5 +57,4 @@ func cast_spell():
 
 func _on_animation_finished(_anim_name):
     queue_free()
-    Global.battle.is_launching_spell = false
     done.emit()

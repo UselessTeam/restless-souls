@@ -1,19 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://duxn7jcopkw4g"]
+[gd_scene load_steps=13 format=3 uid="uid://duxn7jcopkw4g"]
 
 [ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="1_h8pqn"]
 [ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_qeko6"]
 [ext_resource type="PackedScene" uid="uid://dxopk57i7b7ai" path="res://nodes/monsters/punch-ghost.tscn" id="3_h8pqn"]
-[ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="3_qeko6"]
+[ext_resource type="PackedScene" uid="uid://cne50lky0fuiu" path="res://nodes/battle.tscn" id="3_qgjcv"]
 [ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="5_qeko6"]
 [ext_resource type="PackedScene" uid="uid://dajso34dssklv" path="res://nodes/monsters/shoot-ghost.tscn" id="5_qgjcv"]
 [ext_resource type="Script" uid="uid://dj1802tnwtw52" path="res://scripts/music_player.gd" id="7_a1lv3"]
 [ext_resource type="AudioStream" uid="uid://bwhvepxx8jess" path="res://assets/music/quiet-hunter-loop.mp3" id="8_gkrxy"]
 [ext_resource type="AudioStream" uid="uid://cbmu7o8igduty" path="res://assets/music/hunters-dance-loop.mp3" id="9_juyu1"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qeko6"]
-size = Vector2(356, 226)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qeko6"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_qeko6")
@@ -23,42 +18,9 @@ y_sort_enabled = false
 position = Vector2(83, 179)
 speed = 350
 
-[node name="Battle" type="Node2D" parent="."]
-position = Vector2(365, 117)
-script = ExtResource("3_qeko6")
-
-[node name="Ghost" parent="Battle" instance=ExtResource("3_h8pqn")]
-position = Vector2(-78, -5)
-
-[node name="Ghost2" parent="Battle" instance=ExtResource("5_qgjcv")]
-
-[node name="EnterZone" type="Area2D" parent="Battle"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/EnterZone"]
-position = Vector2(-1, -2)
-shape = SubResource("RectangleShape2D_qeko6")
-
-[node name="Boundaries" type="StaticBody2D" parent="Battle"]
-process_mode = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(2, 273)
-shape = SubResource("WorldBoundaryShape2D_qeko6")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(-407, 14)
-rotation = 1.5707964
-shape = SubResource("WorldBoundaryShape2D_qeko6")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(377, 6)
-rotation = 4.712389
-shape = SubResource("WorldBoundaryShape2D_qeko6")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Battle/Boundaries"]
-position = Vector2(-5, -296)
-rotation = -3.1415925
-shape = SubResource("WorldBoundaryShape2D_qeko6")
+[node name="Battle" parent="." instance=ExtResource("3_qgjcv")]
+position = Vector2(536, 143)
+packed_monsters = Array[PackedScene]([ExtResource("3_h8pqn"), ExtResource("5_qgjcv")])
 
 [node name="BattleOverlay" parent="." instance=ExtResource("5_qeko6")]
 
@@ -67,3 +29,4 @@ autoplay = true
 script = ExtResource("7_a1lv3")
 world_music = ExtResource("8_gkrxy")
 battle_music = ExtResource("9_juyu1")
+[editable path="Battle"]

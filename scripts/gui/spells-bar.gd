@@ -13,6 +13,9 @@ func player_step_started():
     select_spell(null)
     select_spell(spells[0])
 
+func combat_ended():
+    select_spell(null)
+
 func select_spell(spell: SpellButton):
     if selected_spell == spell:
         return

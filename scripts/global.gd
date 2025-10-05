@@ -2,14 +2,15 @@ extends Node
 
 enum GamePhase {LOADING, ROAM, BATTLE}
 
+var phase: GamePhase = GamePhase.LOADING
+@onready var progress: Progress = Progress.new()
+
 var world: World = null
 var player: Player = null
 var camera: Camera2DPlus = null
-var phase: GamePhase = GamePhase.LOADING
-var current_battle_area: BattleArea = null
 var battle: Battle = null
 
-@onready var progress: Progress = Progress.new()
+var last_checkpoint: Vector2 = Vector2.ZERO
 
 signal battle_phase_start(battle_area: BattleArea)
 signal battle_phase_end()
@@ -18,9 +19,7 @@ signal game_phase_change(previous: GamePhase, next: GamePhase)
 func start_battle(battle_area):
     game_phase_change.emit(phase, GamePhase.BATTLE)
     phase = GamePhase.BATTLE
-    current_battle_area = battle_area
     battle_phase_start.emit(battle_area)
-
 
 func end_battle():
     battle_phase_end.emit()
@@ -34,7 +33,7 @@ func is_roaming() -> bool:
     return phase == GamePhase.ROAM
 
 func can_player_act() -> bool:
-    return is_roaming() or (is_battling() and battle.is_player_turn and not battle.is_launching_spell)
+    return is_roaming() or (is_battling() and battle.is_player_step)
 
 func _process(_delta):
     if Input.is_action_just_pressed("cheat_unlock"):

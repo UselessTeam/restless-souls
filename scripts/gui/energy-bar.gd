@@ -74,15 +74,21 @@ func update_bars_and_knots():
 
 func start_battle():
     max_energy = Global.progress.get_max_energy()
+    print("max_energy ", max_energy)
 
 func start_turn():
     step_energy = max_energy
+    reserved_energy_for_spell = 0.0
+    walk_energy_drain = 0.0
 
 func start_step():
     player_last_position = Global.player.position
     step_energy = next_energy
     reserved_energy_for_spell = 0.0
     walk_energy_drain = 0.0
+    print("step_energy", step_energy)
+    print("reserved_energy_for_spell", reserved_energy_for_spell)
+    print("walk_energy_drain", walk_energy_drain)
 
 func _process(_delta: float):
     if not Global.is_battling():

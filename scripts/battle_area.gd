@@ -5,6 +5,7 @@ class_name BattleArea
 var boundaries: StaticBody2D
 var enter_zone: Area2D
 
+@export var packed_monsters: Array[PackedScene]
 var monsters: Array[Monster]
 
 func _ready():
@@ -13,7 +14,7 @@ func _ready():
 
     enter_zone.body_entered.connect(on_area_body_entered)
 
-    monsters.assign(get_children().filter(func(child): return child is Monster))
+    reset_battle()
 
 func on_area_body_entered(body):
     if body is Player:
@@ -23,12 +24,49 @@ func trigger_battle():
     boundaries.process_mode = Node.PROCESS_MODE_ALWAYS
     enter_zone.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
     Global.start_battle(self)
-    Global.camera.reparent_smoothly(self)
 
 func close_battle():
     boundaries.process_mode = Node.PROCESS_MODE_DISABLED
-    Global.end_battle()
-    Global.camera.reparent_smoothly(Global.player)
+
+func reset_battle():
+    boundaries.process_mode = Node.PROCESS_MODE_DISABLED
+    enter_zone.set_deferred("process_mode", Node.PROCESS_MODE_PAUSABLE)
+    reset_monsters()
+
+func reset_monsters():
+    var positions: Array = []
+    if $Entities.get_child_count() > 0:
+        for child in $Entities.get_children():
+            if child is Monster:
+                child.queue_free()
+            if child is Marker2D:
+                positions.append(child)
+            else:
+                for grandchild in child.get_children():
+                    if grandchild is CollisionShape2D:
+                        positions.append(grandchild)
+                        break
+    monsters.clear()
+    var index = 0
+    for packed_monster in packed_monsters:
+        var monster: Monster = packed_monster.instantiate()
+        var target
+        if positions.size() > index:
+            target = positions[index]
+        else:
+            target = $EnterZone/Shape
+        if target is Marker2D:
+            monster.position = target.position
+        elif target is CollisionShape2D:
+            var spawn_area: Rect2 = target.shape.get_rect()
+            monster.position = Vector2(spawn_area.position.x + randf() * spawn_area.size.x, spawn_area.position.y + randf() * spawn_area.size.y)
+        else:
+            push_warning("Monster spawn target is not a valid type")
+            monster.position = target.position
+        $Entities.add_child(monster)
+        monsters.append(monster)
+        index += 1
+
 
 func monsters_act():
     monsters.assign(monsters.filter(is_instance_valid))

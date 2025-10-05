@@ -12,7 +12,10 @@ class_name Player
 var can_move := true
 
 func _ready():
-    Global.player = self
+    if not Global.player:
+        Global.player = self
+        if Global.last_checkpoint == Vector2.ZERO:
+            Global.last_checkpoint = position
     animated_sprite.animation_finished.connect(_on_attack_animation_finished)
     animation_player.play("hover")
 
@@ -31,7 +34,7 @@ func _unhandled_input(event):
         return
     if event.is_action_pressed("action_use") \
                 && Global.is_battling() \
-                && Global.battle.is_player_turn:
+                && Global.can_player_act():
         Global.battle.do_player_action()
         animated_sprite.play("attack")
 
