@@ -19,7 +19,7 @@ func act_turn():
         target_dist = min(dist + travel_distance, ideal_distance_min)
     elif dist > ideal_distance_max:
         target_dist = max(dist - travel_distance, ideal_distance_max)
-    var time = turn_time if target_dist != dist else 0.0
+    var time = TURN_TIME if target_dist != dist else 0.0
 
     face_direction(dir.x * (dist - target_dist) < 0)
     var tween = create_tween() \

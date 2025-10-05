@@ -9,6 +9,6 @@ func act_turn():
     var dir = toPlayer.normalized()
     face_direction(dir.x < 0)
     await create_tween() \
-        .tween_property(self, "position", toPlayer - toPlayer.normalized() * attack_distance, turn_time) \
+        .tween_property(self, "position", toPlayer - toPlayer.normalized() * attack_distance, TURN_TIME) \
         .finished
     await whirlpool.attack(global_position - position)

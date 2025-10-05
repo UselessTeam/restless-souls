@@ -18,10 +18,10 @@ func _ready() -> void:
 
 func attack(ghost_position):
     animation_player.play("cast")
-    create_tween() \
+    var tween = create_tween() \
         .tween_property(Global.player, "global_position", \
-                2 * ghost_position - Global.player.global_position, \
-                animation_player.current_animation_length) \
+                1.6 * ghost_position - 0.6 * Global.player.global_position, \
+                animation_player.current_animation_length * 0.6) \
         .set_trans(Tween.TRANS_QUAD) \
         .set_ease(Tween.EASE_IN_OUT)
-    await animation_player.animation_finished
+    await tween.finished

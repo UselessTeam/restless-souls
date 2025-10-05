@@ -10,8 +10,11 @@ func act_turn():
     if (abs(toPlayer.length() - travel_distance) < 50):
         dir *= 1.3
     face_direction(dir.x < 0)
+
+    play_attack_animation()
     await create_tween() \
-        .tween_property(self, "position", position + dir * travel_distance, turn_time) \
+        .tween_property(self, "position", position + dir * travel_distance, TURN_TIME) \
+        .set_trans(Tween.TRANS_QUART) \
         .finished
 
 func _ready():
@@ -21,3 +24,8 @@ func _ready():
 func _on_area_body_entered(body):
     if body is Player:
         body.take_damage()
+
+func play_attack_animation():
+    animation_player.play("attack")
+    await animation_player.animation_finished
+    animation_player.play("hover")

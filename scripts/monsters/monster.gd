@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Monster
 
-static var turn_time := 0.5
+static var TURN_TIME := 0.5
 
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_scale = $AnimatedSprite2D.scale
@@ -52,4 +52,4 @@ func die():
     queue_free()
 
 func face_direction(is_left) -> void:
-    $AnimatedSprite2D.flip_h = is_left
+    $AnimatedSprite2D.scale.x = abs(sprite_scale.x) * (-1 if is_left else 1)

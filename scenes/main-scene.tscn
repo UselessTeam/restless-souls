@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="1_h8pqn"]
 [ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_qeko6"]
-[ext_resource type="PackedScene" uid="uid://bo3mxljpfi8k5" path="res://nodes/gui/hud.tscn" id="2_mus3i"]
+[ext_resource type="PackedScene" path="res://nodes/gui/hud.tscn" id="2_mus3i"]
 [ext_resource type="PackedScene" uid="uid://dxopk57i7b7ai" path="res://nodes/monsters/punch-ghost.tscn" id="3_h8pqn"]
 [ext_resource type="PackedScene" uid="uid://cne50lky0fuiu" path="res://nodes/battle.tscn" id="3_qgjcv"]
 [ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="5_qeko6"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://42vqcy3tpjtu" path="res://nodes/monsters/water-ghost.tscn" id="8_5imvt"]
 [ext_resource type="AudioStream" uid="uid://bwhvepxx8jess" path="res://assets/music/quiet-hunter-loop.mp3" id="8_gkrxy"]
 [ext_resource type="AudioStream" uid="uid://cbmu7o8igduty" path="res://assets/music/hunters-dance-loop.mp3" id="9_juyu1"]
-[ext_resource type="PackedScene" path="res://nodes/monsters/fire-ghost.tscn" id="10_juyu1"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -27,7 +26,7 @@ speed = 350
 
 [node name="Battle" parent="." instance=ExtResource("3_qgjcv")]
 position = Vector2(536, 143)
-packed_monsters = Array[PackedScene]([ExtResource("10_juyu1"), ExtResource("5_qgjcv"), ExtResource("3_h8pqn"), ExtResource("7_mus3i"), ExtResource("8_5imvt")])
+packed_monsters = Array[PackedScene]([ExtResource("5_qgjcv"), ExtResource("3_h8pqn"), ExtResource("7_mus3i"), ExtResource("8_5imvt")])
 
 [node name="BattleOverlay" parent="." instance=ExtResource("5_qeko6")]
 
