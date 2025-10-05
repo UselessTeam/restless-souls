@@ -2,7 +2,7 @@ extends Spell
 
 const N_POINTS := 100
 
-@onready var particles = $ParticleCenter/CPUParticles2Dwhite
+@onready var particles = $CPUParticles2D
 func _ready():
     var points: Array[Vector2] = []
     for i in range(N_POINTS + 1):
@@ -23,9 +23,15 @@ func _ready():
     super._ready()
     _process(0)
 
-func _process(_delta):
+func _process(delta):
     if is_casting:
         return
     global_position = Global.player.global_position
-    var direction = (get_global_mouse_position() - global_position).length()
-    scale = Vector2.ONE * direction / 100.0
+    var direction = Input.get_vector("rightstick_left", "rightstick_right", "rightstick_up", "rightstick_down")
+    if (direction != Vector2.ZERO):
+        scale *= exp(-direction.y * delta)
+
+func _input(event):
+    if event is InputEventMouseMotion:
+        var direction = (get_global_mouse_position() - global_position).length()
+        scale = Vector2.ONE * direction / 100.0

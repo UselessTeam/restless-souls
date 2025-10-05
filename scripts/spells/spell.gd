@@ -8,8 +8,9 @@ class_name Spell
 @export var damage: int = 1
 
 var hinted_monsters: Array[Monster] = []
-
 var is_casting := false
+
+const SPELL_CONTROLLER_SPEED := 450
 
 func _ready():
     collision_shape.polygon = visual_polygon.polygon

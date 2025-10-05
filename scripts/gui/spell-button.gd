@@ -15,4 +15,4 @@ func _check():
     visible = Global.progress.is_spell_unlocked(key)
 
 func _pressed():
-    spells_node.select_spell(self)
+    spells_node.select_spell(get_index())

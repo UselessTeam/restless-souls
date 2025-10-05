@@ -1,18 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://2yrdhe62kcmb"]
+[gd_scene load_steps=13 format=3 uid="uid://2yrdhe62kcmb"]
 
 [ext_resource type="Script" uid="uid://crsrdktcc6dey" path="res://scripts/gui/battle.gd" id="1_wucys"]
 [ext_resource type="PackedScene" uid="uid://bx1rfogr2n6qn" path="res://nodes/gui/energy-bar.tscn" id="2_k1gab"]
 [ext_resource type="PackedScene" uid="uid://bdbgmqh1vq5qv" path="res://nodes/gui/health-bar.tscn" id="2_x238p"]
 [ext_resource type="Script" uid="uid://di3thgcsqfmat" path="res://scripts/gui/spells-bar.gd" id="4_k1gab"]
-[ext_resource type="Script" path="res://scripts/gui/energy-bar.gd" id="4_w8h61"]
 [ext_resource type="Texture2D" uid="uid://43iesjwj1jel" path="res://assets/sprites/gui/skills/fireball.png" id="5_k1gab"]
 [ext_resource type="PackedScene" uid="uid://dbpkxtgfkehtb" path="res://nodes/gui/spell-button.tscn" id="5_x238p"]
 [ext_resource type="PackedScene" uid="uid://bhmk8dju75pjr" path="res://nodes/spells/scythe.tscn" id="6_iotej"]
 [ext_resource type="Texture2D" uid="uid://6fgup4klym0" path="res://assets/sprites/gui/skills/bolt.png" id="6_x238p"]
 [ext_resource type="Texture2D" uid="uid://kcwkwr8n34wj" path="res://assets/sprites/gui/skills/freeze.png" id="7_iotej"]
-[ext_resource type="PackedScene" path="res://nodes/spells/fireball.tscn" id="8_iotej"]
-[ext_resource type="PackedScene" path="res://nodes/spells/whirlpool.tscn" id="11_gi5eo"]
-[ext_resource type="PackedScene" path="res://nodes/spells/thunder.tscn" id="12_cyjt6"]
+[ext_resource type="PackedScene" uid="uid://syu1qoqjoe7p" path="res://nodes/spells/fireball.tscn" id="8_iotej"]
+[ext_resource type="PackedScene" uid="uid://cwoeda5ituoee" path="res://nodes/spells/whirlpool_spell.tscn" id="11_gi5eo"]
+[ext_resource type="PackedScene" uid="uid://dmmet85i402hn" path="res://nodes/spells/thunder.tscn" id="12_cyjt6"]
 
 [node name="BattleOverlay" type="CanvasLayer"]
 script = ExtResource("1_wucys")
@@ -39,7 +38,6 @@ layout_mode = 2
 
 [node name="Energy" parent="Bottom/List" instance=ExtResource("2_k1gab")]
 layout_mode = 2
-script = ExtResource("4_w8h61")
 
 [node name="Spells" type="MarginContainer" parent="."]
 anchors_preset = 10

@@ -1,0 +1,214 @@
+[gd_scene load_steps=12 format=3 uid="uid://42vqcy3tpjtu"]
+
+[ext_resource type="Script" uid="uid://bau2en2n184s4" path="res://scripts/monsters/water_ghost.gd" id="1_e047j"]
+[ext_resource type="Texture2D" uid="uid://btxgbvwhm7v4u" path="res://assets/sprites/ghosts/drowned.png" id="2_onuj0"]
+[ext_resource type="PackedScene" uid="uid://cwoeda5ituoee" path="res://nodes/spells/whirlpool_spell.tscn" id="3_e047j"]
+[ext_resource type="Script" uid="uid://c222hn8ao6txe" path="res://scripts/monsters/whirlpool_attack.gd" id="4_eei2n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q06gu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_onuj0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgjcv"]
+radius = 16.124516
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onuj0"]
+radius = 19.0
+height = 76.0
+
+[sub_resource type="Animation" id="Animation_hqdnm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_me0cc"]
+resource_name = "hover"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position:x")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position:y")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-23.0, -27.0, -21.205965]
+}
+
+[sub_resource type="Animation" id="Animation_7lbay"]
+resource_name = "take_damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4),
+"transitions": PackedFloat32Array(0.84089607, 6.7271724, 1),
+"update": 0,
+"values": [0.0, 0.20943952, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4),
+"transitions": PackedFloat32Array(0.39229217, 1, 1),
+"update": 0,
+"values": [0.0, -0.18675023, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4),
+"transitions": PackedFloat32Array(0.2588162, 1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.3, 0.26), Vector2(0.3, 0.3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.3, 1.0, 0.3, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7lbay"]
+_data = {
+&"RESET": SubResource("Animation_hqdnm"),
+&"hover": SubResource("Animation_me0cc"),
+&"take_damage": SubResource("Animation_7lbay")
+}
+
+[node name="Drowned" type="Node2D"]
+script = ExtResource("1_e047j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -24)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_q06gu")
+
+[node name="Area2D" type="Area2D" parent="."]
+process_mode = 4
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qgjcv")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -14)
+shape = SubResource("CapsuleShape2D_onuj0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7lbay")
+}
+
+[node name="WhirlpoolAttack" parent="." instance=ExtResource("3_e047j")]
+z_index = -1
+script = ExtResource("4_eei2n")
+
+[node name="Polygon2D" parent="WhirlpoolAttack" index="0"]
+visible = false
+
+[node name="CollisionPolygon2D" parent="WhirlpoolAttack" index="1"]
+visible = false
+disabled = true
+
+[editable path="WhirlpoolAttack"]

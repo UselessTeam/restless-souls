@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://cwoeda5ituoee"]
 
-[ext_resource type="Script" uid="uid://mrjylqjenie" path="res://scripts/spells/whirlpool_spell.gd" id="1_2k5h7"]
-[ext_resource type="Texture2D" uid="uid://b6owo6q0frn3d" path="res://assets/sprites/droplets.png" id="2_gelv5"]
+[ext_resource type="Script" uid="uid://mrjylqjenie" path="res://scripts/spells/whirlpool_spell.gd" id="1_lytj3"]
+[ext_resource type="Texture2D" uid="uid://b6owo6q0frn3d" path="res://assets/sprites/droplets.png" id="2_opm5v"]
 
 [sub_resource type="Animation" id="Animation_kgmnk"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ParticleCenter/CPUParticles2Dwhite:emitting")
+tracks/0/path = NodePath("CPUParticles2D:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ length = 4.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ParticleCenter/CPUParticles2Dwhite:emitting")
+tracks/0/path = NodePath("CPUParticles2D:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +45,7 @@ offsets = PackedFloat32Array(0, 0.2748815, 0.54028434, 0.7867299, 1)
 colors = PackedColorArray(2.9937328e-05, 0.273122, 0.7810583, 1, 0.08735397, 0.5380315, 0.722358, 1, 0, 0.82968336, 0.7457913, 1, 0.5027231, 0.8589349, 0.9980344, 1, 0.8153004, 0.97262377, 0.9997919, 1)
 
 [node name="Whirlpool" type="Area2D"]
-script = ExtResource("1_2k5h7")
+script = ExtResource("1_lytj3")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.11236853, 0.8145975, 0.8247514, 0.3137255)
@@ -58,12 +58,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_la6tv")
 }
 
-[node name="ParticleCenter" type="Node2D" parent="."]
-
-[node name="CPUParticles2Dwhite" type="CPUParticles2D" parent="ParticleCenter"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 4000
-texture = ExtResource("2_gelv5")
+texture = ExtResource("2_opm5v")
 lifetime = 3.0
 speed_scale = 1.5
 emission_shape = 4

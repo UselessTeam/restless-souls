@@ -13,7 +13,14 @@ func _ready():
     super._ready()
     _process(0)
 
-func _process(_delta):
+func _process(delta):
     if is_casting:
         return
-    global_position = get_global_mouse_position()
+    var direction = Input.get_vector("rightstick_left", "rightstick_right", "rightstick_up", "rightstick_down")
+    if (direction != Vector2.ZERO):
+        position += direction.normalized() * delta * SPELL_CONTROLLER_SPEED
+
+
+func _input(event):
+    if event is InputEventMouseMotion:
+        global_position = get_global_mouse_position()

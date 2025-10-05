@@ -1,5 +1,7 @@
 extends Monster
 
+class_name Punch
+
 var travel_distance := 200
 
 func act_turn():
