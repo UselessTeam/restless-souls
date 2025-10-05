@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://duxn7jcopkw4g"]
+[gd_scene load_steps=14 format=3 uid="uid://duxn7jcopkw4g"]
 
 [ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="1_h8pqn"]
 [ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_qeko6"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://42vqcy3tpjtu" path="res://nodes/monsters/water-ghost.tscn" id="8_5imvt"]
 [ext_resource type="AudioStream" uid="uid://bwhvepxx8jess" path="res://assets/music/quiet-hunter-loop.mp3" id="8_gkrxy"]
 [ext_resource type="AudioStream" uid="uid://cbmu7o8igduty" path="res://assets/music/hunters-dance-loop.mp3" id="9_juyu1"]
+[ext_resource type="PackedScene" uid="uid://dafv0pvrtafqx" path="res://nodes/text_box.tscn" id="13_ibc6o"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -27,6 +28,10 @@ speed = 350
 [node name="Battle" parent="." instance=ExtResource("3_qgjcv")]
 position = Vector2(536, 143)
 packed_monsters = Array[PackedScene]([ExtResource("5_qgjcv"), ExtResource("3_h8pqn"), ExtResource("7_mus3i"), ExtResource("8_5imvt")])
+dialogs = Array[String](["burned", "It's getting warm in here, am I right?", "player", "I should have brought my marshmallows"])
+
+[node name="EnterZone" parent="Battle" index="1"]
+collision_mask = 4
 
 [node name="BattleOverlay" parent="." instance=ExtResource("5_qeko6")]
 
@@ -35,5 +40,8 @@ autoplay = true
 script = ExtResource("7_a1lv3")
 world_music = ExtResource("8_gkrxy")
 battle_music = ExtResource("9_juyu1")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("13_ibc6o")]
+layer = 2
 
 [editable path="Battle"]

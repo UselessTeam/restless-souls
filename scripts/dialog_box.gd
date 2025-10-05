@@ -14,7 +14,7 @@ class_name DialogBox
 const MIN_SHOW_TIME = 1
 const FADE_IN_OUT_TIME = 0.1
 
-var text_showing
+var is_showing_text: bool
 signal text_finished()
 signal skip_text()
 
@@ -25,7 +25,7 @@ func _ready():
     display_text("player", "I heard some restless spirits are wreaking havoc around this town.\nTime to collect some souls.")
 
 func display_text(texture_name, text, leave_on = false):
-    text_showing = true
+    is_showing_text = true
     texture_rect.texture = get_texture(texture_name)
     label.text = text
     print("displaying")
@@ -35,6 +35,7 @@ func display_text(texture_name, text, leave_on = false):
     if !leave_on:
         await create_tween().tween_property(self, "modulate:a", 0, FADE_IN_OUT_TIME).finished
     text_finished.emit()
+    is_showing_text = false
 
 func get_texture(texture_name: String) -> Texture2D:
     match texture_name:

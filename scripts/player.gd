@@ -12,12 +12,12 @@ class_name Player
 var can_move := true
 
 func _ready():
-	if not Global.player:
-		Global.player = self
-		if not Global.has_checkpoint:
-			Global.last_checkpoint = position
-	animated_sprite.animation_finished.connect(_on_attack_animation_finished)
-	animation_player.play("hover")
+    if not Global.player:
+        Global.player = self
+        if not Global.has_checkpoint:
+            Global.last_checkpoint = position
+    animated_sprite.animation_finished.connect(_on_attack_animation_finished)
+    animation_player.play("hover")
 
 func _process(_delta):
     if not Global.can_player_act():
@@ -32,21 +32,21 @@ func _process(_delta):
         position = Global.battle.energy.project_to_reachable_position(position)
 
 func _input(event):
-	if not Global.can_player_act():
-		return
-	if event.is_action_pressed("action_use") \
-				&& Global.is_battling() \
-				&& Global.can_player_act():
-		Global.battle.do_player_action()
-		animated_sprite.play("attack")
-	elif event.is_action_pressed("toggle_left"):
-		Global.battle.spell_bar.toggle_spell(-1)
-	elif event.is_action_pressed("toggle_right"):
-		Global.battle.spell_bar.toggle_spell(1)
+    if not Global.can_player_act():
+        return
+    if event.is_action_pressed("action_use") \
+                && Global.is_battling() \
+                && Global.can_player_act():
+        Global.battle.do_player_action()
+        animated_sprite.play("attack")
+    elif event.is_action_pressed("toggle_left"):
+        Global.battle.spell_bar.toggle_spell(-1)
+    elif event.is_action_pressed("toggle_right"):
+        Global.battle.spell_bar.toggle_spell(1)
 
 func _on_attack_animation_finished():
-	if (animated_sprite.animation == "attack"):
-		animated_sprite.play("idle")
+    if (animated_sprite.animation == "attack"):
+        animated_sprite.play("idle")
 
 func take_damage():
     Global.battle.health.health -= 1

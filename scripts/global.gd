@@ -9,6 +9,7 @@ var world: World = null
 var player: Player = null
 var camera: Camera2DPlus = null
 var battle: Battle = null
+var dialog_box: DialogBox = null
 
 var last_checkpoint: Vector2 = Vector2.ZERO:
     set(value):
@@ -40,6 +41,8 @@ func is_roaming() -> bool:
     return phase == GamePhase.ROAM
 
 func can_player_act() -> bool:
+    if dialog_box.is_showing_text:
+        return false
     return is_roaming() or (is_battling() and battle.is_player_step)
 
 func _process(_delta):
