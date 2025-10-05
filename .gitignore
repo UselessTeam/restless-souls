@@ -10,4 +10,4 @@ build/
 
 assets/**/*.kra
 assets/**/*.kra~
-assets/**/*.aup3*
+assets/music/audacity/

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://duxn7jcopkw4g"]
+[gd_scene load_steps=12 format=3 uid="uid://duxn7jcopkw4g"]
 
 [ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="1_h8pqn"]
 [ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_qeko6"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://ddm3llbtla343" path="res://scripts/battle_area.gd" id="3_qeko6"]
 [ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="5_qeko6"]
 [ext_resource type="PackedScene" uid="uid://dajso34dssklv" path="res://nodes/monsters/shoot-ghost.tscn" id="5_qgjcv"]
+[ext_resource type="Script" uid="uid://dj1802tnwtw52" path="res://scripts/music_player.gd" id="7_a1lv3"]
+[ext_resource type="AudioStream" uid="uid://bwhvepxx8jess" path="res://assets/music/quiet-hunter-loop.mp3" id="8_gkrxy"]
+[ext_resource type="AudioStream" uid="uid://cbmu7o8igduty" path="res://assets/music/hunters-dance-loop.mp3" id="9_juyu1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qeko6"]
 size = Vector2(356, 226)
@@ -58,3 +61,9 @@ rotation = -3.1415925
 shape = SubResource("WorldBoundaryShape2D_qeko6")
 
 [node name="BattleOverlay" parent="." instance=ExtResource("5_qeko6")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+script = ExtResource("7_a1lv3")
+world_music = ExtResource("8_gkrxy")
+battle_music = ExtResource("9_juyu1")
