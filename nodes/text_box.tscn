@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://dafv0pvrtafqx"]
+
+[ext_resource type="Script" uid="uid://bv5y0pvd0d0nt" path="res://scripts/dialog_box.gd" id="1_3wmld"]
+[ext_resource type="Texture2D" uid="uid://bjx3if3hxb513" path="res://assets/sprites/player/IMG_1623-1.png" id="2_5rifv"]
+[ext_resource type="Texture2D" uid="uid://beho7daketbuu" path="res://assets/sprites/ghosts/burned.png" id="3_20lq3"]
+[ext_resource type="Texture2D" uid="uid://btxgbvwhm7v4u" path="res://assets/sprites/ghosts/drowned.png" id="4_6xhgt"]
+[ext_resource type="Texture2D" uid="uid://b27iq43hsqbc" path="res://assets/sprites/ghosts/electrocuted.png" id="5_v38u8"]
+[ext_resource type="Texture2D" uid="uid://b6vsdw48rbswu" path="res://assets/sprites/ghosts/knife.png" id="6_ni38v"]
+[ext_resource type="Texture2D" uid="uid://dqkuqqyxvrldb" path="res://assets/sprites/ghosts/sad.png" id="7_yf2c4"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.2, 0.2, 0.2, 0.45882353)
+script = ExtResource("1_3wmld")
+player = ExtResource("2_5rifv")
+burned = ExtResource("3_20lq3")
+drowned = ExtResource("4_6xhgt")
+electrocuted = ExtResource("5_v38u8")
+knife = ExtResource("6_ni38v")
+sad = ExtResource("7_yf2c4")
+
+[node name="TextureRect" type="TextureRect" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -100.0
+offset_right = 350.0
+offset_bottom = 350.0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5rifv")
+
+[node name="Label" type="Label" parent="Control/ColorRect"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 260.0
+offset_top = 88.0
+offset_right = 493.0
+offset_bottom = 111.0
+grow_vertical = 2
+text = "Salut a toi jeune entrepreneur"

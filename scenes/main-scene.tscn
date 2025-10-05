@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://duxn7jcopkw4g"]
+[gd_scene load_steps=13 format=3 uid="uid://duxn7jcopkw4g"]
 
 [ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="1_h8pqn"]
 [ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_qeko6"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cne50lky0fuiu" path="res://nodes/battle.tscn" id="3_qgjcv"]
 [ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="5_qeko6"]
 [ext_resource type="PackedScene" uid="uid://dajso34dssklv" path="res://nodes/monsters/shoot-ghost.tscn" id="5_qgjcv"]
-[ext_resource type="Script" path="res://scripts/music_player.gd" id="7_a1lv3"]
+[ext_resource type="Script" uid="uid://dj1802tnwtw52" path="res://scripts/music_player.gd" id="7_a1lv3"]
 [ext_resource type="PackedScene" uid="uid://dx5oe534bl00w" path="res://nodes/monsters/thunder-ghost.tscn" id="7_mus3i"]
 [ext_resource type="PackedScene" uid="uid://42vqcy3tpjtu" path="res://nodes/monsters/water-ghost.tscn" id="8_5imvt"]
 [ext_resource type="AudioStream" uid="uid://bwhvepxx8jess" path="res://assets/music/quiet-hunter-loop.mp3" id="8_gkrxy"]
