@@ -13,7 +13,6 @@ func _ready():
 
 func _change():
     var count: int = Global.progress.get(key + "_ghosts")
-    print(key, ":", count)
     if count == 0:
         icon.texture = none_texture
         label.hide()
