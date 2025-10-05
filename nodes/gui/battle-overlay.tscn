@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bhmk8dju75pjr" path="res://nodes/spells/scythe.tscn" id="6_iotej"]
 [ext_resource type="Texture2D" uid="uid://6fgup4klym0" path="res://assets/sprites/gui/skills/bolt.png" id="6_x238p"]
 [ext_resource type="Texture2D" uid="uid://kcwkwr8n34wj" path="res://assets/sprites/gui/skills/freeze.png" id="7_iotej"]
+[ext_resource type="PackedScene" uid="uid://syu1qoqjoe7p" path="res://nodes/spells/fireball.tscn" id="8_iotej"]
+[ext_resource type="PackedScene" uid="uid://cwoeda5ituoee" path="res://nodes/spells/whirlpool.tscn" id="11_gi5eo"]
+[ext_resource type="PackedScene" uid="uid://dmmet85i402hn" path="res://nodes/spells/thunder.tscn" id="12_cyjt6"]
 
 [node name="BattleOverlay" type="CanvasLayer"]
 script = ExtResource("1_wucys")
@@ -37,20 +40,23 @@ number = 1
 key = "Slash"
 packed_spell = ExtResource("6_iotej")
 
+[node name="Spell-Whirlpool" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
+layout_mode = 2
+icon = ExtResource("7_iotej")
+number = 4
+key = "Freeze"
+packed_spell = ExtResource("11_gi5eo")
+
 [node name="Spell-Fireball" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
 icon = ExtResource("5_k1gab")
 number = 2
 key = "Fireball"
+packed_spell = ExtResource("8_iotej")
 
 [node name="Spell-Bolt" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
 icon = ExtResource("6_x238p")
 number = 3
 key = "Bolt"
-
-[node name="Spell-Freeze" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
-layout_mode = 2
-icon = ExtResource("7_iotej")
-number = 4
-key = "Freeze"
+packed_spell = ExtResource("12_cyjt6")

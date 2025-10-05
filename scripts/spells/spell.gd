@@ -2,16 +2,17 @@ extends Area2D
 
 class_name Spell
 
-@onready var collision_shape = $CollisionShape2D
+@onready var collision_shape = $CollisionPolygon2D
 @onready var visual_polygon = $Polygon2D
 @onready var animation_player = $AnimationPlayer
 @export var damage: int = 1
 
 var hinted_monsters: Array[Monster] = []
 
+var was_cast := false
+
 func _ready():
-    var collision_polygon = collision_shape.shape as ConvexPolygonShape2D
-    collision_polygon.points = visual_polygon.polygon
+    collision_shape.polygon = visual_polygon.polygon
 
     body_entered.connect(_on_area_body_entered)
     body_exited.connect(_on_area_body_exited)
@@ -44,6 +45,7 @@ func unhint(monster: Monster):
 signal done()
 
 func do():
+    was_cast = true
     cast_spell()
     await done
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhmk8dju75pjr"]
+[gd_scene load_steps=6 format=3 uid="uid://dmmet85i402hn"]
 
-[ext_resource type="Script" uid="uid://cd0aq14mddy1m" path="res://scripts/spells/orientation_spell.gd" id="1_1jhl7"]
+[ext_resource type="Script" uid="uid://cisbtatxswv70" path="res://scripts/spells/thunder_spell.gd" id="1_jieyc"]
+[ext_resource type="Texture2D" uid="uid://4rqsx5famywl" path="res://assets/sprites/thunder.png" id="2_jieyc"]
 
 [sub_resource type="Animation" id="Animation_kgmnk"]
 length = 0.001
@@ -87,12 +88,13 @@ _data = {
 &"cast": SubResource("Animation_pb2an")
 }
 
-[node name="Scythe" type="Area2D"]
+[node name="Thunder" type="Area2D"]
 z_index = 2
-script = ExtResource("1_1jhl7")
+script = ExtResource("1_jieyc")
+RADIUS = 150
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.7294118, 0.8156863, 0.8039216, 0.3137255)
+color = Color(0.8666667, 0.8666667, 0.0627451, 0.3137255)
 polygon = PackedVector2Array(129, 22, 112, 59, 98, 80, 63, 112, 25, -2, 63, -115, 94, -99, 117, -61, 128, -22)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -105,21 +107,21 @@ visible = false
 rotation = -2.0239866
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ParticleCenter"]
-position = Vector2(40.306664, 90.81505)
 amount = 200
-lifetime = 0.14
-emission_shape = 1
-emission_sphere_radius = 39.69
+texture = ExtResource("2_jieyc")
+lifetime = 1.84
+one_shot = true
+explosiveness = 0.4
 direction = Vector2(0, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 29.7
-initial_velocity_max = 297.03
-angular_velocity_min = 720.0
-angular_velocity_max = 720.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
 angle_min = -351.9
 angle_max = 396.0
-scale_amount_max = 4.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+color = Color(0.89411765, 0.84705883, 0, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

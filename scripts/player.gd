@@ -9,12 +9,14 @@ class_name Player
 var health := max_health
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var animation_player = $AnimationPlayer
 
 var can_move := true
 
 func _ready():
     Global.player = self
     animated_sprite.animation_finished.connect(_on_attack_animation_finished)
+    animation_player.play("hover")
 
 func _process(_delta):
     if not Global.can_player_act():
