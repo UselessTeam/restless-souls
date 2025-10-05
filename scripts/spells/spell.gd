@@ -9,7 +9,7 @@ class_name Spell
 
 var hinted_monsters: Array[Monster] = []
 
-var was_cast := false
+var is_casting := false
 
 func _ready():
     collision_shape.polygon = visual_polygon.polygon
@@ -45,7 +45,7 @@ func unhint(monster: Monster):
 signal done()
 
 func do():
-    was_cast = true
+    is_casting = true
     cast_spell()
     await done
 

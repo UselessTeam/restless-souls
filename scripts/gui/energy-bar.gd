@@ -2,7 +2,6 @@ extends MarginContainer
 
 class_name EnergyBar
 
-const MAX_ENERGY: float = 5.0
 const STEP_ENERGY_COST: float = 0.01
 const DEAD_ZONE: float = 4.0
 const MIN_ENERGY: float = -0.1
@@ -74,7 +73,7 @@ func update_bars_and_knots():
 
 
 func start_battle():
-    max_energy = MAX_ENERGY
+    max_energy = Global.progress.get_max_energy()
 
 func start_turn():
     step_energy = max_energy

@@ -9,6 +9,8 @@ var phase: GamePhase = GamePhase.LOADING
 var current_battle_area: BattleArea = null
 var battle: Battle = null
 
+@onready var progress: Progress = Progress.new()
+
 signal battle_phase_start(battle_area: BattleArea)
 signal battle_phase_end()
 signal game_phase_change(previous: GamePhase, next: GamePhase)
@@ -33,3 +35,11 @@ func is_roaming() -> bool:
 
 func can_player_act() -> bool:
     return is_roaming() or (is_battling() and battle.is_player_turn and not battle.is_launching_spell)
+
+func _process(_delta):
+    if Input.is_action_just_pressed("cheat_unlock"):
+        print("Cheat: Unlock all spells")
+        progress.normal_ghosts += 1
+        progress.water_ghosts += 1
+        progress.fire_ghosts += 1
+        progress.thunder_ghosts += 1

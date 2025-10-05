@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://2yrdhe62kcmb"]
+[gd_scene load_steps=13 format=3 uid="uid://2yrdhe62kcmb"]
 
 [ext_resource type="Script" uid="uid://crsrdktcc6dey" path="res://scripts/gui/battle.gd" id="1_wucys"]
 [ext_resource type="PackedScene" uid="uid://bx1rfogr2n6qn" path="res://nodes/gui/energy-bar.tscn" id="2_k1gab"]
@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bhmk8dju75pjr" path="res://nodes/spells/scythe.tscn" id="6_iotej"]
 [ext_resource type="Texture2D" uid="uid://6fgup4klym0" path="res://assets/sprites/gui/skills/bolt.png" id="6_x238p"]
 [ext_resource type="Texture2D" uid="uid://kcwkwr8n34wj" path="res://assets/sprites/gui/skills/freeze.png" id="7_iotej"]
-[ext_resource type="PackedScene" uid="uid://syu1qoqjoe7p" path="res://nodes/spells/fireball.tscn" id="8_iotej"]
-[ext_resource type="PackedScene" uid="uid://cwoeda5ituoee" path="res://nodes/spells/whirlpool.tscn" id="11_gi5eo"]
-[ext_resource type="PackedScene" uid="uid://dmmet85i402hn" path="res://nodes/spells/thunder.tscn" id="12_cyjt6"]
+[ext_resource type="PackedScene" path="res://nodes/spells/fireball.tscn" id="8_iotej"]
+[ext_resource type="PackedScene" path="res://nodes/spells/whirlpool.tscn" id="11_gi5eo"]
+[ext_resource type="PackedScene" path="res://nodes/spells/thunder.tscn" id="12_cyjt6"]
 
 [node name="BattleOverlay" type="CanvasLayer"]
 script = ExtResource("1_wucys")
@@ -65,20 +65,20 @@ packed_spell = ExtResource("6_iotej")
 [node name="Spell-Whirlpool" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
 icon = ExtResource("7_iotej")
-number = 4
-key = "Freeze"
+number = 2
+key = "whirlpool"
 packed_spell = ExtResource("11_gi5eo")
 
 [node name="Spell-Fireball" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
 icon = ExtResource("5_k1gab")
-number = 2
-key = "Fireball"
+number = 3
+key = "fireball"
 packed_spell = ExtResource("8_iotej")
 
-[node name="Spell-Bolt" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
+[node name="Spell-Lightning" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
 icon = ExtResource("6_x238p")
-number = 3
-key = "Bolt"
+number = 4
+key = "lightning"
 packed_spell = ExtResource("12_cyjt6")

@@ -14,6 +14,6 @@ func _ready():
     _process(0)
 
 func _process(_delta):
-    if was_cast:
+    if is_casting:
         return
     global_position = get_global_mouse_position()

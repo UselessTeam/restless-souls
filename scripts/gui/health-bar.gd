@@ -2,7 +2,6 @@ extends MarginContainer
 
 class_name HealthBar
 
-const MAX_HEALTH: int = 5
 const DEAD_ZONE: float = 4.0
 
 @export var health_on: Texture2D
@@ -23,7 +22,7 @@ var health: int = max_health:
         update_health_display()
 
 func start_battle():
-    max_health = MAX_HEALTH
+    max_health = Global.progress.get_max_health()
     health = max_health
 
 func update_health_display():
