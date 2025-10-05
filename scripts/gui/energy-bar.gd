@@ -44,7 +44,6 @@ func update_knots_count():
         var new_knot = knots.get_child(0).duplicate()
         new_knot.name = "Knot-%d" % (knots.get_child_count() - 1)
         knots.add_child(new_knot)
-    print(target_knot_count, " ", knots.get_child_count())
     for delete_index in range(target_knot_count, knots.get_child_count()):
         knots.get_child(delete_index).queue_free()
     
@@ -74,7 +73,6 @@ func update_bars_and_knots():
 
 func start_battle():
     max_energy = Global.progress.get_max_energy()
-    print("max_energy ", max_energy)
 
 func start_turn():
     step_energy = max_energy
@@ -86,9 +84,6 @@ func start_step():
     step_energy = next_energy
     reserved_energy_for_spell = 0.0
     walk_energy_drain = 0.0
-    print("step_energy", step_energy)
-    print("reserved_energy_for_spell", reserved_energy_for_spell)
-    print("walk_energy_drain", walk_energy_drain)
 
 func _process(_delta: float):
     if not Global.is_battling():

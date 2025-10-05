@@ -60,12 +60,10 @@ func rollout_battle(_battle_area: BattleArea):
     on = false
     var won = health.health > 0
     if won:
-        print("Battle won!")
         battle_area.close_battle()
         Global.end_battle()
         await Global.camera.reparent_smoothly(Global.player)
     else:
-        print("Battle lost!")
         battle_area.close_battle()
         Global.end_battle()
         print("TODO: Better player death animation")
@@ -73,6 +71,7 @@ func rollout_battle(_battle_area: BattleArea):
         await Global.camera.open_fail_screen()
         await something_pressed
         Global.player.position = Global.last_checkpoint
+        await get_tree().create_timer(0.05).timeout
         Global.camera.reparent_smoothly(Global.player)
         battle_area.reset_battle()
         await get_tree().create_timer(0.25).timeout

@@ -14,7 +14,7 @@ var can_move := true
 func _ready():
     if not Global.player:
         Global.player = self
-        if Global.last_checkpoint == Vector2.ZERO:
+        if not Global.has_checkpoint:
             Global.last_checkpoint = position
     animated_sprite.animation_finished.connect(_on_attack_animation_finished)
     animation_player.play("hover")

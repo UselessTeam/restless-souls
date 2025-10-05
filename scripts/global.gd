@@ -10,7 +10,14 @@ var player: Player = null
 var camera: Camera2DPlus = null
 var battle: Battle = null
 
-var last_checkpoint: Vector2 = Vector2.ZERO
+var last_checkpoint: Vector2 = Vector2.ZERO:
+    set(value):
+        if value is Vector2:
+            has_checkpoint = true
+            last_checkpoint = value
+        else:
+            has_checkpoint = false
+var has_checkpoint: bool = false
 
 signal battle_phase_start(battle_area: BattleArea)
 signal battle_phase_end()
