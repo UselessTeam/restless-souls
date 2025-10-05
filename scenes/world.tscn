@@ -1,14 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlxt4vbi3nkfc"]
+[gd_scene load_steps=9 format=3 uid="uid://cjfikaman1ktt"]
 
 [ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="2_rwgxs"]
-[ext_resource type="PackedScene" path="res://nodes/world/buddas.tscn" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://ccqcriskmf3g2" path="res://nodes/world/buddas.tscn" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://cs2vhj8wge3t6" path="res://nodes/world/etang.tscn" id="4_k0juu"]
+[ext_resource type="PackedScene" uid="uid://c5wkqgagixqfe" path="res://nodes/world/door.tscn" id="5_71j4m"]
+[ext_resource type="PackedScene" uid="uid://bjaqtuxqjy1rq" path="res://nodes/world/lamp.tscn" id="6_qfnet"]
+[ext_resource type="PackedScene" uid="uid://cyky13wm8spex" path="res://nodes/world/wall.tscn" id="7_i7141"]
+[ext_resource type="PackedScene" uid="uid://dw8ywrcyt87sc" path="res://nodes/world/gazebo.tscn" id="8_4mrxx"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_nnsk1")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_rwgxs")]
+position = Vector2(1240, -591)
 
-[node name="Buddas" parent="." instance=ExtResource("3_4wyf3")]
-position = Vector2(-23, 294)
+[node name="buddas" parent="." instance=ExtResource("3_4wyf3")]
+position = Vector2(-389, -430)
+
+[node name="etang" parent="." instance=ExtResource("4_k0juu")]
+position = Vector2(1226, -368)
+
+[node name="door" parent="." instance=ExtResource("5_71j4m")]
+position = Vector2(574, 440)
+
+[node name="lamp1" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(226, -114)
+
+[node name="wall1" parent="." instance=ExtResource("7_i7141")]
+position = Vector2(-3, 446)
+
+[node name="wall0" parent="." instance=ExtResource("7_i7141")]
+position = Vector2(-553, 446)
+
+[node name="gazebo" parent="." instance=ExtResource("8_4mrxx")]
+position = Vector2(1531, -735)
+
+[node name="lamp2" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(302, 125)
+
+[node name="lamp3" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(-28, 13)
+
+[node name="lamp4" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(-80, -273)
+
+[node name="lamp5" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(-386, -185)
+
+[node name="lamp6" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(-669, -275)
+
+[node name="lamp7" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(-598, -578)
+
+[node name="lamp8" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(-214, -564)
+
+[node name="wall2" parent="." instance=ExtResource("7_i7141")]
+position = Vector2(-1105, 446)

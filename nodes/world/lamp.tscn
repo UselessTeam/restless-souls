@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjaqtuxqjy1rq"]
+
+[ext_resource type="PackedScene" uid="uid://cx4fvtaa2bisp" path="res://nodes/world/obstacle.tscn" id="1_h3ajq"]
+[ext_resource type="Texture2D" uid="uid://vtkkac76e3gt" path="res://assets/sprites/obstacles/lamp.png" id="2_cmc7h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3ajq"]
+size = Vector2(673.3333, 147.74738)
+
+[node name="Obstacle" instance=ExtResource("1_h3ajq")]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(0, -4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cmc7h")
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(1.5, -11.081055)
+scale = Vector2(0.15, 0.15)
+shape = SubResource("RectangleShape2D_h3ajq")

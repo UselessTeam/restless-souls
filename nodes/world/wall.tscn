@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyky13wm8spex"]
+
+[ext_resource type="PackedScene" uid="uid://cx4fvtaa2bisp" path="res://nodes/world/obstacle.tscn" id="1_d1o2f"]
+[ext_resource type="Texture2D" uid="uid://dcicc55qjnu5a" path="res://assets/sprites/obstacles/muro.png" id="2_wbypy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1o2f"]
+size = Vector2(1580.238, 68.82812)
+
+[node name="Obstacle" instance=ExtResource("1_d1o2f")]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(4, -80)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_wbypy")
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(3.542, -20)
+scale = Vector2(0.35, 0.35)
+shape = SubResource("RectangleShape2D_d1o2f")

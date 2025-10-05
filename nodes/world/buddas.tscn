@@ -4,16 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://b8anqt5ilfsy2" path="res://assets/sprites/obstacles/buddahs.png" id="2_k1av1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsf8o"]
-radius = 117.0
+radius = 45.71428
 height = 350.0
 
 [node name="Buddas" instance=ExtResource("1_3kviu")]
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2(0, 1.5)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_k1av1")
 
 [node name="Collision" parent="." index="1"]
-position = Vector2(-4, -3)
+position = Vector2(-5, 21)
 rotation = 1.5707964
+scale = Vector2(0.7, 0.7)
 shape = SubResource("CapsuleShape2D_bsf8o")

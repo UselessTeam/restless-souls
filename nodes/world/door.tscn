@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5wkqgagixqfe"]
+
+[ext_resource type="PackedScene" uid="uid://cx4fvtaa2bisp" path="res://nodes/world/obstacle.tscn" id="1_eb5sr"]
+[ext_resource type="Texture2D" uid="uid://carqu0ja8fnk0" path="res://assets/sprites/obstacles/puerta.png" id="2_waelb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eb5sr"]
+size = Vector2(659.714, 68.828)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_waelb"]
+size = Vector2(770.713, 68.828)
+
+[node name="Obstacle" instance=ExtResource("1_eb5sr")]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(2, -80)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_waelb")
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(-180, -14)
+scale = Vector2(0.35, 0.35)
+shape = SubResource("RectangleShape2D_eb5sr")
+
+[node name="Collision2" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(162.126, -14)
+rotation = 0.0002598138
+scale = Vector2(0.34999996, 0.34999996)
+shape = SubResource("RectangleShape2D_waelb")
