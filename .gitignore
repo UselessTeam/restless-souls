@@ -10,3 +10,4 @@ build/
 
 assets/**/*.kra
 assets/**/*.kra~
+assets/**/*.aup3*
