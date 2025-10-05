@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://wpl31ob3i61i"]
+
+[ext_resource type="PackedScene" uid="uid://dvc0qkq4c0aw8" path="res://nodes/monsters/bullet.tscn" id="1_jo1jh"]
+[ext_resource type="Texture2D" uid="uid://4rqsx5famywl" path="res://assets/sprites/thunder.png" id="2_a3ohn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jo1jh"]
+radius = 34.81563
+
+[node name="Bullet" instance=ExtResource("1_jo1jh")]
+scale = Vector2(1, 0.944)
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(1, 0.8666667, 0.09019608, 1)
+scale = Vector2(1, 1)
+texture = ExtResource("2_a3ohn")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_jo1jh")

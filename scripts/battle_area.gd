@@ -71,9 +71,10 @@ func reset_monsters():
 func monsters_act():
     monsters.assign(monsters.filter(is_instance_valid))
     for monster in monsters:
-        monster.on_turn_start()
-        await monster.act_turn()
-        monster.on_turn_end()
+        if monster:
+            monster.on_turn_start()
+            await monster.act_turn()
+            monster.on_turn_end()
     return
 
 var player_position_sprite: Node2D = null

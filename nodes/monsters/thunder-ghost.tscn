@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx5oe534bl00w"]
+[gd_scene load_steps=5 format=3 uid="uid://dx5oe534bl00w"]
 
 [ext_resource type="PackedScene" uid="uid://dajso34dssklv" path="res://nodes/monsters/shoot-ghost.tscn" id="1_4f3fn"]
+[ext_resource type="PackedScene" uid="uid://wpl31ob3i61i" path="res://nodes/monsters/thunder-bullet.tscn" id="2_83oyf"]
 [ext_resource type="Texture2D" uid="uid://b27iq43hsqbc" path="res://assets/sprites/ghosts/electrocuted.png" id="2_ydl8i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_83oyf"]
@@ -15,6 +16,7 @@ animations = [{
 }]
 
 [node name="Electrocuted" instance=ExtResource("1_4f3fn")]
+bullet = ExtResource("2_83oyf")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_83oyf")

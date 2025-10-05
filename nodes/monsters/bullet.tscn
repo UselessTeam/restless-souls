@@ -4,10 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://b6owo6q0frn3d" path="res://assets/sprites/droplets.png" id="2_5jx7p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfkhu"]
-radius = 77.65063
+radius = 70.57032
 
 [node name="Bullet" type="Node2D"]
 scale = Vector2(0.16152734, 0.15265876)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1.1920929e-06)
+scale = Vector2(9.905444, 10.480891)
+texture = ExtResource("2_5jx7p")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_dfkhu")
@@ -15,8 +20,3 @@ script = ExtResource("1_dfkhu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(0.63782126, 0.6714496)
 shape = SubResource("CircleShape2D_dfkhu")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -1.1920929e-06)
-scale = Vector2(9.905444, 10.480891)
-texture = ExtResource("2_5jx7p")
