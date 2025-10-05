@@ -9,7 +9,7 @@ func _process(_delta):
         return
     global_position = Global.player.global_position
     var direction = Input.get_vector("rightstick_left", "rightstick_right", "rightstick_up", "rightstick_down")
-    if (direction == Vector2.ZERO):
+    if (direction != Vector2.ZERO):
         rotation = direction.angle()
 
 func _input(event):

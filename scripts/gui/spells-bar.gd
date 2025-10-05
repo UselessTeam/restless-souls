@@ -4,6 +4,7 @@ class_name SpellsBar
 
 var spells: Array[SpellButton]
 var selected_spell: int
+var max_spells: int = 4
 var current_spell_action: Spell = null
 
 func _ready():
@@ -28,9 +29,5 @@ func select_spell(spell_index: int):
         current_spell_action = spell.packed_spell.instantiate()
         Global.world.add_child(current_spell_action)
 
-func _input(event):
-    if event is InputEventAction:
-        if event.is_action_pressed("toggle_left"):
-            select_spell((selected_spell - 1) % spells.size())
-        elif event.is_action_pressed("toggle_right"):
-            select_spell((selected_spell + 1) % spells.size())
+func toggle_spell(i: int):
+    select_spell((selected_spell + i) % max_spells)

@@ -28,8 +28,7 @@ func _process(_delta):
     if Global.is_battling() and not Global.battle.energy.has_enough_energy(position):
         position = Global.battle.energy.project_to_reachable_position(position)
 
-
-func _unhandled_input(event):
+func _input(event):
     if not Global.can_player_act():
         return
     if event.is_action_pressed("action_use") \
@@ -37,6 +36,10 @@ func _unhandled_input(event):
                 && Global.can_player_act():
         Global.battle.do_player_action()
         animated_sprite.play("attack")
+    elif event.is_action_pressed("toggle_left"):
+        Global.battle.spell_bar.toggle_spell(-1)
+    elif event.is_action_pressed("toggle_right"):
+        Global.battle.spell_bar.toggle_spell(1)
 
 func _on_attack_animation_finished():
     if (animated_sprite.animation == "attack"):
