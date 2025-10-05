@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdbgmqh1vq5qv"]
+
+[ext_resource type="Script" uid="uid://07mrdghwgfvb" path="res://scripts/gui/health-bar.gd" id="1_481b8"]
+[ext_resource type="Texture2D" uid="uid://bv4kwm4skndi7" path="res://assets/sprites/gui/health-ball.png" id="2_481b8"]
+[ext_resource type="Texture2D" uid="uid://crrwk7ggkb8if" path="res://assets/sprites/gui/health-ball-off.png" id="3_pnwpk"]
+
+[node name="Health" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 64)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_481b8")
+health_on = ExtResource("2_481b8")
+health_off = ExtResource("3_pnwpk")
+
+[node name="List" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Bead-1" type="TextureRect" parent="List"]
+layout_mode = 2
+texture = ExtResource("2_481b8")

@@ -6,7 +6,8 @@ signal player_action_received(action)
 
 var on: bool = false
 @onready var spell_bar: SpellsBar = $Spells
-@onready var energy: EnergyBar = $Energy
+@onready var health: HealthBar = $Bottom/List/Health
+@onready var energy: EnergyBar = $Bottom/List/Energy
 var battle_area: BattleArea = null
 var is_player_turn: bool = true
 var is_launching_spell: bool = false
@@ -28,8 +29,9 @@ func rollout_battle(_battle_area: BattleArea):
     battle_area = _battle_area
     visible = true
     on = true
+    health.start_battle()
     energy.start_battle()
-    while Global.player.health > 0 and battle_area.has_monsters():
+    while health.health > 0 and battle_area.has_monsters():
         is_player_turn = true
         energy.start_turn()
         while is_player_turn:
@@ -50,7 +52,7 @@ func rollout_battle(_battle_area: BattleArea):
         await battle_area.monsters_act()
     visible = false
     on = false
-    var won = Global.player.health > 0
+    var won = health.health > 0
     if won:
         print("WON :D")
     else:
@@ -65,11 +67,11 @@ func _on_battle_phase_end():
     on = false
 
 func _process(_delta: float):
-    if !Global.can_player_act():
+    if Global.is_battling() and !Global.can_player_act():
         return
 
     if Input.is_action_just_pressed("action_escape"):
-        print("TODO")
+        Global.player.position = energy.player_last_position
 
 func _unhandled_input(event):
     if is_player_turn and event.is_action_pressed("monster_turn"):

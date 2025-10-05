@@ -5,8 +5,6 @@ class_name Player
 # Movement speed in pixels per second
 @export var speed := 200
 @export var player_sprite_prefab: PackedScene
-@export var max_health := 10
-var health := max_health
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var animation_player = $AnimationPlayer
@@ -42,4 +40,4 @@ func _on_attack_animation_finished():
         animated_sprite.play("idle")
 
 func take_damage():
-    print("Player took damage")
+    Global.battle.health.health -= 1

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://2yrdhe62kcmb"]
+[gd_scene load_steps=10 format=3 uid="uid://2yrdhe62kcmb"]
 
 [ext_resource type="Script" uid="uid://crsrdktcc6dey" path="res://scripts/gui/battle.gd" id="1_wucys"]
 [ext_resource type="PackedScene" uid="uid://bx1rfogr2n6qn" path="res://nodes/gui/energy-bar.tscn" id="2_k1gab"]
+[ext_resource type="PackedScene" uid="uid://bdbgmqh1vq5qv" path="res://nodes/gui/health-bar.tscn" id="2_x238p"]
 [ext_resource type="Script" uid="uid://di3thgcsqfmat" path="res://scripts/gui/spells-bar.gd" id="4_k1gab"]
 [ext_resource type="Texture2D" uid="uid://43iesjwj1jel" path="res://assets/sprites/gui/skills/fireball.png" id="5_k1gab"]
 [ext_resource type="PackedScene" uid="uid://dbpkxtgfkehtb" path="res://nodes/gui/spell-button.tscn" id="5_x238p"]
@@ -15,7 +16,28 @@
 [node name="BattleOverlay" type="CanvasLayer"]
 script = ExtResource("1_wucys")
 
-[node name="Energy" parent="." instance=ExtResource("2_k1gab")]
+[node name="Bottom" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="List" type="VBoxContainer" parent="Bottom"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Health" parent="Bottom/List" instance=ExtResource("2_x238p")]
+layout_mode = 2
+
+[node name="Energy" parent="Bottom/List" instance=ExtResource("2_k1gab")]
+layout_mode = 2
 
 [node name="Spells" type="MarginContainer" parent="."]
 anchors_preset = 10

@@ -7,3 +7,6 @@
 .vscode/*
 !.vscode/*.template.json
 build/
+
+assets/**/*.kra
+assets/**/*.kra~
