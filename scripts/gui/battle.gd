@@ -6,7 +6,7 @@ signal player_action_received(action)
 
 var on: bool = false
 @onready var spell_bar: SpellsBar = $Spells
-@onready var energy: Energy = $Energy
+@onready var energy: EnergyBar = $Energy
 var battle_area: BattleArea = null
 var is_player_turn: bool = true
 var is_launching_spell: bool = false
@@ -31,6 +31,7 @@ func rollout_battle(_battle_area: BattleArea):
     energy.start_battle()
     while Global.player.health > 0 and battle_area.has_monsters():
         is_player_turn = true
+        energy.start_turn()
         while is_player_turn:
             battle_area.show_player_base_position()
             energy.start_step()

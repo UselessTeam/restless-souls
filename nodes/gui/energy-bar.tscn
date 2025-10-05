@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx1rfogr2n6qn"]
+
+[ext_resource type="Script" uid="uid://dluxigsiww7el" path="res://scripts/gui/energy-bar.gd" id="1_hfi2n"]
+[ext_resource type="Script" uid="uid://sx6nlgp01q5m" path="res://nodes/gui/bar.gd" id="2_o3sof"]
+[ext_resource type="Texture2D" uid="uid://c4xlabdsg7l6a" path="res://assets/sprites/gui/energy-bar.png" id="3_k0ycj"]
+
+[node name="Energy" type="MarginContainer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_hfi2n")
+
+[node name="Knots" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Walk" type="Container" parent="."]
+modulate = Color(1, 1, 1, 0.49803922)
+layout_mode = 2
+script = ExtResource("2_o3sof")
+fraction = 0.9
+padding = 16.0
+y_margin = 8.0
+
+[node name="Container" type="Control" parent="Walk"]
+layout_mode = 2
+
+[node name="Bar" type="NinePatchRect" parent="Walk/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_k0ycj")
+patch_margin_left = 16
+patch_margin_right = 16
+
+[node name="Spell" type="Container" parent="."]
+modulate = Color(0.49803922, 1, 1, 0.49803922)
+layout_mode = 2
+script = ExtResource("2_o3sof")
+fraction = 0.6
+padding = 16.0
+y_margin = 8.0
+
+[node name="Container" type="Control" parent="Spell"]
+layout_mode = 2
+
+[node name="Bar" type="NinePatchRect" parent="Spell/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_k0ycj")
+patch_margin_left = 16
+patch_margin_right = 16
+
+[node name="Base" type="Container" parent="."]
+layout_mode = 2
+script = ExtResource("2_o3sof")
+fraction = 0.1
+padding = 16.0
+y_margin = 8.0
+
+[node name="Container" type="Control" parent="Base"]
+layout_mode = 2
+
+[node name="Bar" type="NinePatchRect" parent="Base/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_k0ycj")
+patch_margin_left = 16
+patch_margin_right = 16
