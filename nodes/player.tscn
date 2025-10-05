@@ -146,6 +146,7 @@ y_sort_enabled = true
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_0ump0")
+speed = 500
 player_sprite_prefab = ExtResource("2_me0cc")
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_me0cc")]
