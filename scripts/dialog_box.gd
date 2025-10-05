@@ -5,11 +5,14 @@ class_name DialogBox
 @onready var label = $Label
 
 @export var player: Texture2D
+@export var grimmy: Texture2D
 @export var burned: Texture2D
 @export var drowned: Texture2D
 @export var electrocuted: Texture2D
 @export var knife: Texture2D
 @export var sad: Texture2D
+
+@export_file("*.txt") var start_text: String
 
 const MIN_SHOW_TIME = 0.3
 const FADE_IN_OUT_TIME = 0.1
@@ -22,12 +25,23 @@ func _ready():
     modulate.a = 0
     Global.dialog_box = self
     await get_tree().create_timer(MIN_SHOW_TIME).timeout
-    display_text("player", "I heard some restless spirits are wreaking havoc around this town.\nTime to collect some souls.")
+    display_text(start_text)
 
-func display_text(texture_name, text, leave_on = false):
+func display_text(file_path):
+    print("disp text")
+    var text = FileAccess.open(file_path, FileAccess.READ) \
+            .get_as_text().split("\n\n")
+        
+    @warning_ignore("INTEGER_DIVISION")
+    for i in range(0, text.size()):
+        var lines = text[i].split("\n")
+        await display_lines(lines[0], lines.slice(1), i + 1 < text.size())
+    
+
+func display_lines(texture_name, text, leave_on = false):
     is_showing_text = true
     texture_rect.texture = get_texture(texture_name)
-    label.text = text
+    label.text = "\n".join(text)
     print("displaying")
     await create_tween().tween_property(self, "modulate:a", 1, FADE_IN_OUT_TIME).finished
     await get_tree().create_timer(MIN_SHOW_TIME).timeout
@@ -41,6 +55,8 @@ func get_texture(texture_name: String) -> Texture2D:
     match texture_name:
         "player":
             return player
+        "grimmy":
+            return grimmy
         "burned":
             return burned
         "drowned":

@@ -6,7 +6,7 @@ var boundaries: StaticBody2D
 var enter_zone: Area2D
 
 @export var packed_monsters: Array[PackedScene]
-@export var dialogs: Array[String] = []
+@export_file("*.txt") var dialog_file: String = ""
 
 var monsters: Array[Monster]
 
@@ -25,10 +25,8 @@ func on_area_body_entered(body):
 func trigger_battle():
     boundaries.process_mode = Node.PROCESS_MODE_ALWAYS
     enter_zone.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
-    if dialogs.size() > 1:
-        @warning_ignore("INTEGER_DIVISION")
-        for i in range(0, dialogs.size() / 2):
-            await Global.dialog_box.display_text(dialogs[2 * i], dialogs[2 * i + 1], 2 * i + 2 < dialogs.size())
+    if dialog_file.length() > 0:
+        await Global.dialog_box.display_text(dialog_file)
     Global.start_battle(self)
 
 func close_battle():

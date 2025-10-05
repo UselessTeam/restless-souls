@@ -39,3 +39,5 @@ func shoot():
     await create_tween() \
         .tween_property(bullet_node, "global_position", Global.player.global_position, BULLET_TRAVEL_TIME) \
         .finished
+    if bullet_node:
+        bullet_node.queue_free()

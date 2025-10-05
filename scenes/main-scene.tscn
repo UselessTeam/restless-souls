@@ -34,7 +34,7 @@ speed = 350
 [node name="Battle" parent="." instance=ExtResource("3_qgjcv")]
 position = Vector2(536, 143)
 packed_monsters = Array[PackedScene]([ExtResource("5_qgjcv"), ExtResource("3_h8pqn"), ExtResource("7_mus3i"), ExtResource("8_5imvt")])
-dialogs = Array[String](["burned", "It's getting warm in here, am I right?", "player", "I should have brought my marshmallows"])
+dialog_file = "res://assets/dialogs/fire-ghost.txt"
 
 [node name="EnterZone" parent="Battle" index="1"]
 collision_mask = 4
@@ -47,7 +47,7 @@ script = ExtResource("7_a1lv3")
 world_music = ExtResource("8_gkrxy")
 battle_music = ExtResource("9_juyu1")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("13_ibc6o")]
+[node name="TextBoxLayer" parent="." instance=ExtResource("13_ibc6o")]
 layer = 2
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
