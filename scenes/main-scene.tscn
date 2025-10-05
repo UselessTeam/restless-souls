@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://duxn7jcopkw4g"]
+[gd_scene load_steps=20 format=3 uid="uid://duxn7jcopkw4g"]
 
 [ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="1_h8pqn"]
 [ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_qeko6"]
@@ -13,6 +13,12 @@
 [ext_resource type="AudioStream" uid="uid://bwhvepxx8jess" path="res://assets/music/quiet-hunter-loop.mp3" id="8_gkrxy"]
 [ext_resource type="AudioStream" uid="uid://cbmu7o8igduty" path="res://assets/music/hunters-dance-loop.mp3" id="9_juyu1"]
 [ext_resource type="PackedScene" uid="uid://dafv0pvrtafqx" path="res://nodes/text_box.tscn" id="13_ibc6o"]
+[ext_resource type="Script" uid="uid://d3rj5gt56d2yp" path="res://scripts/sfx_player.gd" id="14_21ub3"]
+[ext_resource type="AudioStream" uid="uid://c86vl3euu2m2v" path="res://assets/sounds/air_move.wav" id="15_qfbfh"]
+[ext_resource type="AudioStream" uid="uid://cmn0s77htfwu1" path="res://assets/sounds/fireball.wav" id="16_1bdij"]
+[ext_resource type="AudioStream" uid="uid://15ltiilglwom" path="res://assets/sounds/loop_bubbles_1.ogg" id="17_xeluc"]
+[ext_resource type="AudioStream" uid="uid://h6nwfsiiwip4" path="res://assets/sounds/buzz.ogg" id="18_rm3db"]
+[ext_resource type="AudioStream" uid="uid://bfo6xfbqsx7vl" path="res://assets/sounds/shoot.wav" id="19_qfbfh"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -43,5 +49,13 @@ battle_music = ExtResource("9_juyu1")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("13_ibc6o")]
 layer = 2
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+script = ExtResource("14_21ub3")
+slash = ExtResource("15_qfbfh")
+fire = ExtResource("16_1bdij")
+water = ExtResource("17_xeluc")
+electric = ExtResource("18_rm3db")
+shoot = ExtResource("19_qfbfh")
 
 [editable path="Battle"]

@@ -11,3 +11,4 @@ build/
 assets/**/*.kra
 assets/**/*.kra~
 assets/music/audacity/
+assets/**/*.zip

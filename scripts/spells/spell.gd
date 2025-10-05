@@ -5,6 +5,8 @@ class_name Spell
 @onready var collision_shape = $CollisionPolygon2D
 @onready var visual_polygon = $Polygon2D
 @onready var animation_player = $AnimationPlayer
+
+@export var sound: String = "slash"
 @export var damage: int = 1
 
 var hinted_monsters: Array[Monster] = []

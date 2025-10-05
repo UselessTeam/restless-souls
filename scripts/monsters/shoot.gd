@@ -31,6 +31,7 @@ func act_turn():
         await tween.finished
 
 func shoot():
+    play_sound()
     face_direction(Global.player.global_position.x - global_position.x < 0)
     var bullet_node = bullet.instantiate()
     get_tree().root.add_child(bullet_node)

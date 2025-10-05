@@ -10,6 +10,7 @@ var player: Player = null
 var camera: Camera2DPlus = null
 var battle: Battle = null
 var dialog_box: DialogBox = null
+var sfx_player: SfxPlayer = null
 
 var last_checkpoint: Vector2 = Vector2.ZERO:
     set(value):

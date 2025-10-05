@@ -1,5 +1,7 @@
 extends Punch
 
+class_name WaterGhost
+
 @export var attack_distance := 200
 
 @onready var whirlpool = $WhirlpoolAttack
@@ -11,4 +13,5 @@ func act_turn():
     await create_tween() \
         .tween_property(self, "position", toPlayer - toPlayer.normalized() * attack_distance, TURN_TIME) \
         .finished
+    play_sound()
     await whirlpool.attack(global_position - position)

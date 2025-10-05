@@ -3,6 +3,8 @@ extends Shoot
 func shoot():
     var shoot_to = (Global.player.global_position - global_position).normalized()
     face_direction(shoot_to.x < 0)
+    play_sound()
+
 
     var bullet_node = bullet.instantiate()
     get_tree().root.add_child(bullet_node)

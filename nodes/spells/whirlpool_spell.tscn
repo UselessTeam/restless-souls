@@ -45,7 +45,10 @@ offsets = PackedFloat32Array(0, 0.2748815, 0.54028434, 0.7867299, 1)
 colors = PackedColorArray(2.9937328e-05, 0.273122, 0.7810583, 1, 0.08735397, 0.5380315, 0.722358, 1, 0, 0.82968336, 0.7457913, 1, 0.5027231, 0.8589349, 0.9980344, 1, 0.8153004, 0.97262377, 0.9997919, 1)
 
 [node name="Whirlpool" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_lytj3")
+sound = "water"
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.11236853, 0.8145975, 0.8247514, 0.3137255)

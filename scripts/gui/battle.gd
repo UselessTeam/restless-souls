@@ -20,6 +20,7 @@ func _ready():
 
 func do_player_action():
     var spell = spell_bar.current_spell_action
+    Global.sfx_player.play_sfx(spell)
     player_action_received.emit(spell)
 
 func pass_player_turn():

@@ -11,7 +11,7 @@ class_name DialogBox
 @export var knife: Texture2D
 @export var sad: Texture2D
 
-const MIN_SHOW_TIME = 1
+const MIN_SHOW_TIME = 0.3
 const FADE_IN_OUT_TIME = 0.1
 
 var is_showing_text: bool

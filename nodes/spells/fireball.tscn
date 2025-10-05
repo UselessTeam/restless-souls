@@ -65,7 +65,10 @@ _data = {
 }
 
 [node name="Fireball" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_bsw2o")
+sound = "fire"
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(1, 0.6784314, 0.56078434, 0.3137255)

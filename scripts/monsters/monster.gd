@@ -53,3 +53,6 @@ func die():
 
 func face_direction(is_left) -> void:
     $AnimatedSprite2D.scale.x = abs(sprite_scale.x) * (-1 if is_left else 1)
+
+func play_sound():
+    Global.sfx_player.play_sfx(self)

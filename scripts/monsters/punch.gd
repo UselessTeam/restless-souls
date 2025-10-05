@@ -11,6 +11,9 @@ func act_turn():
         dir *= 1.3
     face_direction(dir.x < 0)
 
+    if (toPlayer.length() < travel_distance):
+        play_sound()
+
     play_attack_animation()
     await create_tween() \
         .tween_property(self, "position", position + dir * travel_distance, TURN_TIME) \
