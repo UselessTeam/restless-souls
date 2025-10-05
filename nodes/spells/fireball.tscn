@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://syu1qoqjoe7p"]
+[gd_scene load_steps=6 format=3 uid="uid://syu1qoqjoe7p"]
 
 [ext_resource type="Script" uid="uid://cd0aq14mddy1m" path="res://scripts/spells/orientation_spell.gd" id="1_bsw2o"]
+[ext_resource type="PackedScene" uid="uid://bgct6r8y63b17" path="res://nodes/spells/fire_particles.tscn" id="2_0clcr"]
 
 [sub_resource type="Animation" id="Animation_kgmnk"]
 length = 0.001
@@ -75,71 +76,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_la6tv")
 }
 
-[node name="ParticleCenter" type="Node2D" parent="."]
+[node name="ParticleCenter" parent="." instance=ExtResource("2_0clcr")]
 visible = false
-rotation = -0.081181765
-
-[node name="CPUParticles2DYellow" type="CPUParticles2D" parent="ParticleCenter"]
-scale = Vector2(1.0000002, 1.0000002)
-amount = 400
-lifetime = 0.19
-speed_scale = 0.6
-explosiveness = 0.1
-randomness = 0.2
-emission_shape = 1
-emission_sphere_radius = 39.69
-direction = Vector2(-1, 0)
-spread = 39.66
-gravity = Vector2(0, 0)
-initial_velocity_min = 30.0
-initial_velocity_max = 268.97
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-angle_min = -351.9
-angle_max = 396.0
-scale_amount_max = 4.0
-color = Color(1, 0.9490196, 0, 1)
-
-[node name="CPUParticles2DRed" type="CPUParticles2D" parent="ParticleCenter"]
-scale = Vector2(1.0000002, 1.0000002)
-amount = 400
-lifetime = 0.11
-speed_scale = 0.6
-explosiveness = 0.1
-randomness = 0.2
-emission_shape = 1
-emission_sphere_radius = 39.69
-direction = Vector2(-1, 0)
-spread = 39.66
-gravity = Vector2(0, 0)
-initial_velocity_min = 30.0
-initial_velocity_max = 268.97
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-angle_min = -351.9
-angle_max = 396.0
-scale_amount_max = 4.0
-color = Color(1, 0.078431375, 0, 1)
-
-[node name="CPUParticles2DOrange" type="CPUParticles2D" parent="ParticleCenter"]
-scale = Vector2(1.0000002, 1.0000002)
-amount = 400
-lifetime = 0.33
-speed_scale = 0.6
-explosiveness = 0.1
-randomness = 0.2
-emission_shape = 1
-emission_sphere_radius = 39.69
-direction = Vector2(-1, 0)
-spread = 39.66
-gravity = Vector2(0, 0)
-initial_velocity_min = 30.0
-initial_velocity_max = 268.97
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-angle_min = -351.9
-angle_max = 396.0
-scale_amount_max = 4.0
-color = Color(1, 0.57254905, 0, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

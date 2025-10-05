@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dj1802tnwtw52" path="res://scripts/music_player.gd" id="7_a1lv3"]
 [ext_resource type="AudioStream" uid="uid://bwhvepxx8jess" path="res://assets/music/quiet-hunter-loop.mp3" id="8_gkrxy"]
 [ext_resource type="AudioStream" uid="uid://cbmu7o8igduty" path="res://assets/music/hunters-dance-loop.mp3" id="9_juyu1"]
+[ext_resource type="PackedScene" uid="uid://dw130vpd7lses" path="res://nodes/monsters/fire-ghost.tscn" id="10_juyu1"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_qeko6")

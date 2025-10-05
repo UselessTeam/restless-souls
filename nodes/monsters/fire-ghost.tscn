@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw130vpd7lses"]
+
+[ext_resource type="PackedScene" uid="uid://dajso34dssklv" path="res://nodes/monsters/shoot-ghost.tscn" id="1_2iq35"]
+[ext_resource type="Texture2D" uid="uid://beho7daketbuu" path="res://assets/sprites/ghosts/burned.png" id="2_1nd14"]
+[ext_resource type="Script" uid="uid://g8nfbwjbgrur" path="res://scripts/monsters/fire-ghost.gd" id="2_4pihh"]
+[ext_resource type="PackedScene" uid="uid://yhb7u3n1f4c5" path="res://nodes/monsters/fire-bullet.tscn" id="3_g0ys1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4pihh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1nd14")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Burned" instance=ExtResource("1_2iq35")]
+script = ExtResource("2_4pihh")
+bullet = ExtResource("3_g0ys1")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_4pihh")

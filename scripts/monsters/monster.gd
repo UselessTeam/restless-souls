@@ -4,6 +4,9 @@ class_name Monster
 
 static var turn_time := 0.5
 
+@onready var animation_player = $AnimationPlayer
+@onready var sprite_scale = $AnimatedSprite2D.scale
+
 func _init():
     if self.get_script() == Monster:
         push_error("Monster is an abstract class and should not be instantiated directly.")
@@ -18,6 +21,9 @@ func act_turn():
 
 @export var health: int = 1
 var current_health: int = health
+
+func _ready():
+    animation_player.play("hover")
 
 func on_turn_end() -> void:
     block_body.process_mode = Node.PROCESS_MODE_INHERIT
@@ -35,11 +41,15 @@ func unhighlight() -> void:
 
 func take_damage(amount: int) -> void:
     current_health -= amount
+    animation_player.play("take_damage")
+    await animation_player.animation_finished
     if current_health <= 0:
         die()
+    else:
+        animation_player.play("hover")
 
 func die():
     queue_free()
 
 func face_direction(is_left) -> void:
-    $Sprite2D.flip_h = is_left
+    $AnimatedSprite2D.flip_h = is_left
