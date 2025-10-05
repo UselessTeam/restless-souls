@@ -136,4 +136,4 @@ toggle_right={
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.04166963, 0.034021743, 0.057382517, 1)
+environment/defaults/default_clear_color=Color(0.19607843, 0.30588236, 0.19607843, 1)
