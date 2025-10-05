@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx1rfogr2n6qn"]
+[gd_scene load_steps=5 format=3 uid="uid://bx1rfogr2n6qn"]
 
 [ext_resource type="Script" uid="uid://dluxigsiww7el" path="res://scripts/gui/energy-bar.gd" id="1_hfi2n"]
+[ext_resource type="Texture2D" uid="uid://dfvmkb4jmcpco" path="res://assets/sprites/gui/energy-knot.png" id="2_k0ycj"]
 [ext_resource type="Script" uid="uid://sx6nlgp01q5m" path="res://nodes/gui/bar.gd" id="2_o3sof"]
 [ext_resource type="Texture2D" uid="uid://c4xlabdsg7l6a" path="res://assets/sprites/gui/energy-bar.png" id="3_k0ycj"]
 
@@ -12,14 +13,31 @@ anchor_bottom = 1.0
 offset_top = -64.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 16
 script = ExtResource("1_hfi2n")
 
-[node name="Knots" type="Control" parent="."]
+[node name="Knots" type="MarginContainer" parent="."]
 layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="List" type="Control" parent="Knots"]
+layout_mode = 2
+
+[node name="Knot-0" type="TextureRect" parent="Knots/List"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("2_k0ycj")
 
 [node name="Walk" type="Container" parent="."]
 modulate = Color(1, 1, 1, 0.49803922)
@@ -28,6 +46,7 @@ script = ExtResource("2_o3sof")
 fraction = 0.9
 padding = 16.0
 y_margin = 8.0
+x_margin = 16.0
 
 [node name="Container" type="Control" parent="Walk"]
 layout_mode = 2
@@ -50,6 +69,7 @@ script = ExtResource("2_o3sof")
 fraction = 0.6
 padding = 16.0
 y_margin = 8.0
+x_margin = 16.0
 
 [node name="Container" type="Control" parent="Spell"]
 layout_mode = 2
@@ -71,6 +91,7 @@ script = ExtResource("2_o3sof")
 fraction = 0.1
 padding = 16.0
 y_margin = 8.0
+x_margin = 16.0
 
 [node name="Container" type="Control" parent="Base"]
 layout_mode = 2
