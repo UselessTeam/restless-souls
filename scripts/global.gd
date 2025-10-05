@@ -48,4 +48,4 @@ func _process(_delta):
         progress.normal_ghosts += 1
         progress.water_ghosts += 1
         progress.fire_ghosts += 1
-        progress.thunder_ghosts += 1
+        progress.electric_ghosts += 1

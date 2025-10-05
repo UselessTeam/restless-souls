@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://bo3mxljpfi8k5"]
+
+[ext_resource type="PackedScene" uid="uid://bccohaydi523g" path="res://nodes/gui/soul-counter.tscn" id="1_lnd1q"]
+[ext_resource type="Texture2D" uid="uid://c2aj3875he57n" path="res://assets/sprites/gui/souls/normal-soul.png" id="1_x4cc6"]
+[ext_resource type="Texture2D" uid="uid://ditq5qe4g1j0u" path="res://assets/sprites/gui/souls/no-fire-soul.png" id="2_h5dfc"]
+[ext_resource type="Texture2D" uid="uid://dygqmrlxuvbqu" path="res://assets/sprites/gui/souls/no-normal-soul.png" id="3_i3h6x"]
+[ext_resource type="Texture2D" uid="uid://cfilpcgjdssxt" path="res://assets/sprites/gui/souls/water-soul.png" id="4_hwivs"]
+[ext_resource type="Texture2D" uid="uid://dl0u36yespdm4" path="res://assets/sprites/gui/souls/no-water-soul.png" id="5_iho2v"]
+[ext_resource type="Texture2D" uid="uid://77vkveldqj2w" path="res://assets/sprites/gui/souls/eletric-soul.png" id="6_0cxyr"]
+[ext_resource type="Texture2D" uid="uid://dltwel3rc70fb" path="res://assets/sprites/gui/souls/no-eletric-soul.png" id="7_ie674"]
+[ext_resource type="Texture2D" uid="uid://dv7c83c8dstqs" path="res://assets/sprites/gui/souls/fire-soul.png" id="8_klcd4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c0x2s"]
+font_size = 32
+font_color = Color(1, 1, 1, 0.7490196)
+outline_size = 8
+outline_color = Color(0.039215688, 0.47058824, 0.63529414, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jgm3c"]
+font_size = 32
+font_color = Color(1, 1, 1, 0.7490196)
+outline_size = 8
+outline_color = Color(0.54509807, 0.5137255, 0.101960786, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dygi3"]
+font_size = 32
+font_color = Color(1, 1, 1, 0.7490196)
+outline_size = 8
+outline_color = Color(0.59607846, 0.11764706, 0.05490196, 1)
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Right" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 128.0
+offset_bottom = -128.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Souls" type="VBoxContainer" parent="Right"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Normal" parent="Right/Souls" instance=ExtResource("1_lnd1q")]
+layout_mode = 2
+some_texture = ExtResource("1_x4cc6")
+none_texture = ExtResource("3_i3h6x")
+
+[node name="Water" parent="Right/Souls" instance=ExtResource("1_lnd1q")]
+layout_mode = 2
+key = "water"
+some_texture = ExtResource("4_hwivs")
+none_texture = ExtResource("5_iho2v")
+
+[node name="Label" parent="Right/Souls/Water/Info" index="0"]
+label_settings = SubResource("LabelSettings_c0x2s")
+
+[node name="Icon" parent="Right/Souls/Water/Info" index="1"]
+texture = ExtResource("4_hwivs")
+
+[node name="Electric" parent="Right/Souls" instance=ExtResource("1_lnd1q")]
+layout_mode = 2
+key = "electric"
+some_texture = ExtResource("6_0cxyr")
+none_texture = ExtResource("7_ie674")
+
+[node name="Label" parent="Right/Souls/Electric/Info" index="0"]
+label_settings = SubResource("LabelSettings_jgm3c")
+
+[node name="Icon" parent="Right/Souls/Electric/Info" index="1"]
+texture = ExtResource("6_0cxyr")
+
+[node name="Fire" parent="Right/Souls" instance=ExtResource("1_lnd1q")]
+layout_mode = 2
+key = "fire"
+some_texture = ExtResource("8_klcd4")
+none_texture = ExtResource("2_h5dfc")
+
+[node name="Label" parent="Right/Souls/Fire/Info" index="0"]
+label_settings = SubResource("LabelSettings_dygi3")
+
+[node name="Icon" parent="Right/Souls/Fire/Info" index="1"]
+texture = ExtResource("8_klcd4")
+
+[editable path="Right/Souls/Water"]
+[editable path="Right/Souls/Electric"]
+[editable path="Right/Souls/Fire"]

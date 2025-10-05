@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="1_h8pqn"]
 [ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_qeko6"]
+[ext_resource type="PackedScene" uid="uid://bo3mxljpfi8k5" path="res://nodes/gui/hud.tscn" id="2_mus3i"]
 [ext_resource type="PackedScene" uid="uid://dxopk57i7b7ai" path="res://nodes/monsters/punch-ghost.tscn" id="3_h8pqn"]
-[ext_resource type="PackedScene" path="res://nodes/battle.tscn" id="3_qgjcv"]
+[ext_resource type="PackedScene" uid="uid://cne50lky0fuiu" path="res://nodes/battle.tscn" id="3_qgjcv"]
 [ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="5_qeko6"]
 [ext_resource type="PackedScene" uid="uid://dajso34dssklv" path="res://nodes/monsters/shoot-ghost.tscn" id="5_qgjcv"]
 [ext_resource type="Script" uid="uid://dj1802tnwtw52" path="res://scripts/music_player.gd" id="7_a1lv3"]
@@ -14,6 +15,8 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_qeko6")
+
+[node name="HUD" parent="." instance=ExtResource("2_mus3i")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_h8pqn")]
 y_sort_enabled = false

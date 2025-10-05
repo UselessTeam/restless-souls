@@ -15,14 +15,14 @@ var fire_ghosts: int = 0:
         if fire_ghosts != value:
             fire_ghosts = max(value, 0)
             on_change.emit()
-var thunder_ghosts: int = 0:
+var electric_ghosts: int = 0:
     set(value):
-        if thunder_ghosts != value:
-            thunder_ghosts = max(value, 0)
+        if electric_ghosts != value:
+            electric_ghosts = max(value, 0)
             on_change.emit()
 var total_ghosts:
     get:
-        return normal_ghosts + fire_ghosts + water_ghosts + thunder_ghosts
+        return normal_ghosts + fire_ghosts + water_ghosts + electric_ghosts
 
 signal on_change()
 
@@ -41,5 +41,5 @@ func is_spell_unlocked(spell_key: String) -> bool:
         "fireball":
             return fire_ghosts > 0
         "lightning":
-            return thunder_ghosts > 0
+            return electric_ghosts > 0
     return true

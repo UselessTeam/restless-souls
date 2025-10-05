@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bccohaydi523g"]
+
+[ext_resource type="Script" uid="uid://bgit43wajeswj" path="res://scripts/gui/soul-counter.gd" id="1_cd7uj"]
+[ext_resource type="Texture2D" uid="uid://c2aj3875he57n" path="res://assets/sprites/gui/souls/normal-soul.png" id="2_16yug"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_66xqd"]
+font_size = 32
+font_color = Color(1, 1, 1, 0.7490196)
+outline_size = 8
+outline_color = Color(0.5294118, 0.5058824, 0.62352943, 0.7490196)
+
+[node name="Type" type="MarginContainer"]
+script = ExtResource("1_cd7uj")
+
+[node name="Info" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Info"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "150"
+label_settings = SubResource("LabelSettings_66xqd")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="Info"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_16yug")
+expand_mode = 1

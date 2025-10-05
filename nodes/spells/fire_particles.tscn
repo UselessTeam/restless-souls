@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bgct6r8y63b17"]
+[gd_scene load_steps=0 format=3 uid="uid://bgct6r8y63b17"]
 
 [node name="ParticleCenter" type="Node2D"]
 rotation = -0.081181765
