@@ -24,6 +24,9 @@ func _process(_delta):
         return
     var direction = Input.get_vector("left", "right", "up", "down")
     velocity = direction * speed
+    if (abs(direction.x) > 0.1):
+        face_direction(direction.x < 0)
+
     move_and_slide()
     if Global.is_battling() and not Global.battle.energy.has_enough_energy(position):
         position = Global.battle.energy.project_to_reachable_position(position)
@@ -47,3 +50,6 @@ func _on_attack_animation_finished():
 
 func take_damage():
     Global.battle.health.health -= 1
+
+func face_direction(is_left) -> void:
+    animated_sprite.scale.x = abs(animated_sprite.scale.x) * (-1 if is_left else 1)

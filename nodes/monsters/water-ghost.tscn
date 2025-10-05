@@ -86,6 +86,35 @@ tracks/4/keys = {
 "values": [1.0]
 }
 
+[sub_resource type="Animation" id="Animation_81ktc"]
+resource_name = "attack"
+length = 0.25
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:skew")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(2.9281766, 26.908676),
+"update": 0,
+"values": [0.0, -0.4171337]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(2.9281766, 26.908676),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.4, 0.3)]
+}
+
 [sub_resource type="Animation" id="Animation_me0cc"]
 resource_name = "hover"
 length = 2.0
@@ -155,35 +184,6 @@ tracks/2/keys = {
 "values": [1.0, 0.3, 1.0, 0.3, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_81ktc"]
-resource_name = "attack"
-length = 0.25
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:skew")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
-"transitions": PackedFloat32Array(2.9281766, 26.908676),
-"update": 0,
-"values": [0.0, -0.4171337]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
-"transitions": PackedFloat32Array(2.9281766, 26.908676),
-"update": 0,
-"values": [Vector2(0.3, 0.3), Vector2(0.4, 0.3)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7lbay"]
 _data = {
 &"RESET": SubResource("Animation_hqdnm"),
@@ -210,6 +210,8 @@ y_sort_enabled = true
 shape = SubResource("CircleShape2D_qgjcv")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, -14)

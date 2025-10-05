@@ -195,6 +195,8 @@ position = Vector2(3, 2)
 shape = SubResource("CircleShape2D_qgjcv")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, -21)
