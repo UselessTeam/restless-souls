@@ -16,22 +16,19 @@ func _ready():
 
 func player_step_started():
     select_spell(-1)
-    if not slash_spell.disabled and Global.battle.energy.has_enough_energy_for_spell(slash_spell.cost):
+    if slash_spell.visible and not slash_spell.disabled and Global.battle.energy.has_enough_energy_for_spell(slash_spell.cost):
        select_spell(0)
 
 func turn_ended():
     select_spell(-1)
 
 func select_spell(spell_index: int):
+    if not Global.can_player_act():
+        return
     if selected_spell == spell_index:
         return
     if current_spell_action:
-        current_spell_action.button.button_pressed = false
         current_spell_action.queue_free()
-    else:
-        pass_button.button_pressed = false
-    if not Global.can_player_act():
-        selected_spell = -1
     selected_spell = spell_index
     if selected_spell >= 0:
         var spell = spells[selected_spell]

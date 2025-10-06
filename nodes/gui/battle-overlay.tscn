@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://2yrdhe62kcmb"]
+[gd_scene load_steps=19 format=3 uid="uid://2yrdhe62kcmb"]
 
 [ext_resource type="Script" uid="uid://crsrdktcc6dey" path="res://scripts/gui/battle.gd" id="1_wucys"]
 [ext_resource type="PackedScene" uid="uid://bx1rfogr2n6qn" path="res://nodes/gui/energy-bar.tscn" id="2_k1gab"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://di3thgcsqfmat" path="res://scripts/gui/spells-bar.gd" id="4_k1gab"]
 [ext_resource type="Texture2D" uid="uid://43iesjwj1jel" path="res://assets/sprites/gui/skills/fireball.png" id="5_k1gab"]
 [ext_resource type="PackedScene" uid="uid://dbpkxtgfkehtb" path="res://nodes/gui/spell-button.tscn" id="5_x238p"]
+[ext_resource type="ButtonGroup" uid="uid://bktrk8j2m81xo" path="res://nodes/gui/button-group.tres" id="6_d1eo8"]
 [ext_resource type="PackedScene" uid="uid://bhmk8dju75pjr" path="res://nodes/spells/scythe.tscn" id="6_iotej"]
 [ext_resource type="Texture2D" uid="uid://6fgup4klym0" path="res://assets/sprites/gui/skills/bolt.png" id="6_x238p"]
 [ext_resource type="Texture2D" uid="uid://kcwkwr8n34wj" path="res://assets/sprites/gui/skills/freeze.png" id="7_iotej"]
@@ -32,16 +33,6 @@ expand_margin_bottom = 4.0
 [sub_resource type="Theme" id="Theme_d1eo8"]
 Button/styles/focus = SubResource("StyleBoxEmpty_r6hnw")
 Button/styles/pressed = SubResource("StyleBoxFlat_r6hnw")
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_6swwg"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_inw07"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_wsb3q"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_lqado"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_siosn"]
 
 [node name="BattleOverlay" type="CanvasLayer"]
 script = ExtResource("1_wucys")
@@ -89,7 +80,7 @@ theme = SubResource("Theme_d1eo8")
 
 [node name="Spell-Slash" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_6swwg")
+button_group = ExtResource("6_d1eo8")
 number = 1
 key = "slash"
 packed_spell = ExtResource("6_iotej")
@@ -97,7 +88,7 @@ cost = 2.0
 
 [node name="Spell-Whirlpool" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_inw07")
+button_group = ExtResource("6_d1eo8")
 icon = ExtResource("7_iotej")
 number = 2
 key = "whirlpool"
@@ -106,7 +97,7 @@ cost = 1.0
 
 [node name="Spell-Lightning" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_wsb3q")
+button_group = ExtResource("6_d1eo8")
 icon = ExtResource("6_x238p")
 number = 4
 key = "lightning"
@@ -115,7 +106,7 @@ cost = 2.0
 
 [node name="Spell-Fireball" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_lqado")
+button_group = ExtResource("6_d1eo8")
 icon = ExtResource("5_k1gab")
 number = 3
 key = "fireball"
@@ -125,6 +116,6 @@ cost = 3.0
 [node name="WalkAndPass" type="Button" parent="Spells/Center/List"]
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_siosn")
+button_group = ExtResource("6_d1eo8")
 icon = ExtResource("13_w8h61")
 script = ExtResource("14_r6hnw")
