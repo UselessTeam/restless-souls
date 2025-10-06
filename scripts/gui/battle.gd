@@ -22,13 +22,15 @@ func _ready():
     Global.battle_phase_start.connect(_on_battle_phase_start)
     Global.battle_phase_end.connect(_on_battle_phase_end)
 
-func do_player_action():
+func do_player_action() -> bool:
     var spell = spell_bar.current_spell_action
     if is_instance_valid(spell):
         Global.sfx_player.play_sfx(spell)
         player_action_received.emit(spell)
+        return true
     else:
         pass_player_turn()
+        return false
 
 func pass_player_turn():
     player_action_received.emit(null)

@@ -20,6 +20,7 @@ animations = [{
 script = ExtResource("2_4pihh")
 bullet = ExtResource("3_g0ys1")
 type = "fire"
+health = 4
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_4pihh")
