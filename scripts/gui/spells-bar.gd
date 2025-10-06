@@ -22,6 +22,9 @@ func select_spell(spell_index: int):
         return
     if current_spell_action:
         current_spell_action.queue_free()
+    if not Global.can_player_act():
+        selected_spell = -1
+        return
     selected_spell = spell_index
     if selected_spell >= 0:
         var spell = spells[selected_spell]

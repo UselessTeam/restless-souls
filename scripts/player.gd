@@ -31,7 +31,7 @@ func _process(_delta):
 	if Global.is_battling() and not Global.battle.energy.has_enough_energy(position):
 		position = Global.battle.energy.project_to_reachable_position(position)
 
-func _input(event):
+func _unhandled_input(event):
 	if not Global.can_player_act():
 		return
 	if event.is_action_pressed("action_use") \
