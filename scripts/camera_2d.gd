@@ -36,7 +36,8 @@ func close_fail_screen():
     black_screen.visible = false
 
 func open_finish_screen():
-    $Title.text = "Congratulations, you have collected all the souls ravaging the town!\nThanks for playing our game ;)"
+    $Effects/BlackScreen/Title.text = "Congratulations, you have collected\nall the souls ravaging the town!\nThanks for playing our game ;)"
+    $Effects/BlackScreen/Description.visible = false
     await open_fail_screen()
     await action_pressed
     get_tree().quit()
