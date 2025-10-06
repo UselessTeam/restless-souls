@@ -222,9 +222,6 @@ shape = SubResource("RectangleShape2D_0nbtd")
 position = Vector2(187, -124.5)
 shape = SubResource("RectangleShape2D_jhx03")
 
-[node name="Canvas" parent="Battles/Battle-Weak" index="2"]
-visible = true
-
 [node name="Right" parent="Battles/Battle-Weak/Canvas/Boundaries" index="2"]
 position = Vector2(608.865, -12)
 
