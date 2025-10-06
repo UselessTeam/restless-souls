@@ -207,6 +207,12 @@ position = Vector2(-294, 883)
 packed_monsters = Array[PackedScene]([ExtResource("12_q5onr"), ExtResource("13_ts3gi")])
 starting_dialog_file = "res://assets/dialogs/first-start.txt"
 
+[node name="Marker2D" type="Marker2D" parent="Battles/Battle-Weak/Entities" index="0"]
+position = Vector2(349.475, -204.14)
+
+[node name="Marker2D2" type="Marker2D" parent="Battles/Battle-Weak/Entities" index="1"]
+position = Vector2(484.575, -283.675)
+
 [node name="Shape" parent="Battles/Battle-Weak/EnterZone" index="0"]
 position = Vector2(215, -173)
 shape = SubResource("RectangleShape2D_0nbtd")

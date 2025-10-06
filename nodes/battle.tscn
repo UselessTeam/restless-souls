@@ -24,6 +24,7 @@ shape = SubResource("RectangleShape2D_qeko6")
 [node name="Canvas" type="CanvasGroup" parent="."]
 visible = false
 self_modulate = Color(0, 0, 0, 0.49803922)
+z_index = -2
 
 [node name="Boundaries" type="StaticBody2D" parent="Canvas"]
 process_mode = 4
