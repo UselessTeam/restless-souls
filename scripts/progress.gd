@@ -39,14 +39,14 @@ func get_max_health() -> int:
     if total_ghosts <= 5:
         return 5 + bonus
     if total_ghosts <= 10:
-        return 6 + bonus
+        return 5 + bonus
     return 7 + bonus
 
 func is_game_done():
     return total_ghosts >= 14
 
 func get_max_energy() -> float:
-    return 2.0 + 0.5 * sqrt(2.0 + total_ghosts + 0.5 * clamp(death_count - 1, 0, 10))
+    return 2.0 + 0.5 * sqrt(2.0 + min(total_ghosts, 6) + 0.5 * clamp(death_count - 1, 0, 10))
 
 func is_spell_unlocked(spell_key: String) -> bool:
     match spell_key:
