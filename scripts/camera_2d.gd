@@ -4,8 +4,13 @@ class_name Camera2DPlus
 
 @onready var effects: Node = $Effects
 
+signal action_pressed()
+
 func _ready():
     Global.camera = self
+func _process(_delta):
+    if Input.is_action_pressed("action_use"):
+        action_pressed.emit()
 
 func reparent_smoothly(new_parent: Node):
     var camera_position = global_position
@@ -29,3 +34,9 @@ func close_fail_screen():
         .tween_property(black_screen, "modulate:a", 0.0, 0.5) \
         .finished
     black_screen.visible = false
+
+func open_finish_screen():
+    $Title.text = "Congratulations, you have collected all the souls ravaging the town!\nThanks for playing our game ;)"
+    await open_fail_screen()
+    await action_pressed
+    get_tree().quit()

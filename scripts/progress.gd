@@ -37,6 +37,9 @@ func get_max_health() -> int:
         return 4
     return 5
 
+func is_game_done():
+    return total_ghosts >= 14
+
 func get_max_energy() -> float:
     return 1.5 + sqrt(1.0 + total_ghosts)
 

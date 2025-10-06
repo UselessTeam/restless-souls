@@ -53,8 +53,13 @@ func _on_attack_animation_finished():
 func take_damage():
     Global.battle.health.health -= 1
 
+
 func face_direction(is_left) -> void:
     animated_sprite.scale.x = abs(animated_sprite.scale.x) * (-1 if is_left else 1)
 
 func get_scythe():
     animated_sprite.frame = 0
+
+func check_end_game():
+    if Global.progress.is_game_done():
+        $Camera2D.open_finish_screen()

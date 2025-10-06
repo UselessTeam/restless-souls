@@ -205,6 +205,7 @@ sprite_frames = SubResource("SpriteFrames_q06gu")
 [node name="Area2D" type="Area2D" parent="."]
 process_mode = 4
 y_sort_enabled = true
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_qgjcv")

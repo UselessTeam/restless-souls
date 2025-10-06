@@ -1,8 +1,8 @@
 extends Monster
 class_name Shoot
 
-@export var ideal_distance_min := 350
-@export var ideal_distance_max := 600
+@export var ideal_distance_min := 400
+@export var ideal_distance_max := 500
 @export var travel_distance := 200
 
 @export var bullet: PackedScene

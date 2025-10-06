@@ -78,6 +78,7 @@ func rollout_battle(_battle_area: BattleArea):
         battle_area.close_battle(true)
         Global.end_battle()
         await Global.camera.reparent_smoothly(Global.player)
+        Global.player.check_end_game()
     else:
         battle_area.close_battle(false)
         Global.end_battle()
