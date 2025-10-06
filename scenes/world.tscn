@@ -218,6 +218,12 @@ shape = SubResource("RectangleShape2D_jhx03")
 [node name="Right" parent="Battles/Battle-Weak/Boundaries" index="2"]
 position = Vector2(516, -12)
 
+[node name="Node2D" parent="Battles/Battle-Weak" index="3"]
+visible = true
+
+[node name="Polygon2D3" parent="Battles/Battle-Weak/Node2D" index="2"]
+position = Vector2(530, -3153)
+
 [node name="Battle-Water" parent="Battles" instance=ExtResource("11_e3hyu")]
 position = Vector2(520, -104)
 packed_monsters = Array[PackedScene]([ExtResource("14_0nbtd"), ExtResource("13_ts3gi"), ExtResource("13_ts3gi")])
