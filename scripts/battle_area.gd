@@ -28,7 +28,7 @@ func on_area_body_entered(body):
 
 func maybe_dialog(file):
     if file.length() > 0:
-        await Global.dialog_box.display_text(starting_dialog_file)
+        await Global.dialog_box.display_text(file)
 
 
 func trigger_battle():
