@@ -86,7 +86,7 @@ func start_step():
     walk_energy_drain = 0.0
 
 func _process(_delta: float):
-    if not Global.is_battling():
+    if not Global.is_battling() or not Global.can_player_act():
         return
     walk_energy_drain = energy_cost_for_position(Global.player.position)
     
