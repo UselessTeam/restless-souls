@@ -28,6 +28,8 @@ func _ready():
     display_text(start_text)
 
 func display_text(file_path):
+    if not file_path:
+        return
     var text = FileAccess.open(file_path, FileAccess.READ) \
             .get_as_text().split("\n\n")
         
