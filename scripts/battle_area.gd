@@ -28,7 +28,7 @@ func on_area_body_entered(body):
 
 func maybe_dialog(file):
     if file.length() > 0:
-        await Global.file.display_text(starting_dialog_file)
+        await Global.dialog_box.display_text(starting_dialog_file)
 
 
 func trigger_battle():
@@ -114,6 +114,8 @@ var player_position_sprite: Node2D = null
 func show_player_base_position():
     var player_sprite_position = Global.player.animated_sprite.global_position
     player_position_sprite = Global.player.player_sprite_prefab.instantiate()
+
+    player_position_sprite.frame = Global.player.animated_sprite.frame
     player_position_sprite.modulate = Color(1, 1, 1, 0.3)
     self.add_child(player_position_sprite)
     player_position_sprite.global_position = player_sprite_position

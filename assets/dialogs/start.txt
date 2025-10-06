@@ -1,18 +1,7 @@
 grimmy
 Hello young one
-Come to me, use WASD or Left stick to move around
+Seems like you will be my replacement
 
 grimmy
-Some restless spirits are wreaking havoc around this town.
-I've been doing this for far too long
-I'm too tired to take them on
-Sooo tired...
-
-grimmy
-Take my soul, and take over the mantle
-
-player
-Rest in peace old one
-
-player
-Time to collect some souls!
+Come a bit closer, use WASD or Left Stick to move around
+I'm over here on the right

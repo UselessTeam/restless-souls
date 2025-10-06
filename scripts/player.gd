@@ -18,6 +18,7 @@ func _ready():
 			Global.last_checkpoint = position
 	animated_sprite.animation_finished.connect(_on_attack_animation_finished)
 	animation_player.play("hover")
+	animated_sprite.frame = 1
 
 func _process(_delta):
 	if not Global.can_player_act():
@@ -53,3 +54,6 @@ func take_damage():
 
 func face_direction(is_left) -> void:
 	animated_sprite.scale.x = abs(animated_sprite.scale.x) * (-1 if is_left else 1)
+
+func get_scythe():
+	animated_sprite.frame = 0

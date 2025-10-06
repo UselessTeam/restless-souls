@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmrngmlwx5mwr"]
+[gd_scene load_steps=6 format=3 uid="uid://dmrngmlwx5mwr"]
 
 [ext_resource type="Texture2D" uid="uid://qs7i6sphbg02" path="res://assets/sprites/player/IMG_1623-2.png" id="1_bc13i"]
 [ext_resource type="Texture2D" uid="uid://cwnknfxid7swl" path="res://assets/sprites/player/IMG_1623-3.png" id="2_mxfrn"]
 [ext_resource type="Texture2D" uid="uid://bjx3if3hxb513" path="res://assets/sprites/player/IMG_1623-1.png" id="3_6647u"]
+[ext_resource type="Texture2D" uid="uid://bbusgax6xni5g" path="res://assets/sprites/player/no_scythe.png" id="4_mxfrn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r66lb"]
 animations = [{
@@ -23,10 +24,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_6647u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mxfrn")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 0.0
 }]
 
 [node name="PlayerSprite" type="AnimatedSprite2D"]

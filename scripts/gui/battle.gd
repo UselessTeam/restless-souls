@@ -65,6 +65,8 @@ func rollout_battle(_battle_area: BattleArea):
             break
         # Monster turn
         await battle_area.monsters_act()
+        if not battle_area.has_monsters():
+            break
         await get_tree().create_timer(0.1).timeout
     spell_bar.turn_ended()
     visible = false
@@ -99,7 +101,7 @@ func _on_battle_phase_end():
 signal something_pressed()
 
 func _process(_delta: float):
-    if Input.is_action_just_pressed("action_use") or Input.is_action_just_pressed("action_cancel") or Input.is_action_just_pressed("action_escape"):
+    if Input.is_action_just_pressed("action_use") or Input.is_action_just_pressed("action_escape"):
         something_pressed.emit()
 
     if Global.is_battling() and !Global.can_player_act():
