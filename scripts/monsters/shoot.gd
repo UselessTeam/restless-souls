@@ -22,8 +22,12 @@ func act_turn():
     var time = TURN_TIME if target_dist != dist else 0.0
 
     face_direction(dir.x * (dist - target_dist) < 0)
+
+    var dir_sign = (dir * (dist - target_dist)).normalized()
+    var distance = get_collision_distance(global_position, dir_sign, abs((dist - target_dist)))
+
     var tween = create_tween() \
-        .tween_property(self, "position", position + dir * (dist - target_dist), time)
+        .tween_property(self, "position", position + dir_sign * distance, time)
     if (target_dist >= ideal_distance_min && target_dist <= ideal_distance_max):
         await tween.finished
         await shoot()
@@ -42,3 +46,18 @@ func shoot():
     if bullet_node:
         bullet_node.queue_free()
         Global.player.take_damage()
+
+func get_collision_distance(origin: Vector2, direction: Vector2, max_distance: float) -> float:
+    var space_state = get_world_2d().direct_space_state
+    
+    var query = PhysicsRayQueryParameters2D.create(
+        origin,
+        origin + direction.normalized() * max_distance
+    )
+    
+    var result = space_state.intersect_ray(query)
+    
+    if result:
+        return origin.distance_to(result.position)
+    else:
+        return max_distance
