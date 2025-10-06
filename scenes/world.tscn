@@ -202,10 +202,11 @@ position = Vector2(-254.5, 63.5)
 shape = SubResource("RectangleShape2D_q5onr")
 metadata/_edit_lock_ = true
 
-[node name="Battle-Weak" parent="Battles" instance=ExtResource("11_e3hyu")]
+[node name="Battle-Weak" parent="Battles" node_paths=PackedStringArray("checkpoint") instance=ExtResource("11_e3hyu")]
 position = Vector2(-294, 883)
 packed_monsters = Array[PackedScene]([ExtResource("12_q5onr"), ExtResource("13_ts3gi")])
 starting_dialog_file = "res://assets/dialogs/first-start.txt"
+checkpoint = NodePath("../Checkpoint")
 
 [node name="Marker2D" type="Marker2D" parent="Battles/Battle-Weak/Entities" index="0"]
 position = Vector2(349.475, -204.14)
@@ -221,12 +222,22 @@ shape = SubResource("RectangleShape2D_0nbtd")
 position = Vector2(187, -124.5)
 shape = SubResource("RectangleShape2D_jhx03")
 
-[node name="Right" parent="Battles/Battle-Weak/Canvas/Boundaries" index="2"]
-position = Vector2(516, -12)
+[node name="Canvas" parent="Battles/Battle-Weak" index="2"]
+visible = true
 
-[node name="Battle-Water" parent="Battles" instance=ExtResource("11_e3hyu")]
+[node name="Right" parent="Battles/Battle-Weak/Canvas/Boundaries" index="2"]
+position = Vector2(608.865, -12)
+
+[node name="Top" parent="Battles/Battle-Weak/Canvas/Boundaries" index="3"]
+position = Vector2(-5, -382.415)
+
+[node name="Checkpoint" type="Marker2D" parent="Battles"]
+position = Vector2(548, 559)
+
+[node name="Battle-Water" parent="Battles" node_paths=PackedStringArray("checkpoint") instance=ExtResource("11_e3hyu")]
 position = Vector2(520, -104)
 packed_monsters = Array[PackedScene]([ExtResource("14_0nbtd"), ExtResource("13_ts3gi"), ExtResource("13_ts3gi")])
+checkpoint = NodePath("../Checkpoint-OpenWorld")
 
 [node name="Marker2D" type="Marker2D" parent="Battles/Battle-Water/Entities" index="0"]
 position = Vector2(65.785, -255.395)
@@ -253,6 +264,9 @@ position = Vector2(744, 6)
 
 [node name="Top" parent="Battles/Battle-Water/Canvas/Boundaries" index="3"]
 position = Vector2(122, -494)
+
+[node name="Checkpoint-OpenWorld" type="Marker2D" parent="Battles"]
+position = Vector2(411, -234)
 
 [node name="Battle-Electric" parent="Battles" instance=ExtResource("11_e3hyu")]
 position = Vector2(2456, -1197)

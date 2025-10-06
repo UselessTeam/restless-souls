@@ -10,6 +10,7 @@ var enter_zone: Area2D
 @export_file("*.txt") var won_dialog_file: String = ""
 @export_file("*.txt") var lost_dialog_file: String = ""
 @export var rewards: Dictionary
+@export var checkpoint: Marker2D
 
 var monsters: Array[Monster]
 
@@ -43,6 +44,8 @@ func close_battle(won: bool):
     if won:
         maybe_dialog(won_dialog_file)
         give_rewards()
+        if checkpoint:
+            Global.last_checkpoint = checkpoint.position
     else:
         maybe_dialog(lost_dialog_file)
         Global.progress.death_count += 1

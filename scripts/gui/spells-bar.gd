@@ -17,15 +17,16 @@ func _ready():
 func player_step_started():
     select_spell(-1)
     if Global.progress.is_spell_unlocked("slash") and Global.battle.energy.has_enough_energy_for_spell(slash_spell.cost):
-        select_spell(0)
+        select_spell(0, true)
+        slash_spell.button_pressed = true
     else:
         pass_button.button_pressed = true
 
 func turn_ended():
     select_spell(-1)
 
-func select_spell(spell_index: int):
-    if not Global.can_player_act():
+func select_spell(spell_index: int, force: bool = false):
+    if not force and not Global.can_player_act():
         return
     if current_spell_action:
         current_spell_action.queue_free()
