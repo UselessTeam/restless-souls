@@ -6,7 +6,10 @@ var boundaries: StaticBody2D
 var enter_zone: Area2D
 
 @export var packed_monsters: Array[PackedScene]
-@export_file("*.txt") var dialog_file: String = ""
+@export_file("*.txt") var starting_dialog_file: String = ""
+@export_file("*.txt") var won_dialog_file: String = ""
+@export_file("*.txt") var lost_dialog_file: String = ""
+# @export var rewards
 
 var monsters: Array[Monster]
 
@@ -22,15 +25,25 @@ func on_area_body_entered(body):
     if body is Player:
         trigger_battle.call_deferred()
 
+func maybe_dialog(file):
+    if file.length() > 0:
+        await Global.file.display_text(starting_dialog_file)
+
+
 func trigger_battle():
     boundaries.process_mode = Node.PROCESS_MODE_ALWAYS
     enter_zone.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
-    if dialog_file.length() > 0:
-        await Global.dialog_box.display_text(dialog_file)
+    maybe_dialog(starting_dialog_file)
     Global.start_battle(self)
 
-func close_battle():
+func close_battle(won: bool):
     boundaries.process_mode = Node.PROCESS_MODE_DISABLED
+    if won:
+        maybe_dialog(won_dialog_file)
+        print("TODO: Rewards")
+    else:
+        maybe_dialog(lost_dialog_file)
+
 
 func reset_battle():
     boundaries.process_mode = Node.PROCESS_MODE_DISABLED

@@ -61,11 +61,11 @@ func rollout_battle(_battle_area: BattleArea):
     on = false
     var won = health.health > 0
     if won:
-        battle_area.close_battle()
+        battle_area.close_battle(true)
         Global.end_battle()
         await Global.camera.reparent_smoothly(Global.player)
     else:
-        battle_area.close_battle()
+        battle_area.close_battle(false)
         Global.end_battle()
         print("TODO: Better player death animation")
         Global.player.visible = false
