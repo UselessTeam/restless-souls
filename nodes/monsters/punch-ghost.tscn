@@ -189,6 +189,7 @@ sprite_frames = SubResource("SpriteFrames_81ktc")
 process_mode = 4
 visible = false
 y_sort_enabled = true
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3, 2)

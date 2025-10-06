@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://yhb7u3n1f4c5"]
 
-[ext_resource type="Script" uid="uid://dlqgra8fnhqm1" path="res://scripts/monsters/fire_bullet.gd" id="1_tmgcr"]
+[ext_resource type="Script" path="res://scripts/monsters/fire_bullet.gd" id="1_tmgcr"]
 [ext_resource type="PackedScene" uid="uid://bgct6r8y63b17" path="res://nodes/spells/fire_particles.tscn" id="2_jy6cl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tmgcr"]
@@ -12,6 +12,7 @@ script = ExtResource("1_tmgcr")
 [node name="ParticleCenter" parent="." instance=ExtResource("2_jy6cl")]
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(0.63782126, 0.6714496)

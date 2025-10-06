@@ -14,7 +14,7 @@ func player_step_started():
     select_spell(-1)
     select_spell(0)
 
-func combat_ended():
+func turn_ended():
     select_spell(-1)
 
 func select_spell(spell_index: int):

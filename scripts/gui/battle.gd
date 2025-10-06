@@ -47,6 +47,7 @@ func rollout_battle(_battle_area: BattleArea):
             battle_area.hide_player_base_position()
             if not action:
                 is_player_turn = false
+                spell_bar.turn_ended()
                 break
             await action.do()
             if not battle_area.has_monsters():
@@ -56,7 +57,7 @@ func rollout_battle(_battle_area: BattleArea):
         # Monster turn
         await battle_area.monsters_act()
         await get_tree().create_timer(0.1).timeout
-    spell_bar.combat_ended()
+    spell_bar.turn_ended()
     visible = false
     on = false
     var won = health.health > 0

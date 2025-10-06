@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvc0qkq4c0aw8"]
 
-[ext_resource type="Script" uid="uid://k4a2u1svbrd0" path="res://scripts/monsters/bullet.gd" id="1_dfkhu"]
+[ext_resource type="Script" path="res://scripts/monsters/bullet.gd" id="1_dfkhu"]
 [ext_resource type="Texture2D" uid="uid://b6owo6q0frn3d" path="res://assets/sprites/droplets.png" id="2_5jx7p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfkhu"]
@@ -15,6 +15,7 @@ scale = Vector2(9.905444, 10.480891)
 texture = ExtResource("2_5jx7p")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
 script = ExtResource("1_dfkhu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

@@ -76,7 +76,7 @@ func reset_monsters():
             monster.position = target.position
         elif target is CollisionShape2D:
             var spawn_area: Rect2 = target.shape.get_rect()
-            monster.position = Vector2(spawn_area.position.x + randf() * spawn_area.size.x, spawn_area.position.y + randf() * spawn_area.size.y)
+            monster.position = Vector2(target.position.x + spawn_area.position.x + randf() * spawn_area.size.x, target.position.y + spawn_area.position.y + randf() * spawn_area.size.y)
         else:
             push_warning("Monster spawn target is not a valid type")
             monster.position = target.position

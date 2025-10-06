@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Restless Souls"
-run/main_scene="uid://duxn7jcopkw4g"
+run/main_scene="uid://cjfikaman1ktt"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
