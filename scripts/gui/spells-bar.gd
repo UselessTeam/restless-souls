@@ -16,8 +16,10 @@ func _ready():
 
 func player_step_started():
     select_spell(-1)
-    if slash_spell.visible and not slash_spell.disabled and Global.battle.energy.has_enough_energy_for_spell(slash_spell.cost):
-       select_spell(0)
+    if Global.progress.is_spell_unlocked("slash") and Global.battle.energy.has_enough_energy_for_spell(slash_spell.cost):
+        select_spell(0)
+    else:
+        pass_button.button_pressed = true
 
 func turn_ended():
     select_spell(-1)
