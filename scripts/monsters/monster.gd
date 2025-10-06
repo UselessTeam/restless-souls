@@ -44,7 +44,6 @@ func unhighlight() -> void:
 
 func take_damage(amount: int) -> void:
     current_health -= amount
-    print(current_health, amount)
     animation_player.play("take_damage")
     await animation_player.animation_finished
     if current_health <= 0:

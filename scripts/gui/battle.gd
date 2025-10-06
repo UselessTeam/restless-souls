@@ -82,7 +82,6 @@ func rollout_battle(_battle_area: BattleArea):
     else:
         battle_area.close_battle(false)
         Global.end_battle()
-        print("TODO: Better player death animation")
         Global.player.visible = false
         await Global.camera.open_fail_screen()
         await something_pressed

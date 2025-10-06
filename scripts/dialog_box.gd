@@ -28,7 +28,6 @@ func _ready():
     display_text(start_text)
 
 func display_text(file_path):
-    print("disp text")
     var text = FileAccess.open(file_path, FileAccess.READ) \
             .get_as_text().split("\n\n")
         
@@ -42,7 +41,6 @@ func display_lines(texture_name, text, leave_on = false):
     is_showing_text = true
     texture_rect.texture = get_texture(texture_name)
     label.text = "\n".join(text)
-    print("displaying")
     await create_tween().tween_property(self, "modulate:a", 1, FADE_IN_OUT_TIME).finished
     await get_tree().create_timer(MIN_SHOW_TIME).timeout
     await skip_text
