@@ -33,6 +33,7 @@ func maybe_dialog(file):
 
 func trigger_battle():
     boundaries.process_mode = Node.PROCESS_MODE_ALWAYS
+    $Node2D.visible = true
     enter_zone.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
     maybe_dialog(starting_dialog_file)
     Global.start_battle(self)
@@ -44,6 +45,8 @@ func close_battle(won: bool):
         give_rewards()
     else:
         maybe_dialog(lost_dialog_file)
+    $Node2D.visible = false
+
 
 func auto_get_rewards():
     for monster in monsters:

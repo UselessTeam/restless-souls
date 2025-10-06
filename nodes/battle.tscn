@@ -44,3 +44,27 @@ shape = SubResource("WorldBoundaryShape2D_qeko6")
 position = Vector2(-5, -296)
 rotation = -3.1415925
 shape = SubResource("WorldBoundaryShape2D_qeko6")
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+modulate = Color(0.2627451, 0.2627451, 0.2627451, 0.69411767)
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D"]
+position = Vector2(-10422.999, -3761)
+scale = Vector2(10000, 10000)
+polygon = PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Node2D"]
+position = Vector2(-2953, -10312)
+scale = Vector2(10000, 10000)
+polygon = PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Node2D"]
+position = Vector2(395, -3175)
+scale = Vector2(10000, 10000)
+polygon = PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)
+
+[node name="Polygon2D4" type="Polygon2D" parent="Node2D"]
+position = Vector2(-7485.9995, 292)
+scale = Vector2(10000, 10000)
+polygon = PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)

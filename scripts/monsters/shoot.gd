@@ -41,3 +41,4 @@ func shoot():
         .finished
     if bullet_node:
         bullet_node.queue_free()
+        Global.player.take_damage()
