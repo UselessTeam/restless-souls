@@ -91,7 +91,7 @@ theme = SubResource("Theme_d1eo8")
 layout_mode = 2
 button_group = SubResource("ButtonGroup_6swwg")
 number = 1
-key = "Slash"
+key = "slash"
 packed_spell = ExtResource("6_iotej")
 cost = 2.0
 

@@ -7,6 +7,8 @@ static var TURN_TIME := 0.5
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_scale = $AnimatedSprite2D.scale
 
+@export_enum("normal", "fire", "electric", "water") var type: String = "normal"
+
 func _init():
     if self.get_script() == Monster:
         push_error("Monster is an abstract class and should not be instantiated directly.")

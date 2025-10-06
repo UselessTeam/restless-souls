@@ -17,6 +17,7 @@ animations = [{
 
 [node name="Electrocuted" instance=ExtResource("1_4f3fn")]
 bullet = ExtResource("2_83oyf")
+type = "electric"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_83oyf")

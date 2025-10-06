@@ -9,7 +9,7 @@ var enter_zone: Area2D
 @export_file("*.txt") var starting_dialog_file: String = ""
 @export_file("*.txt") var won_dialog_file: String = ""
 @export_file("*.txt") var lost_dialog_file: String = ""
-# @export var rewards
+@export var rewards: Dictionary
 
 var monsters: Array[Monster]
 
@@ -20,6 +20,7 @@ func _ready():
     enter_zone.body_entered.connect(on_area_body_entered)
 
     reset_battle()
+    auto_get_rewards()
 
 func on_area_body_entered(body):
     if body is Player:
@@ -40,10 +41,25 @@ func close_battle(won: bool):
     boundaries.process_mode = Node.PROCESS_MODE_DISABLED
     if won:
         maybe_dialog(won_dialog_file)
+        give_rewards()
         print("TODO: Rewards")
     else:
         maybe_dialog(lost_dialog_file)
 
+func auto_get_rewards():
+    for monster in monsters:
+        if monster is Monster:
+            var key = monster.type + "_ghosts"
+            rewards[key] = rewards.get_or_add(key, 0) + 1
+
+
+func give_rewards():
+    for key in rewards:
+        var value = rewards[key]
+        if Global.progress.get(key) == null:
+            push_warning("Unknown key: `" + str(key) + "`")
+        else:
+            Global.progress.set(key, Global.progress.get(key) + value)
 
 func reset_battle():
     boundaries.process_mode = Node.PROCESS_MODE_DISABLED
