@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dafv0pvrtafqx"]
+[gd_scene load_steps=10 format=3 uid="uid://dafv0pvrtafqx"]
 
 [ext_resource type="Script" uid="uid://bv5y0pvd0d0nt" path="res://scripts/dialog_box.gd" id="1_3wmld"]
 [ext_resource type="Texture2D" uid="uid://bjx3if3hxb513" path="res://assets/sprites/player/IMG_1623-1.png" id="2_5rifv"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://b27iq43hsqbc" path="res://assets/sprites/ghosts/electrocuted.png" id="5_v38u8"]
 [ext_resource type="Texture2D" uid="uid://b6vsdw48rbswu" path="res://assets/sprites/ghosts/knife.png" id="6_ni38v"]
 [ext_resource type="Texture2D" uid="uid://dqkuqqyxvrldb" path="res://assets/sprites/ghosts/sad.png" id="7_yf2c4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5rifv"]
+font_size = 32
 
 [node name="TextBoxLayer" type="CanvasLayer"]
 
@@ -54,6 +57,7 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_5rifv")
 
 [node name="Label" type="Label" parent="Control/ColorRect"]
+custom_minimum_size = Vector2(0, 64)
 layout_direction = 2
 layout_mode = 0
 offset_left = 260.0
@@ -62,3 +66,5 @@ offset_right = 493.0
 offset_bottom = 111.0
 grow_vertical = 2
 text = "Salut a toi jeune entrepreneur"
+label_settings = SubResource("LabelSettings_5rifv")
+vertical_alignment = 1
