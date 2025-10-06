@@ -28,14 +28,14 @@ signal on_change()
 
 func get_max_health() -> int:
     if total_ghosts == 0:
-        return 1
-    if total_ghosts <= 2:
         return 2
-    if total_ghosts <= 5:
+    if total_ghosts <= 2:
         return 3
-    if total_ghosts <= 10:
+    if total_ghosts <= 5:
         return 4
-    return 5
+    if total_ghosts <= 10:
+        return 5
+    return 6
 
 func is_game_done():
     return total_ghosts >= 14

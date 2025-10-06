@@ -27,8 +27,6 @@ func turn_ended():
 func select_spell(spell_index: int):
     if not Global.can_player_act():
         return
-    if selected_spell == spell_index:
-        return
     if current_spell_action:
         current_spell_action.queue_free()
     selected_spell = spell_index

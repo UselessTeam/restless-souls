@@ -1,16 +1,16 @@
 [gd_scene load_steps=39 format=4 uid="uid://cjfikaman1ktt"]
 
 [ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_nnsk1"]
-[ext_resource type="PackedScene" path="res://nodes/gui/hud.tscn" id="2_0nbtd"]
+[ext_resource type="PackedScene" uid="uid://bo3mxljpfi8k5" path="res://nodes/gui/hud.tscn" id="2_0nbtd"]
 [ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://ccqcriskmf3g2" path="res://nodes/world/buddas.tscn" id="3_4wyf3"]
-[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="3_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://nlxfr8eow1vb" path="res://scenes/map.tscn" id="3_7r4gi"]
 [ext_resource type="PackedScene" path="res://nodes/world/etang.tscn" id="4_k0juu"]
 [ext_resource type="PackedScene" path="res://nodes/world/door.tscn" id="5_71j4m"]
 [ext_resource type="PackedScene" path="res://nodes/world/lamp.tscn" id="6_qfnet"]
 [ext_resource type="PackedScene" path="res://nodes/world/wall.tscn" id="7_i7141"]
 [ext_resource type="PackedScene" path="res://nodes/world/gazebo.tscn" id="8_4mrxx"]
-[ext_resource type="PackedScene" path="res://nodes/world/trees.tscn" id="10_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://bc4sccpgmw83b" path="res://nodes/world/trees.tscn" id="10_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://cne50lky0fuiu" path="res://nodes/battle.tscn" id="11_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://dxopk57i7b7ai" path="res://nodes/monsters/punch-ghost.tscn" id="12_q5onr"]
 [ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="13_kpybi"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://42vqcy3tpjtu" path="res://nodes/monsters/water-ghost.tscn" id="14_0nbtd"]
 [ext_resource type="PackedScene" uid="uid://dafv0pvrtafqx" path="res://nodes/text_box.tscn" id="14_ctatt"]
 [ext_resource type="PackedScene" uid="uid://dx5oe534bl00w" path="res://nodes/monsters/thunder-ghost.tscn" id="15_37qwj"]
-[ext_resource type="Script" uid="uid://dj1802tnwtw52" path="res://scripts/music_player.gd" id="15_xgqkh"]
+[ext_resource type="Script" path="res://scripts/music_player.gd" id="15_xgqkh"]
 [ext_resource type="AudioStream" uid="uid://bwhvepxx8jess" path="res://assets/music/quiet-hunter-loop.mp3" id="16_munwf"]
 [ext_resource type="PackedScene" uid="uid://dw130vpd7lses" path="res://nodes/monsters/fire-ghost.tscn" id="16_navra"]
 [ext_resource type="AudioStream" uid="uid://cbmu7o8igduty" path="res://assets/music/hunters-dance-loop.mp3" id="17_ts3gi"]
@@ -215,11 +215,8 @@ shape = SubResource("RectangleShape2D_0nbtd")
 position = Vector2(187, -124.5)
 shape = SubResource("RectangleShape2D_jhx03")
 
-[node name="Right" parent="Battles/Battle-Weak/Boundaries" index="2"]
+[node name="Right" parent="Battles/Battle-Weak/Canvas/Boundaries" index="2"]
 position = Vector2(516, -12)
-
-[node name="Polygon2D3" parent="Battles/Battle-Weak/Node2D" index="2"]
-position = Vector2(530, -3153)
 
 [node name="Battle-Water" parent="Battles" instance=ExtResource("11_e3hyu")]
 position = Vector2(520, -104)
@@ -239,16 +236,16 @@ shape = SubResource("RectangleShape2D_kpybi")
 position = Vector2(302, 113)
 shape = SubResource("RectangleShape2D_ctatt")
 
-[node name="Bottom" parent="Battles/Battle-Water/Boundaries" index="0"]
+[node name="Bottom" parent="Battles/Battle-Water/Canvas/Boundaries" index="0"]
 position = Vector2(3, 400)
 
-[node name="Left" parent="Battles/Battle-Water/Boundaries" index="1"]
+[node name="Left" parent="Battles/Battle-Water/Canvas/Boundaries" index="1"]
 position = Vector2(-544, -13)
 
-[node name="Right" parent="Battles/Battle-Water/Boundaries" index="2"]
+[node name="Right" parent="Battles/Battle-Water/Canvas/Boundaries" index="2"]
 position = Vector2(744, 6)
 
-[node name="Top" parent="Battles/Battle-Water/Boundaries" index="3"]
+[node name="Top" parent="Battles/Battle-Water/Canvas/Boundaries" index="3"]
 position = Vector2(122, -494)
 
 [node name="Battle-Electric" parent="Battles" instance=ExtResource("11_e3hyu")]
@@ -263,16 +260,16 @@ shape = SubResource("RectangleShape2D_luhhm")
 position = Vector2(61.5, 69.5)
 shape = SubResource("RectangleShape2D_munwf")
 
-[node name="Bottom" parent="Battles/Battle-Electric/Boundaries" index="0"]
+[node name="Bottom" parent="Battles/Battle-Electric/Canvas/Boundaries" index="0"]
 position = Vector2(2, 481)
 
-[node name="Left" parent="Battles/Battle-Electric/Boundaries" index="1"]
+[node name="Left" parent="Battles/Battle-Electric/Canvas/Boundaries" index="1"]
 position = Vector2(-675, 14)
 
-[node name="Right" parent="Battles/Battle-Electric/Boundaries" index="2"]
+[node name="Right" parent="Battles/Battle-Electric/Canvas/Boundaries" index="2"]
 position = Vector2(711, 6)
 
-[node name="Top" parent="Battles/Battle-Electric/Boundaries" index="3"]
+[node name="Top" parent="Battles/Battle-Electric/Canvas/Boundaries" index="3"]
 position = Vector2(-5, -556)
 
 [node name="Battle-Fire" parent="Battles" instance=ExtResource("11_e3hyu")]
@@ -299,16 +296,16 @@ rotation = 0.7853982
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_xgqkh")
 
-[node name="Bottom" parent="Battles/Battle-Fire/Boundaries" index="0"]
+[node name="Bottom" parent="Battles/Battle-Fire/Canvas/Boundaries" index="0"]
 position = Vector2(-4, 441)
 
-[node name="Left" parent="Battles/Battle-Fire/Boundaries" index="1"]
+[node name="Left" parent="Battles/Battle-Fire/Canvas/Boundaries" index="1"]
 position = Vector2(-741, 17)
 
-[node name="Right" parent="Battles/Battle-Fire/Boundaries" index="2"]
+[node name="Right" parent="Battles/Battle-Fire/Canvas/Boundaries" index="2"]
 position = Vector2(526, -50)
 
-[node name="Top" parent="Battles/Battle-Fire/Boundaries" index="3"]
+[node name="Top" parent="Battles/Battle-Fire/Canvas/Boundaries" index="3"]
 position = Vector2(0, -578)
 
 [editable path="Battles/Battle-Death"]

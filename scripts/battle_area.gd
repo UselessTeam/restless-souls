@@ -14,7 +14,7 @@ var enter_zone: Area2D
 var monsters: Array[Monster]
 
 func _ready():
-    boundaries = $Boundaries
+    boundaries = $Canvas/Boundaries
     enter_zone = $EnterZone
 
     enter_zone.body_entered.connect(on_area_body_entered)
@@ -33,7 +33,7 @@ func maybe_dialog(file):
 
 func trigger_battle():
     boundaries.process_mode = Node.PROCESS_MODE_ALWAYS
-    $Node2D.visible = true
+    $Canvas.visible = true
     enter_zone.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
     maybe_dialog(starting_dialog_file)
     Global.start_battle(self)
@@ -45,7 +45,7 @@ func close_battle(won: bool):
         give_rewards()
     else:
         maybe_dialog(lost_dialog_file)
-    $Node2D.visible = false
+    $Canvas.visible = false
 
 
 func auto_get_rewards():
