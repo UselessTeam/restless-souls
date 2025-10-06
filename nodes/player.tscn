@@ -174,6 +174,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Title" type="Label" parent="Camera2D/Effects/BlackScreen"]
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -189,6 +190,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Description" type="Label" parent="Camera2D/Effects/BlackScreen"]
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -198,7 +200,7 @@ offset_top = 20.0
 offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "(press space to respawn)"
+text = "(left click to respawn)"
 label_settings = SubResource("LabelSettings_hqdnm")
 horizontal_alignment = 1
 vertical_alignment = 1
