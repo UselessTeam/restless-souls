@@ -41,7 +41,7 @@ func is_game_done():
     return total_ghosts >= 14
 
 func get_max_energy() -> float:
-    return 1.5 + sqrt(2.0 + total_ghosts)
+    return 2.0 + 0.5 * sqrt(2.0 + total_ghosts)
 
 func is_spell_unlocked(spell_key: String) -> bool:
     match spell_key:
