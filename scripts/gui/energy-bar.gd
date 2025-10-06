@@ -2,7 +2,7 @@ extends MarginContainer
 
 class_name EnergyBar
 
-const STEP_ENERGY_COST: float = 0.01
+const STEP_ENERGY_COST: float = 0.005
 const DEAD_ZONE: float = 4.0
 const MIN_ENERGY: float = -0.1
 

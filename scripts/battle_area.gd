@@ -42,7 +42,6 @@ func close_battle(won: bool):
     if won:
         maybe_dialog(won_dialog_file)
         give_rewards()
-        print("TODO: Rewards")
     else:
         maybe_dialog(lost_dialog_file)
 

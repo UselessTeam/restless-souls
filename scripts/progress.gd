@@ -27,12 +27,18 @@ var total_ghosts:
 signal on_change()
 
 func get_max_health() -> int:
-    print("TODO: max health")
+    if total_ghosts == 0:
+        return 1
+    if total_ghosts <= 2:
+        return 2
+    if total_ghosts <= 5:
+        return 3
+    if total_ghosts <= 10:
+        return 4
     return 5
 
 func get_max_energy() -> float:
-    print("TODO: max energy")
-    return 5.0
+    return 1.5 + sqrt(1.0 + total_ghosts)
 
 func is_spell_unlocked(spell_key: String) -> bool:
     match spell_key:
