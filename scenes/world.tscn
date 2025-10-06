@@ -69,12 +69,14 @@ metadata/_edit_lock_ = true
 layer = 2
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -11.0
 autoplay = true
 script = ExtResource("15_xgqkh")
 world_music = ExtResource("16_munwf")
 battle_music = ExtResource("17_ts3gi")
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
 script = ExtResource("18_0nbtd")
 slash = ExtResource("19_37qwj")
 fire = ExtResource("20_navra")
