@@ -43,4 +43,14 @@ func select_spell(spell_index: int, force: bool = false):
         Global.battle.energy.reserved_energy_for_spell = 0
 
 func toggle_spell(i: int):
-    select_spell((selected_spell + i) % max_spells)
+    var new_spell_index = selected_spell
+    var valid = false
+    while not valid:
+        new_spell_index = (new_spell_index + i) % (max_spells + 1)
+        if new_spell_index == max_spells or new_spell_index == -1:
+            new_spell_index = -1
+            valid = true
+        else:
+            var new_spell: SpellButton = spells[new_spell_index]
+            valid = Global.progress.is_spell_unlocked(new_spell.key)
+    select_spell(new_spell_index)
