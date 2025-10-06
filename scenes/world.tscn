@@ -1,16 +1,16 @@
 [gd_scene load_steps=39 format=4 uid="uid://cjfikaman1ktt"]
 
 [ext_resource type="Script" uid="uid://bk4odnamnoi1s" path="res://scripts/world.gd" id="1_nnsk1"]
-[ext_resource type="PackedScene" uid="uid://bo3mxljpfi8k5" path="res://nodes/gui/hud.tscn" id="2_0nbtd"]
+[ext_resource type="PackedScene" path="res://nodes/gui/hud.tscn" id="2_0nbtd"]
 [ext_resource type="PackedScene" uid="uid://ce04kx8kagpll" path="res://nodes/player.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://ccqcriskmf3g2" path="res://nodes/world/buddas.tscn" id="3_4wyf3"]
-[ext_resource type="PackedScene" uid="uid://nlxfr8eow1vb" path="res://scenes/map.tscn" id="3_7r4gi"]
+[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="3_7r4gi"]
 [ext_resource type="PackedScene" path="res://nodes/world/etang.tscn" id="4_k0juu"]
 [ext_resource type="PackedScene" path="res://nodes/world/door.tscn" id="5_71j4m"]
 [ext_resource type="PackedScene" path="res://nodes/world/lamp.tscn" id="6_qfnet"]
 [ext_resource type="PackedScene" path="res://nodes/world/wall.tscn" id="7_i7141"]
 [ext_resource type="PackedScene" path="res://nodes/world/gazebo.tscn" id="8_4mrxx"]
-[ext_resource type="PackedScene" uid="uid://bc4sccpgmw83b" path="res://nodes/world/trees.tscn" id="10_w7kh3"]
+[ext_resource type="PackedScene" path="res://nodes/world/trees.tscn" id="10_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://cne50lky0fuiu" path="res://nodes/battle.tscn" id="11_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://dxopk57i7b7ai" path="res://nodes/monsters/punch-ghost.tscn" id="12_q5onr"]
 [ext_resource type="PackedScene" uid="uid://2yrdhe62kcmb" path="res://nodes/gui/battle-overlay.tscn" id="13_kpybi"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://42vqcy3tpjtu" path="res://nodes/monsters/water-ghost.tscn" id="14_0nbtd"]
 [ext_resource type="PackedScene" uid="uid://dafv0pvrtafqx" path="res://nodes/text_box.tscn" id="14_ctatt"]
 [ext_resource type="PackedScene" uid="uid://dx5oe534bl00w" path="res://nodes/monsters/thunder-ghost.tscn" id="15_37qwj"]
-[ext_resource type="Script" path="res://scripts/music_player.gd" id="15_xgqkh"]
+[ext_resource type="Script" uid="uid://dj1802tnwtw52" path="res://scripts/music_player.gd" id="15_xgqkh"]
 [ext_resource type="AudioStream" uid="uid://bwhvepxx8jess" path="res://assets/music/quiet-hunter-loop.mp3" id="16_munwf"]
 [ext_resource type="PackedScene" uid="uid://dw130vpd7lses" path="res://nodes/monsters/fire-ghost.tscn" id="16_navra"]
 [ext_resource type="AudioStream" uid="uid://cbmu7o8igduty" path="res://assets/music/hunters-dance-loop.mp3" id="17_ts3gi"]
@@ -205,7 +205,9 @@ metadata/_edit_lock_ = true
 [node name="Battle-Weak" parent="Battles" node_paths=PackedStringArray("checkpoint") instance=ExtResource("11_e3hyu")]
 position = Vector2(-294, 883)
 packed_monsters = Array[PackedScene]([ExtResource("12_q5onr"), ExtResource("13_ts3gi")])
-starting_dialog_file = "res://assets/dialogs/first-start.txt"
+starting_dialog_file = "res://assets/dialogs/weak-start.txt"
+won_dialog_file = "res://assets/dialogs/weak-end.txt"
+lost_dialog_file = "res://assets/dialogs/lose/weak-lose.txt"
 checkpoint = NodePath("../Checkpoint")
 
 [node name="Marker2D" type="Marker2D" parent="Battles/Battle-Weak/Entities" index="0"]
@@ -234,6 +236,9 @@ position = Vector2(548, 559)
 [node name="Battle-Water" parent="Battles" node_paths=PackedStringArray("checkpoint") instance=ExtResource("11_e3hyu")]
 position = Vector2(520, -104)
 packed_monsters = Array[PackedScene]([ExtResource("14_0nbtd"), ExtResource("13_ts3gi"), ExtResource("13_ts3gi")])
+starting_dialog_file = "res://assets/dialogs/water-start.txt"
+won_dialog_file = "res://assets/dialogs/water-end.txt"
+lost_dialog_file = "res://assets/dialogs/lose/water-lose.txt"
 checkpoint = NodePath("../Checkpoint-OpenWorld")
 
 [node name="Marker2D" type="Marker2D" parent="Battles/Battle-Water/Entities" index="0"]
@@ -268,6 +273,8 @@ position = Vector2(411, -234)
 [node name="Battle-Electric" parent="Battles" instance=ExtResource("11_e3hyu")]
 position = Vector2(2456, -1197)
 packed_monsters = Array[PackedScene]([ExtResource("15_37qwj"), ExtResource("12_q5onr"), ExtResource("12_q5onr"), ExtResource("12_q5onr")])
+starting_dialog_file = "res://assets/dialogs/thunder-start.txt"
+lost_dialog_file = "res://assets/dialogs/lose/thunder-lose.txt"
 
 [node name="Shape" parent="Battles/Battle-Electric/EnterZone" index="0"]
 position = Vector2(45, 63.5)
@@ -292,6 +299,8 @@ position = Vector2(-5, -556)
 [node name="Battle-Fire" parent="Battles" instance=ExtResource("11_e3hyu")]
 position = Vector2(-824, -735)
 packed_monsters = Array[PackedScene]([ExtResource("16_navra"), ExtResource("13_ts3gi"), ExtResource("13_ts3gi"), ExtResource("12_q5onr"), ExtResource("12_q5onr")])
+starting_dialog_file = "res://assets/dialogs/fire-ghost.txt"
+lost_dialog_file = "res://assets/dialogs/lose/fire-lose.txt"
 
 [node name="Fire" type="Marker2D" parent="Battles/Battle-Fire/Entities" index="0"]
 position = Vector2(-454.495, -480.24)
