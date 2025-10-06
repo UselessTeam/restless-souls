@@ -9,6 +9,6 @@
 build/
 
 assets/**/*.kra
-assets/**/*.kra~
+assets/**/*~
 assets/music/audacity/
 assets/**/*.zip

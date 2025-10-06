@@ -8,6 +8,7 @@ class_name Spell
 
 @export var sound: String = "slash"
 @export var damage: int = 1
+var button: SpellButton # Dirty but can use the values there
 
 var hinted_monsters: Array[Monster] = []
 var is_casting := false

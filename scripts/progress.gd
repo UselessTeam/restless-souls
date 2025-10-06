@@ -36,6 +36,8 @@ func get_max_energy() -> float:
 
 func is_spell_unlocked(spell_key: String) -> bool:
     match spell_key:
+        "slash":
+            return normal_ghosts > 0
         "whirlpool":
             return water_ghosts > 0
         "fireball":

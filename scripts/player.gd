@@ -28,7 +28,7 @@ func _process(_delta):
 		face_direction(direction.x < 0)
 
 	move_and_slide()
-	if Global.is_battling() and not Global.battle.energy.has_enough_energy(position):
+	if Global.is_battling() and not Global.battle.energy.has_enough_energy_for_position(position):
 		position = Global.battle.energy.project_to_reachable_position(position)
 
 func _unhandled_input(event):

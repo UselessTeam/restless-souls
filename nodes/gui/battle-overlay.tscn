@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2yrdhe62kcmb"]
+[gd_scene load_steps=23 format=3 uid="uid://2yrdhe62kcmb"]
 
 [ext_resource type="Script" uid="uid://crsrdktcc6dey" path="res://scripts/gui/battle.gd" id="1_wucys"]
 [ext_resource type="PackedScene" uid="uid://bx1rfogr2n6qn" path="res://nodes/gui/energy-bar.tscn" id="2_k1gab"]
@@ -12,6 +12,36 @@
 [ext_resource type="PackedScene" uid="uid://syu1qoqjoe7p" path="res://nodes/spells/fireball.tscn" id="8_iotej"]
 [ext_resource type="PackedScene" uid="uid://cwoeda5ituoee" path="res://nodes/spells/whirlpool_spell.tscn" id="11_gi5eo"]
 [ext_resource type="PackedScene" uid="uid://dmmet85i402hn" path="res://nodes/spells/thunder.tscn" id="12_cyjt6"]
+[ext_resource type="Texture2D" uid="uid://bs20sfyytw6w8" path="res://assets/sprites/gui/skills/pass.png" id="13_w8h61"]
+[ext_resource type="Script" uid="uid://cf7utuvl7x23k" path="res://scripts/gui/pass-button.gd" id="14_r6hnw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r6hnw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6hnw"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="Theme" id="Theme_d1eo8"]
+Button/styles/focus = SubResource("StyleBoxEmpty_r6hnw")
+Button/styles/pressed = SubResource("StyleBoxFlat_r6hnw")
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_6swwg"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_inw07"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_wsb3q"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_lqado"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_siosn"]
 
 [node name="BattleOverlay" type="CanvasLayer"]
 script = ExtResource("1_wucys")
@@ -55,30 +85,46 @@ layout_mode = 2
 
 [node name="List" type="HBoxContainer" parent="Spells/Center"]
 layout_mode = 2
+theme = SubResource("Theme_d1eo8")
 
 [node name="Spell-Slash" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_6swwg")
 number = 1
 key = "Slash"
 packed_spell = ExtResource("6_iotej")
+cost = 2.0
 
 [node name="Spell-Whirlpool" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_inw07")
 icon = ExtResource("7_iotej")
 number = 2
 key = "whirlpool"
 packed_spell = ExtResource("11_gi5eo")
-
-[node name="Spell-Fireball" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
-layout_mode = 2
-icon = ExtResource("5_k1gab")
-number = 3
-key = "fireball"
-packed_spell = ExtResource("8_iotej")
+cost = 1.0
 
 [node name="Spell-Lightning" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_wsb3q")
 icon = ExtResource("6_x238p")
 number = 4
 key = "lightning"
 packed_spell = ExtResource("12_cyjt6")
+cost = 2.0
+
+[node name="Spell-Fireball" parent="Spells/Center/List" instance=ExtResource("5_x238p")]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_lqado")
+icon = ExtResource("5_k1gab")
+number = 3
+key = "fireball"
+packed_spell = ExtResource("8_iotej")
+cost = 3.0
+
+[node name="WalkAndPass" type="Button" parent="Spells/Center/List"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_siosn")
+icon = ExtResource("13_w8h61")
+script = ExtResource("14_r6hnw")

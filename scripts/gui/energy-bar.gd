@@ -95,10 +95,13 @@ func energy_cost_for_position(_position: Vector2) -> float:
     var distance = max(0, player_last_position.distance_to(_position) - DEAD_ZONE)
     return distance * STEP_ENERGY_COST
 
-func has_enough_energy(_position: Vector2) -> bool:
+func has_enough_energy_for_position(_position: Vector2) -> bool:
     if step_energy <= 0:
         return false
-    return step_energy - energy_cost_for_position(_position) >= MIN_ENERGY
+    return step_energy - reserved_energy_for_spell - energy_cost_for_position(_position) >= MIN_ENERGY
+
+func has_enough_energy_for_spell(cost: float) -> bool:
+    return step_energy >= cost
 
 func project_to_reachable_position(_position: Vector2) -> Vector2:
-    return _position.move_toward(player_last_position, (energy_cost_for_position(_position) - step_energy + MIN_ENERGY) / STEP_ENERGY_COST)
+    return _position.move_toward(player_last_position, (energy_cost_for_position(_position) - (step_energy - reserved_energy_for_spell) + MIN_ENERGY) / STEP_ENERGY_COST)

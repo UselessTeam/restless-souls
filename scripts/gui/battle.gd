@@ -3,6 +3,8 @@ extends CanvasLayer
 class_name Battle
 
 signal player_action_received(action)
+signal step_started()
+signal turn_ended()
 
 var on: bool = false
 @onready var spell_bar: SpellsBar = $Spells
@@ -12,16 +14,21 @@ var battle_area: BattleArea = null
 var is_player_turn: bool = false
 var is_player_step: bool = false
 
+func _init():
+    Global.battle = self
+
 func _ready():
     visible = false
-    Global.battle = self
     Global.battle_phase_start.connect(_on_battle_phase_start)
     Global.battle_phase_end.connect(_on_battle_phase_end)
 
 func do_player_action():
     var spell = spell_bar.current_spell_action
-    Global.sfx_player.play_sfx(spell)
-    player_action_received.emit(spell)
+    if is_instance_valid(spell):
+        Global.sfx_player.play_sfx(spell)
+        player_action_received.emit(spell)
+    else:
+        pass_player_turn()
 
 func pass_player_turn():
     player_action_received.emit(null)
@@ -40,6 +47,7 @@ func rollout_battle(_battle_area: BattleArea):
         while is_player_turn:
             battle_area.show_player_base_position()
             energy.start_step()
+            step_started.emit()
             is_player_step = true
             spell_bar.player_step_started()
             var action = await player_action_received
@@ -52,6 +60,7 @@ func rollout_battle(_battle_area: BattleArea):
             await action.do()
             if not battle_area.has_monsters():
                 break
+        turn_ended.emit()
         if not battle_area.has_monsters():
             break
         # Monster turn

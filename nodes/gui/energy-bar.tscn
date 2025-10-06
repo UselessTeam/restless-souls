@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dluxigsiww7el" path="res://scripts/gui/energy-bar.gd" id="1_hfi2n"]
 [ext_resource type="Texture2D" uid="uid://dfvmkb4jmcpco" path="res://assets/sprites/gui/energy-knot.png" id="2_k0ycj"]
-[ext_resource type="Script" uid="uid://sx6nlgp01q5m" path="res://nodes/gui/bar.gd" id="2_o3sof"]
+[ext_resource type="Script" uid="uid://sx6nlgp01q5m" path="res://scripts/gui/bar.gd" id="2_o3sof"]
 [ext_resource type="Texture2D" uid="uid://c4xlabdsg7l6a" path="res://assets/sprites/gui/energy-bar.png" id="3_k0ycj"]
 
 [node name="Energy" type="MarginContainer"]
