@@ -45,6 +45,7 @@ func close_battle(won: bool):
         give_rewards()
     else:
         maybe_dialog(lost_dialog_file)
+        Global.progress.death_count += 1
     $Canvas.visible = false
 
 

@@ -24,24 +24,29 @@ var total_ghosts:
     get:
         return normal_ghosts + fire_ghosts + water_ghosts + electric_ghosts
 
+var death_count: int = 0
+
 signal on_change()
 
 func get_max_health() -> int:
+    var bonus = 0
+    if death_count >= 3:
+        bonus = 1
     if total_ghosts == 0:
-        return 2
+        return 2 + bonus
     if total_ghosts <= 2:
-        return 3
+        return 3 + bonus
     if total_ghosts <= 5:
-        return 4
+        return 5 + bonus
     if total_ghosts <= 10:
-        return 5
-    return 6
+        return 6 + bonus
+    return 7 + bonus
 
 func is_game_done():
     return total_ghosts >= 14
 
 func get_max_energy() -> float:
-    return 2.0 + 0.5 * sqrt(2.0 + total_ghosts)
+    return 2.0 + 0.5 * sqrt(2.0 + total_ghosts + 0.5 * clamp(death_count - 1, 0, 10))
 
 func is_spell_unlocked(spell_key: String) -> bool:
     match spell_key:

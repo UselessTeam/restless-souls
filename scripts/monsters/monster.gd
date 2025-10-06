@@ -26,6 +26,7 @@ var current_health: int = health
 
 func _ready():
     animation_player.play("hover")
+    current_health = health
 
 func on_turn_end() -> void:
     block_body.process_mode = Node.PROCESS_MODE_INHERIT
@@ -43,6 +44,7 @@ func unhighlight() -> void:
 
 func take_damage(amount: int) -> void:
     current_health -= amount
+    print(current_health, amount)
     animation_player.play("take_damage")
     await animation_player.animation_finished
     if current_health <= 0:
