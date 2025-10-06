@@ -17,7 +17,7 @@ permissions: read-all
 jobs:
   setup:
     name: Setup
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04
     outputs:
       version: ${{ steps.set.outputs.version }}
       should_upload: ${{ steps.set.outputs.tag_pushed || github.event_name == 'workflow_dispatch' || 'false' }}
