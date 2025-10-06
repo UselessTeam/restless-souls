@@ -54,11 +54,14 @@ func do():
     await done
 
 func cast_spell():
-    for monster in hinted_monsters:
-        monster.take_damage(damage)
-    visual_polygon.queue_free()
     animation_player.play("cast")
+    for monster in hinted_monsters:
+        effect(monster)
+    visual_polygon.queue_free()
 
 func _on_animation_finished(_anim_name):
     queue_free()
     done.emit()
+
+func effect(monster):
+    monster.take_damage(damage)

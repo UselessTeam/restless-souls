@@ -3,6 +3,10 @@ extends Spell
 const N_POINTS := 100
 
 @onready var particles = $CPUParticles2D
+
+@export_range(0.0, 1.0) var pushAmount = 0.6
+@export var maxDistance = 750
+
 func _ready():
     var points: Array[Vector2] = []
     for i in range(N_POINTS + 1):
@@ -33,5 +37,14 @@ func _process(delta):
 
 func _input(event):
     if event is InputEventMouseMotion:
-        var direction = (get_global_mouse_position() - global_position).length()
-        scale = Vector2.ONE * direction / 100.0
+        var distance = (get_global_mouse_position() - global_position).length()
+        distance = min(maxDistance, distance)
+        scale = Vector2.ONE * distance / 100.0
+
+
+func effect(monster):
+    create_tween().tween_property(monster, "global_position", \
+            Global.player.global_position * pushAmount + monster.global_position * (1 - pushAmount), \
+            animation_player.current_animation_length * 0.8) \
+        .set_trans(Tween.TRANS_QUAD) \
+        .set_ease(Tween.EASE_IN)
